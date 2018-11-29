@@ -779,7 +779,7 @@ msgstr ""
 
 #: /1080i/Includes_Widgets.xml
 msgctxt "#31162"
-msgid "Categories"
+msgid ""
 msgstr ""
 
 #: /shortcuts/overrides.xml
