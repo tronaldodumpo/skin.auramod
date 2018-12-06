@@ -13,7 +13,60 @@
         <param name="genre" default="true" />
         <param name="top250" default="true" />
         <param name="titleright" default="0" />
+
         <definition>
+	     <!-- trailer window -->
+<!--                <control type="group" id="5633400">
+                    <visible>Player.HasVideo</visible>
+                    <top>-35</top>
+                    <right>0</right>
+                    <width>900</width>
+                    <height>500</height>
+                    <animation effect="slide" start="0" end="0,-80" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)" reversible="true">Conditional</animation>
+                    <control type="videowindow"></control>
+                </control> -->
+	      <!-- Spotlight Widget trailer window -->
+            <control type="group" id="5633399">
+                <visible>Player.HasVideo + [ControlGroup(505).HasFocus() | Control(55).HasFocus()]</visible>
+                <width>100%</width>
+                <height>100%</height>
+                <animation effect="slide" start="0" end="0,-80" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)" reversible="true">Conditional</animation>
+                <control type="videowindow">
+                                        <width>100%</width>
+                                        <height>100%</height>
+                                </control>
+            </control>
+            <!--Spotlight Widget fullscreen trailer fade in,need check -->
+            <control type="image">
+                <visible>Control.IsVisible(5633399)</visible>
+                <width>100%</width>
+                <height>100%</height>
+                <texture border="15">diffuse/bgpanel.png</texture>
+                <animation effect="fade" start="100" end="0" delay="0" time="3000">Visible</animation>
+                <animation effect="fade" start="50" end="0" delay="0" time="1500">Hidden</animation>
+            </control>
+
+
+
+	    <!-- Add Netflix view Fanart with corner diffuse -->
+	    <control type="group">
+	     <control type="image">
+		    <visible>!Skin.HasSetting(DisableNetflixView)</visible>
+		    <visible>Control.IsVisible(55) | Control.IsVisible(56)</visible>
+		    <visible>!Player.HasVideo</visible>
+                    <fadetime>350</fadetime>
+                    <width>1080</width>
+                    <height>720</height>
+                    <right>0</right>
+		    <top>-35</top>
+	            <bottom>5</bottom>	
+                    <texture background="true" diffuse="Right Corner.png">$VAR[Image_Fanart]</texture>
+                    <aspectratio scalediffuse="true" aligny="top">scale</aspectratio>
+		</control>
+	     </control>
+	   <!-- End Netflix view Fanart with corner diffuse -->
+	
+
             <control type="grouplist">
                 <top>-10</top>
                 <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(videos) | Container.Content(seaons) | Window.IsVisible(script-script.extendedinfo-VideoList.xml) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
@@ -21,12 +74,37 @@
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
                 <itemgap>0</itemgap>
+
+	        <control type="image">
+		    <visible>!Skin.HasSetting(DisableNetflixView)</visible>
+		    <visible>Control.IsVisible(55) | Control.IsVisible(56)</visible>
+		    <left>0</left>
+                    <right>0</right>
+		    <top>-5</top>
+		    <bottom>5</bottom>
+                    <height>240</height>
+		    <width>450</width>
+                    <aligny>top</aligny>
+		    <texture>$INFO[Window(home).Property(SkinHelper.ListItem.Art.Clearlogo]</texture>
+		 </control>
+	       <control type="label">
+		    <visible>String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Art.Clearlogo)</visible> 
+		    <visible>!String.EndsWith(Window(home).Property(SkinHelper.ListItem.Art.ClearLogo),.png)</visible>
+                    <left>0</left>
+                    <right>$PARAM[titleright]</right>
+                    <label>$INFO[ListItem.Label]</label>
+		    <top>-250</top>
+                    <textcolor>main_fg_100</textcolor>
+                    <font>font_showcase_title</font>
+                </control>
+
                 <control type="label">
+		    <visible>Skin.HasSetting(DisableNetflixView)</visible>
                     <left>0</left>
                     <right>$PARAM[titleright]</right>
                     <label>$INFO[ListItem.Label]</label>
                     <height>80</height>
-                    <aligny>top</aligny>
+                    <align>top</align>
                     <textcolor>main_fg_100</textcolor>
                     <font>font_showcase_title</font>
                 </control>
@@ -130,6 +208,7 @@
                     </control>
                 </control>
                 <control type="label">
+		    <visible>Skin.HasSetting(DisableNetflixView)</visible>
                     <left>0</left>
                     <right>0</right>
                     <label>[CAPITALIZE]$VAR[Label_Genre][/CAPITALIZE]</label>
@@ -141,6 +220,7 @@
                 </control>
                 <control type="textbox">
                     <label fallback="19055">$VAR[Label_Plot]</label>
+		    <width>850</width>
                     <height>$PARAM[plot_height]</height>
                     <aligny>top</aligny>
                     <textcolor>main_fg_70</textcolor>

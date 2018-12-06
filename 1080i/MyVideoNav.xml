@@ -8,10 +8,10 @@
     <controls>
 
         <!-- Standard Furniture -->
-        <include>Global_Background</include>
-        <include>View_Library</include>
-        <include>Topbar</include>
+        <include condition="Skin.HasSetting(DisableNetflixView)">Global_Background</include>
+        <include condition="Skin.HasSetting(DisableNetflixView)">Topbar</include> 
         <include>Object_PlotOverlay</include>
+        <include>View_Library</include>
        
         <!-- Hidden Buttons -->
         <include>Defs_Options_StandardButtons</include>

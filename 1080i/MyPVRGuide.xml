@@ -11,11 +11,9 @@
         <include>View_Library</include>
         
         <control type="label" id="29"><visible>false</visible></control>
-        
-        <include>View_PVRGuide</include>
-
-        <include>Topbar</include>
-
+        <include condition="!Skin.HasSetting(DisableGuideInfo)">View_PVRGuide_WithInfo</include>
+        <include condition="Skin.HasSetting(DisableGuideInfo)">View_PVRGuide</include>
+	<include>Topbar</include>
         <include>Defs_Options_StandardButtons</include>
         <control type="button" id="28">
             <description>Groups</description>

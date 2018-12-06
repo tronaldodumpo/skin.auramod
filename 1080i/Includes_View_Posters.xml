@@ -151,8 +151,10 @@
         <control type="group">
             <visible>Control.IsVisible(55)</visible>
             <control type="group">
-                <include>View_Pad</include>
+		<include condition="Skin.HasSetting(DisableNetflixView)">View_Pad</include>
+                <include condition="!Skin.HasSetting(DisableNetflixView)">View_Pad_Netflix</include>
                 <control type="fixedlist" id="55">
+
                     <bottom>-10</bottom>
                     <right>-70</right>
                     <left>-70</left>
@@ -166,7 +168,7 @@
                     <pagecontrol>60</pagecontrol>
                     <onleft>55</onleft>
                     <onright>55</onright>
-                    <include content="View_Forced">
+                   <include content="View_Forced">
                         <param name="string" value="$LOCALIZE[31161]" />
                     </include>
                     <include>View_NotTheseWindows</include>
@@ -192,7 +194,8 @@
         <control type="group">
             <visible>Control.IsVisible(56)</visible>
             <control type="group">
-                <include>View_Pad</include>
+                <include condition="Skin.HasSetting(DisableNetflixView)">View_Pad</include>
+                <include condition="!Skin.HasSetting(DisableNetflixView)">View_Pad_Netflix</include>
                 <control type="fixedlist" id="56">
                     <bottom>-10</bottom>
                     <right>-70</right>
@@ -871,12 +874,12 @@
                             <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
                             <texture background="true" diffuse="diffuse/banner.png">$VAR[Image_Banner]</texture>
                         </control>
-                        <control type="image">
+<!--                        <control type="image">
                             <bordersize>30</bordersize>
                             <aspectratio aligny="bottom" align="right" scalediffuse="false">keep</aspectratio>
                             <texture background="true" diffuse="diffuse/banner.png">$VAR[Image_ClearLogo]</texture>
                             <visible>String.IsEmpty(ListItem.Art(tvshow.banner)) + String.IsEmpty(ListItem.Art(banner))</visible>
-                        </control>
+                        </control> --> 
                         <include>Defs_PictureBack</include>
                         <include>View_WatchedOverlay</include>
                         <control type="image">
@@ -923,12 +926,12 @@
                             <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
                             <texture background="true" diffuse="diffuse/banner.png">$VAR[Image_Banner]</texture>
                         </control>
-                        <control type="image">
+<!--                        <control type="image">
                             <bordersize>30</bordersize>
                             <aspectratio aligny="bottom" align="right" scalediffuse="false">keep</aspectratio>
                             <texture background="true" diffuse="diffuse/banner.png">$VAR[Image_ClearLogo]</texture>
                             <visible>String.IsEmpty(ListItem.Art(tvshow.banner)) + String.IsEmpty(ListItem.Art(banner))</visible>
-                        </control>
+                        </control> -->
                         <include>Defs_PictureBack</include>
                         <include>View_WatchedOverlay</include>
                         <control type="image">
@@ -1272,7 +1275,7 @@
             <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
             <texture background="true" diffuse="diffuse/landscape.png">$VAR[Image_Fanart]</texture>
         </control>
-        <control type="image">
+<!--        <control type="image">
             <bottom>20</bottom>
             <left>75</left>
             <right>75</right>
@@ -1281,7 +1284,7 @@
             <visible>!Skin.HasSetting(DisableFakeLandscapeArt)</visible>
             <visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + String.IsEmpty(ListItem.Art(season.landscape))</visible>
             <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
-        </control>
+        </control> -->
         <include>Defs_PictureBack</include>
         <include>View_WatchedOverlay</include>
         <control type="image">

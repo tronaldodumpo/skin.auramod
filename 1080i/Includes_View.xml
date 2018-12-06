@@ -12,7 +12,10 @@
         <right>view_pad</right>
         <top>view_pad</top>
     </include>
-
+    <include name="View_Pad_Netflix">
+   	<left>30</left>
+        <top>-20</top>
+    </include>
     <include name="View_NotTheseWindows">
         <visible>![Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(MyPlaylist.xml)]</visible>
     </include>

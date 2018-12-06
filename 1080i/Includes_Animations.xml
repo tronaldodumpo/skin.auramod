@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	     <include name="AutoTrailerButton">
+        <control type="button">
+            <visible>false</visible>
+            <onfocus>RunScript(script.skin.helper.service,ACTION=playtrailer,MODE=windowed,YOUTUBE=$INFO[Skin.String(AutoYoutubeTrailer)])</onfocus>
+            <onunfocus condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + !String.IsEqual(Window(Home).Property(TrailerPlaying),fullscreen)">PlayerControl(Stop)</onunfocus>
+        </control>
+	</include>
+            <include name="trailer_onup">
+                <!-- play yt trailer if scraped empty -->
+                <onup condition="!Player.HasVideo + [[String.IsEmpty(Window(home).Property(trailer_avail)) + String.IsEmpty(ListItem.Trailer)] | ListItem.IsCollection | String.Contains(ListItem.Path,http)]">RunScript(script.skin.helper.service,action=playtraileryoutube,mode=windowed,title=$INFO[ListItem.Title],local=true)</onup>
+                <!-- get fullscreen , <tab>FullScreen</tab> -->
+                <onup condition="Player.HasVideo">fullscreen</onup>
+        </include>
+
     <include name="Animation_FocusBounce">
         <animation type="Focus" condition="!Skin.HasSetting(BounceAnimations)" reversible="false">
             <effect type="zoom" end="110" time="75" tween="sine" easing="out" center="auto" />

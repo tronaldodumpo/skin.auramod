@@ -4,6 +4,26 @@
     <fontset id="Default" unicode="true">
 
         <!-- Standard Fonts -->
+	<font>
+            <name>font_posterdetails_label</name>
+            <filename>RobotoCondensed-Bold.ttf</filename>
+            <size>34</size>
+        </font>
+	<font>
+            <name>font_widget_time</name>
+            <filename>RobotoCondensed-Regular.ttf</filename>
+            <size>18</size>
+        </font>
+	<font>
+            <name>font_widget_plot</name>
+            <filename>RobotoCondensed-Regular.ttf</filename>
+            <size>24</size>
+        </font>
+	<font>
+            <name>font_posterdetail_small</name>
+            <filename>RobotoCondensed-Bold.ttf</filename>
+            <size>22</size>
+        </font>
         <font>
             <name>font_medium</name>
             <filename>RobotoCondensed-Regular.ttf</filename>

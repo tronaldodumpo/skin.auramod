@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+    <constant name="view_pad_netflix">60</constant>
     <constant name="view_pad">60</constant>
     <constant name="-view_pad">-60</constant>
     <constant name="view_top">120</constant>

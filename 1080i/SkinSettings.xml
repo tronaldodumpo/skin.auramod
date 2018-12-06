@@ -122,6 +122,15 @@
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31024]</label>
                         </control>
+			
+			 <control type="togglebutton" id="9011" description="Mods">
+                            <onfocus>SetProperty(CurrentFocus,$NUMBER[9011])</onfocus>
+                            <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9011)</usealttexture>
+                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
+                            <width>450</width>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31423]</label>
+                        </control>
 
                         <control type="togglebutton" id="9007" description="OSD">
                             <onfocus>SetProperty(CurrentFocus,$NUMBER[9007])</onfocus>
@@ -644,6 +653,89 @@
                             <onclick>Skin.ToggleSetting(DisableTrailerPreview)</onclick>
                         </control>
 
+                        <!-- =============-->
+                        <!-- Mods----------->
+                        <!-- =============-->
+			 <control type="button" id="9407" description="Widget Highlight Color">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <enable>!Skin.HasSetting(CycleColors)</enable>
+                            <label>31416</label>
+                            <label2>$INFO[Skin.String(widgetcolor.name)]</label2>
+                            <onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
+                            <onclick>RunScript(script.skin.helper.colorpicker,skinstring=widgetcolor.name)</onclick>
+                        </control>
+			<control type="radiobutton" id="9618" description="Enable skin helper artwork lookups for addons">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31425]</label>
+                            <onclick>Skin.ToggleSetting(SkinHelper.EnableExtendedArt)</onclick>
+                            <selected>Skin.HasSetting(SkinHelper.EnableExtendedArt)</selected>
+                        </control>
+                        <control type="radiobutton" id="9619" description="PVR Guide Info">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31415]</label>
+                            <selected>!Skin.HasSetting(DisableGuideInfo)</selected>
+                            <onclick>Skin.ToggleSetting(DisableGuideInfo)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9620" description="Enable Widget Overlays">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31417]</label>
+                            <selected>!Skin.HasSetting(DisableWidgetOverlays)</selected>
+                            <onclick>Skin.ToggleSetting(DisableWidgetOverlays)</onclick>
+                        </control>
+                         <control type="radiobutton" id="9621" description="Enable Banners on Widgets">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31419]</label>
+                            <selected>!Skin.HasSetting(DisableBanners)</selected>
+                            <onclick>Skin.ToggleSetting(DisableBanners)</onclick>
+                        </control>
+                         <control type="radiobutton" id="9622" description="Enable Large Category Widget">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31420]</label>
+                            <selected>!Skin.HasSetting(DisableBigCat)</selected>
+                            <onclick>Skin.ToggleSetting(DisableBigCat)</onclick>
+                        </control>
+			<control type="radiobutton" id="9623" description="Enable Categories Label ">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31422]</label>
+                            <selected>!Skin.HasSetting(DisableCatlabel)</selected>
+                            <onclick>Skin.ToggleSetting(DisableCatlabel)</onclick>
+                        </control>
+			<control type="radiobutton" id="9624" description="Enable Widget Bar Plot Info">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31413]</label>
+                            <selected>!Skin.HasSetting(DisableWidgetPlot)</selected>
+                            <onclick>Skin.ToggleSetting(DisableWidgetPlot)</onclick>
+                        </control>
+			<control type="radiobutton" id="9625" description="Enable Widget Bar IMDB Info">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31426]</label>
+                            <selected>!Skin.HasSetting(DisableWidgetIMDB)</selected>
+                            <onclick>Skin.ToggleSetting(DisableWidgetIMDB)</onclick>
+                        </control>
+			<control type="radiobutton" id="9626" description="Enable Widget Bar Title Info">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31427]</label>
+                            <selected>!Skin.HasSetting(DisableWidgetTitle)</selected>
+                            <onclick>Skin.ToggleSetting(DisableWidgetTitle)</onclick>
+                        </control>
+			<control type="radiobutton" id="9627" description="Enable Netflix Spotlight View">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31428]</label>
+                            <selected>!Skin.HasSetting(DisableNetflixView)</selected>
+                            <onclick>Skin.ToggleSetting(DisableNetflixView)</onclick>
+                        </control>
+		
                         <!-- ================= -->
                         <!-- Video / Music OSD -->
                         <!-- ================= -->
