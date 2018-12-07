@@ -68,10 +68,10 @@
                     <height>240</height>
 		    <width>450</width>
                     <aligny>top</aligny>
-		    <texture>$INFO[Window(home).Property(SkinHelper.ListItem.Art.Clearlogo]</texture>
+		    <texture>$INFO[Window(home).Property(SkinHelper.ListItem.Art.Clearlogo)]</texture>
 		 </control>
 	       <control type="label">
-		    <visible>String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Art.Clearlogo)</visible> 
+		    <visible>String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Art.Clearlogo))</visible> 
 		    <visible>!String.EndsWith(Window(home).Property(SkinHelper.ListItem.Art.ClearLogo),.png)</visible>
                     <left>0</left>
                     <right>$PARAM[titleright]</right>
