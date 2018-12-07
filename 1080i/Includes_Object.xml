@@ -16,37 +16,20 @@
 
         <definition>
 	     <!-- trailer window -->
-<!--                <control type="group" id="5633400">
+                <control type="group">
                     <visible>Player.HasVideo</visible>
                     <top>-35</top>
                     <right>0</right>
                     <width>900</width>
                     <height>500</height>
                     <animation effect="slide" start="0" end="0,-80" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)" reversible="true">Conditional</animation>
-                    <control type="videowindow"></control>
-                </control> -->
-	      <!-- Spotlight Widget trailer window -->
-            <control type="group" id="5633399">
-                <visible>Player.HasVideo + [ControlGroup(505).HasFocus() | Control(55).HasFocus()]</visible>
-                <width>100%</width>
-                <height>100%</height>
-                <animation effect="slide" start="0" end="0,-80" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)" reversible="true">Conditional</animation>
-                <control type="videowindow">
-                                        <width>100%</width>
-                                        <height>100%</height>
-                                </control>
-            </control>
-            <!--Spotlight Widget fullscreen trailer fade in,need check -->
-            <control type="image">
-                <visible>Control.IsVisible(5633399)</visible>
-                <width>100%</width>
-                <height>100%</height>
-                <texture border="15">diffuse/bgpanel.png</texture>
-                <animation effect="fade" start="100" end="0" delay="0" time="3000">Visible</animation>
-                <animation effect="fade" start="50" end="0" delay="0" time="1500">Hidden</animation>
-            </control>
-
-
+                    <control type="videowindow">
+		     </control>
+		    <visible>!Skin.HasSetting(DisableNetflixView)</visible>
+		 <control type="image">
+		      <texture background="true" diffuse="Right Corner.png">$VAR[Image_Fanart]</texture>
+		</control>
+		</control>
 
 	    <!-- Add Netflix view Fanart with corner diffuse -->
 	    <control type="group">
@@ -61,7 +44,7 @@
 		    <top>-35</top>
 	            <bottom>5</bottom>	
                     <texture background="true" diffuse="Right Corner.png">$VAR[Image_Fanart]</texture>
-                    <aspectratio scalediffuse="true" aligny="top">scale</aspectratio>
+                    <aspectratio scalediffuse="false" aligny="top">scale</aspectratio>
 		</control>
 	     </control>
 	   <!-- End Netflix view Fanart with corner diffuse -->
@@ -81,20 +64,20 @@
 		    <left>0</left>
                     <right>0</right>
 		    <top>-5</top>
-		    <bottom>5</bottom>
+		    <bottom>10</bottom>
                     <height>240</height>
 		    <width>450</width>
                     <aligny>top</aligny>
-		    <texture>$INFO[Window(home).Property(SkinHelper.ListItem.Art.Clearlogo]</texture>
+		    <texture>$INFO[Window(home).Property(SkinHelper.ListItem.Art.Clearlogo)]</texture>
 		 </control>
 	       <control type="label">
-		    <visible>String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Art.Clearlogo)</visible> 
+		    <visible>String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Art.Clearlogo))</visible> 
 		    <visible>!String.EndsWith(Window(home).Property(SkinHelper.ListItem.Art.ClearLogo),.png)</visible>
                     <left>0</left>
                     <right>$PARAM[titleright]</right>
                     <label>$INFO[ListItem.Label]</label>
 		    <top>-250</top>
-                    <textcolor>main_fg_100</textcolor>
+                    <textcolor>red</textcolor>
                     <font>font_showcase_title</font>
                 </control>
 
@@ -219,8 +202,17 @@
                     <visible>$PARAM[genre]</visible>
                 </control>
                 <control type="textbox">
+		    <visible>Skin.HasSetting(DisableNetflixView)</visible>
                     <label fallback="19055">$VAR[Label_Plot]</label>
-		    <width>850</width>
+                    <height>$PARAM[plot_height]</height>
+                    <aligny>top</aligny>
+                    <textcolor>main_fg_70</textcolor>
+                    <font>font_plotbox</font>
+                </control>
+		 <control type="textbox">
+		    <visible>!Skin.HasSetting(DisableNetflixView)</visible>
+                    <label fallback="19055">$VAR[Label_Plot]</label>
+                    <width>850</width>
                     <height>$PARAM[plot_height]</height>
                     <aligny>top</aligny>
                     <textcolor>main_fg_70</textcolor>

@@ -1277,7 +1277,7 @@
                     <right>20</right>
                     <align>center</align>
                     <aligny>center</aligny>
-                    <font>font_tiny</font>
+                    <font>font_tiny_bold</font>
                     <textcolor>main_fg_70</textcolor>
                     <label>$VAR[Label_Widget]</label>
                 </control>

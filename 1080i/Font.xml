@@ -5,6 +5,11 @@
 
         <!-- Standard Fonts -->
 	<font>
+            <name>widget_overlaybutton</name>
+            <filename>Bold-new.ttf</filename>
+            <size>16</size>
+        </font>
+	<font>
             <name>font_posterdetails_label</name>
             <filename>RobotoCondensed-Bold.ttf</filename>
             <size>34</size>
