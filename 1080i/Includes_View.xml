@@ -13,7 +13,7 @@
         <top>view_pad</top>
     </include>
     <include name="View_Pad_Netflix">
-   	<left>30</left>
+   	<left>40</left>
         <top>-20</top>
     </include>
     <include name="View_NotTheseWindows">

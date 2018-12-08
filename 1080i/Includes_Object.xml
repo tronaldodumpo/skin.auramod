@@ -51,6 +51,7 @@
 	
 
             <control type="grouplist">
+		<include>view_pad</include>
                 <top>-10</top>
                 <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(videos) | Container.Content(seaons) | Window.IsVisible(script-script.extendedinfo-VideoList.xml) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                 <visible>!Container($PARAM[id]).ListItem.IsParentFolder</visible>
@@ -58,27 +59,26 @@
                 <usecontrolcoords>true</usecontrolcoords>
                 <itemgap>0</itemgap>
 
-	        <control type="image">
+	        <control type="image" id="55443">
 		    <visible>!Skin.HasSetting(DisableNetflixView)</visible>
 		    <visible>Control.IsVisible(55) | Control.IsVisible(56)</visible>
 		    <left>0</left>
-                    <right>0</right>
+                    <right>$PARAM[titleright]</right>
 		    <top>-5</top>
 		    <bottom>10</bottom>
                     <height>240</height>
 		    <width>450</width>
                     <aligny>top</aligny>
-		    <texture>$INFO[Window(home).Property(SkinHelper.ListItem.Art.Clearlogo)]</texture>
+		    <texture>$VAR[Image_ClearLogo]</texture>
 		 </control>
 	       <control type="label">
-		    <visible>String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Art.Clearlogo))</visible> 
-		    <visible>!String.EndsWith(Window(home).Property(SkinHelper.ListItem.Art.ClearLogo),.png)</visible>
+		    <visible>String.IsEmpty(Control.GetLabel(55443))</visible>
                     <left>0</left>
                     <right>$PARAM[titleright]</right>
                     <label>$INFO[ListItem.Label]</label>
 		    <top>-250</top>
                     <textcolor>red</textcolor>
-                    <font>font_showcase_title</font>
+                    <font>netflix_view_title</font>
                 </control>
 
                 <control type="label">
@@ -97,7 +97,7 @@
                     <usecontrolcoords>true</usecontrolcoords>
                     <itemgap>0</itemgap>
                     <left>0</left>
-                    <right>0</right>
+                    <right>$PARAM[titleright]</right>
                     <control type="image">
                         <left>0</left>
                         <top>10</top>
