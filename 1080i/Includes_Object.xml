@@ -1205,6 +1205,7 @@
         <param name="metacritic" default="true" />
         <param name="oscars" default="true" />
         <param name="top250" default="true" />
+        <param name="plot" default="false" />
         <definition>
             <control type="grouplist">
                 <width>$PARAM[width]</width>
@@ -1448,6 +1449,18 @@
                     <visible>$PARAM[imdb]</visible>
                     <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
                     <visible>$PARAM[top250]</visible>
+                </control>
+		<control type="label">
+		    <left>5</left>
+                    <visible>!Skin.HasSetting(DisableWidgetPlot)</visible>
+                    <textcolor>main_fg_70</textcolor>
+                    <height>20</height>
+                    <top>5</top>
+                    <align>right</align>
+                    <width min="500" max="1500">auto</width>
+                    <scroll>true</scroll>
+                    <label>$INFO[ListItem.Plot]</label>
+		    <visible>$PARAM[plot]</visible>
                 </control>
             </control>
         </definition>
