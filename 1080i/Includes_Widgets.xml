@@ -397,7 +397,14 @@
             <control type="group" id="331" description="Spacer"> 
                 <height>widget_spacer_top</height>
             </control>
-            <include content="Widget" condition="!Skin.HasSetting(HideSubmenuWidget)">
+            <include content="Widget_Fixed" condition="!Skin.HasSetting(HideSubmenuWidget) + !Skin.HasSetting(DisableWidgetFixedFocus)">
+                <param name="id" value="302" />
+                <param name="submenu" value="true" />
+                <param name="aspect" value="$LOCALIZE[31263]" />
+                <param name="label" value="$VAR[catlabel]" />
+                <param name="visible" value="String.IsEqual(Container(300).ListItem.Property(hasSubmenu),true)" />
+            </include>
+	    <include content="Widget" condition="!Skin.HasSetting(HideSubmenuWidget) + Skin.HasSetting(DisableWidgetFixedFocus)">
                 <param name="id" value="302" />
                 <param name="submenu" value="true" />
                 <param name="aspect" value="$LOCALIZE[31263]" />
@@ -448,6 +455,67 @@
                 </control>
             </control>
             <control type="list" id="$PARAM[id]">
+                <top>widget_top</top>
+                <include condition="$PARAM[submenu] + !Skin.HasSetting(SubmenuLabel)">Widget_Items_Submenu_Height</include>
+                <include condition="$PARAM[submenu] + Skin.HasSetting(SubmenuLabel)">Widget_Items_Submenu_Big_Height</include>
+                <height>widget_poster_spacer</height>
+                <visible>$PARAM[visible] + [Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | Container(300).OnNext | Container(300).OnPrevious | String.IsEmpty(Window(Home).Property(WidgetLoading))]</visible>
+                <include content="Widget_Items" condition="!$PARAM[submenu]">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="target" value="$PARAM[target]" />
+                    <param name="content" value="$PARAM[content]" />
+                    <param name="widgetContent" value="$PARAM[widgetContent]" />
+                    <param name="aspect" value="$PARAM[aspect]" />
+                    <param name="widgetAspect" value="$PARAM[widgetAspect]" />
+                    <param name="submenu" value="$PARAM[submenu]" />
+                    <param name="sortby" value="$PARAM[sortby]" />
+                    <param name="sortorder" value="$PARAM[sortorder]" />
+                    <param name="genres" value="$PARAM[genres]" />
+                    <param name="studios" value="$PARAM[studios]" />
+                    <param name="text" value="$PARAM[text]" />
+                </include>
+                <include content="Widget_Submenu" condition="$PARAM[submenu]">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="target" value="$PARAM[target]" />
+                    <param name="content" value="$PARAM[content]" />
+                    <param name="widgetContent" value="$PARAM[widgetContent]" />
+                    <param name="aspect" value="$PARAM[aspect]" />
+                    <param name="widgetAspect" value="$PARAM[widgetAspect]" />
+                    <param name="submenu" value="$PARAM[submenu]" />
+                    <param name="sortby" value="$PARAM[sortby]" />
+                    <param name="sortorder" value="$PARAM[sortorder]" />
+                </include>
+            </control>
+        </definition>
+    </include>
+	<include name="Widget_Fixed">
+        <param name="submenu" default="false" />
+        <param name="genres" default="false" />
+        <param name="studios" default="false" />
+        <param name="text" default="false" />
+        <definition>
+            <control type="group" id="2$PARAM[id]">
+                <top>widget_gap</top>
+                <visible>$PARAM[visible]</visible>
+                <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+                <height>40</height>
+                <include content="Widget_Label">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="label" value="$PARAM[label]" />
+                    <param name="content" value="$PARAM[content]" />
+                    <param name="widgetContent" value="$PARAM[widgetContent]" />
+                </include>
+                <control type="group">
+                    <include condition="Skin.HasSetting(MouseMode)">Widget_Busy_Top_Mouse</include>
+                    <top>655</top>
+                    <left>-395</left>
+                    <include content="Defs_BusySpinner">
+                        <param name="label" value="$LOCALIZE[31138]..." />
+                    </include>
+                    <visible>Container($PARAM[id]).IsUpdating + !Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
+                </control>
+            </control>
+            <control type="fixedlist" id="$PARAM[id]">
                 <top>widget_top</top>
                 <include condition="$PARAM[submenu] + !Skin.HasSetting(SubmenuLabel)">Widget_Items_Submenu_Height</include>
                 <include condition="$PARAM[submenu] + Skin.HasSetting(SubmenuLabel)">Widget_Items_Submenu_Big_Height</include>

@@ -735,7 +735,14 @@
                             <selected>!Skin.HasSetting(DisableNetflixView)</selected>
                             <onclick>Skin.ToggleSetting(DisableNetflixView)</onclick>
                         </control>
-		
+			<control type="radiobutton" id="9628" description="Enable Widget FixedFocus">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31424]</label>
+                            <selected>!Skin.HasSetting(DisableWidgetFixedFocus)</selected>
+                            <onclick>Skin.ToggleSetting(DisableWidgetFixedFocus)</onclick>
+                        </control>
+	
                         <!-- ================= -->
                         <!-- Video / Music OSD -->
                         <!-- ================= -->
