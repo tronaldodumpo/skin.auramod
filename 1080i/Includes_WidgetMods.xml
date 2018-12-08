@@ -181,7 +181,7 @@
       <control type="image">
         <height>300</height>
         <texture background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Poster]</texture>
-        <aspectratio scalediffuse="true">stretch</aspectratio>
+        <aspectratio scalediffuse="false">keep</aspectratio>
       </control>
       <control type="image">
         <bottom>30</bottom>
@@ -261,7 +261,7 @@
     <definition>
       <control type="image">
         <texture background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Poster]</texture>
-        <aspectratio scalediffuse="false">scale</aspectratio>
+        <aspectratio scalediffuse="false">keep</aspectratio>
         <visible>!String.IsEmpty(ListItem.Art(poster)) | [!String.IsEmpty(ListItem.Art(tvshow.poster)) + !String.IsEqual(ListItem.DBType,episode)] | $PARAM[landscapewide]</visible>
       </control>
     </definition>
@@ -282,7 +282,7 @@
         <aspectratio scalediffuse="false">keep</aspectratio>
       </control>
       <control type="label">
-        <left>290</left>
+        <left>270</left>
         <right>30</right>
         <top>8</top>
         <aligny>top</aligny>
@@ -295,7 +295,7 @@
       </control>
 	
       <control type="textbox">
-        <left>290</left>
+        <left>270</left>
         <right>30</right>
         <top>60</top>
         <height>60</height>
@@ -305,7 +305,7 @@
 <!--        <label>$VAR[Label_ShowCase_InfoLine]</label> -->
       </control>
 	<control type="textbox">
-        <left>290</left>
+        <left>270</left>
         <right>30</right>
         <top>90</top>
         <height>30</height>
@@ -318,14 +318,14 @@
       </control>
       <control type="textbox">
         <height>205</height>
-        <left>290</left>
+        <left>270</left>
         <right>30</right>
         <top>130</top>
         <bottom>20</bottom>
         <align>justify</align>
         <font>font_widget_plot</font>
         <textcolor>main_fg_70</textcolor>
-        <width min="150" max="450">auto</width>
+        <width min="150" max="470">auto</width>
         <scroll>true</scroll>
         <label>$INFO[ListItem.Plot]</label>
       </control>
