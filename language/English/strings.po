@@ -2034,7 +2034,7 @@ msgstr
 
 #: /1080i/SkinSettings.xml
 msgctxt "#31426"
-msgid "Enable IMDB Rating on Widget Bar"
+msgid "Enable Ratings on Widget Bar"
 msgstr
 
 #: /1080i/SkinSettings.xml

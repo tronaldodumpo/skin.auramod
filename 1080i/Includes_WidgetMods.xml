@@ -272,10 +272,14 @@
     <param name="posterdetails" default="false" />
     <definition>
       <control type="image">
+        <height>370</height>
+        <texture colordiffuse="70000000" border="10" flipy="true">diffuse/halfbox.png</texture>
+      </control>
+      <control type="image">
         <left>5</left>
         <width>260</width>
         <texture background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Poster]</texture>
-        <aspectratio scalediffuse="false">scale</aspectratio>
+        <aspectratio scalediffuse="false">keep</aspectratio>
       </control>
       <control type="label">
         <left>290</left>
@@ -285,10 +289,11 @@
         <height>40</height>
         <font>font_posterdetails_label</font>
         <textcolor>$INFO[Skin.String(widgetcolor.name)]</textcolor>
-        <width min="150" max="390">auto</width>
+        <width min="150" max="430">auto</width>
         <scroll>true</scroll>
-        <label>$INFO[ListItem.Label]</label>
+        <label>$VAR[Label_Widget]</label>
       </control>
+	
       <control type="textbox">
         <left>290</left>
         <right>30</right>
@@ -296,14 +301,26 @@
         <height>60</height>
         <font>font_posterdetail_small</font>
         <textcolor>main_fg_100</textcolor>
-        <!--                <label>[B]$INFO[ListItem.Year]$INFO[ListItem.Duration, ⬢ ,min]$INFO[ListItem.Genre, ⬢ ]$INFO[ListItem.MPAA, ⬢ ][/B]</label> -->
-        <label>$VAR[Label_ShowCase_InfoLine]$INFO[ListItem.Genre, | ]</label>
+        <label>[COLOR=$VAR[ColorHighlight]]Year: [/COLOR][B]$INFO[ListItem.Year][COLOR=$VAR[ColorHighlight]][/B]  Length: [/COLOR][B]$VAR[Label_Duration][/B][COLOR=$VAR[ColorHighlight]]  Ends: [/COLOR][B]$INFO[ListItem.EndTime][/B]</label> 
+<!--        <label>$VAR[Label_ShowCase_InfoLine]</label> -->
       </control>
-      <control type="textbox">
-        <height>222</height>
+	<control type="textbox">
         <left>290</left>
         <right>30</right>
-        <top>125</top>
+        <top>90</top>
+        <height>30</height>
+	<width min="150" max="400">auto</width>
+	<align>justify</align>
+	<scroll>true</scroll>
+        <font>font_posterdetail_small</font>
+        <textcolor>main_fg_100</textcolor>
+        <label>[COLOR=$VAR[ColorHighlight]]Genre: [/COLOR]$INFO[ListItem.Genre]</label>
+      </control>
+      <control type="textbox">
+        <height>205</height>
+        <left>290</left>
+        <right>30</right>
+        <top>130</top>
         <bottom>20</bottom>
         <align>justify</align>
         <font>font_widget_plot</font>
