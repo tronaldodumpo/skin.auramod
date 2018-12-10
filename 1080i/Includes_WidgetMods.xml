@@ -238,7 +238,7 @@
           <bottom>0</bottom>
           <height>75</height>
           <font>font_small</font>
-          <textcolor>$INFO[Skin.String(widgetcolor.name)]</textcolor>
+          <textcolor>$VAR[ColorHighlight2]</textcolor>
           <align>center</align>
           <label>$INFO[ListItem.Title]</label>
           <visible>!Integer.IsEqual(ListItem.Progress,0)</visible>
@@ -271,6 +271,13 @@
   <include name="Widget_Items_PosterDetails">
     <param name="posterdetails" default="false" />
     <definition>
+	<animation type="Focus">
+        <effect type="fade" time="400" />
+        </animation>
+        <animation type="Unfocus">
+        <effect type="slide" time="0" />
+        </animation>
+
       <control type="image">
         <height>370</height>
         <texture colordiffuse="70000000" border="10" flipy="true">diffuse/halfbox.png</texture>
@@ -282,20 +289,20 @@
         <aspectratio scalediffuse="false">keep</aspectratio>
       </control>
       <control type="label">
-        <left>270</left>
+        <left>280</left>
         <right>30</right>
         <top>8</top>
         <aligny>top</aligny>
         <height>40</height>
         <font>font_posterdetails_label</font>
-        <textcolor>$INFO[Skin.String(widgetcolor.name)]</textcolor>
+        <textcolor>$VAR[ColorHighlight2]</textcolor>
         <width min="150" max="430">auto</width>
         <scroll>true</scroll>
         <label>$VAR[Label_Widget]</label>
       </control>
 	
       <control type="textbox">
-        <left>270</left>
+        <left>280</left>
         <right>30</right>
         <top>60</top>
         <height>60</height>
@@ -305,7 +312,7 @@
 <!--        <label>$VAR[Label_ShowCase_InfoLine]</label> -->
       </control>
 	<control type="textbox">
-        <left>270</left>
+        <left>280</left>
         <right>30</right>
         <top>90</top>
         <height>30</height>
@@ -318,7 +325,7 @@
       </control>
       <control type="textbox">
         <height>205</height>
-        <left>270</left>
+        <left>280</left>
         <right>30</right>
         <top>130</top>
         <bottom>20</bottom>

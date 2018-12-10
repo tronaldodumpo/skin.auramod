@@ -58,20 +58,20 @@
                 <usecontrolcoords>true</usecontrolcoords>
                 <itemgap>0</itemgap>
 
-	        <control type="image" id="55443">
-		    <visible>!Skin.HasSetting(DisableNetflixView)</visible>
-		    <visible>Control.IsVisible(55) | Control.IsVisible(56)</visible>
-		    <left>0</left>
+		 <control type="image" id="55443">
+                    <visible>!Skin.HasSetting(DisableNetflixView) + [Control.IsVisible(55) | Control.IsVisible(56)]</visible>
+                    <left>0</left>
                     <right>$PARAM[titleright]</right>
-		    <top>-5</top>
-		    <bottom>10</bottom>
+                    <top>-5</top>
+                    <bottom>10</bottom>
                     <height>240</height>
-		    <width>450</width>
+                    <width>450</width>
                     <aligny>top</aligny>
-		    <texture>$VAR[Image_ClearLogo]</texture>
-		 </control>
-		<control type="label">
-                    <visible>String.IsEmpty(Control.GetLabel(55443)) + String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo)</visible>
+                    <texture>$VAR[Image_ClearLogo]</texture>
+                 </control>
+
+		   <control type="label">
+                    <visible>String.IsEmpty(Control.GetLabel(55443)) + String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))</visible>
                     <left>0</left>
                     <right>$PARAM[titleright]</right>
                     <label>$INFO[ListItem.Label]</label>
