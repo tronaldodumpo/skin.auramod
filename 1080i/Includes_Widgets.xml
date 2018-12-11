@@ -695,7 +695,7 @@
             </itemlayout>
 	    <itemlayout width="widget_poster_width" height="widget_poster_height" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31414]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_ItemLayout">
-                    <param name="landscapewide" value="true" />
+                    <param name="poster" value="true" />
                     <param name="genres" value="$PARAM[genres]" />
                     <param name="studios" value="$PARAM[studios]" />
                     <param name="text" value="$PARAM[text]" />
