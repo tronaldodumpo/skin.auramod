@@ -12,7 +12,11 @@
             <linespacing>0.9</linespacing>
             <size>64</size>
         </font>
-
+	<font>
+            <name>widget_live_title</name>
+            <filename>Bold-new.ttf</filename>
+            <size>26</size>
+        </font>
 	<font>
             <name>widget_overlaybutton</name>
             <filename>Bold-new.ttf</filename>
@@ -26,7 +30,7 @@
 	<font>
             <name>font_widget_time</name>
             <filename>RobotoCondensed-Regular.ttf</filename>
-            <size>18</size>
+            <size>20</size>
         </font>
 	<font>
             <name>font_widget_plot</name>
@@ -235,7 +239,7 @@
         <font>
             <name>font_topbar_small</name>
             <filename>RobotoCondensed-Light.ttf</filename>
-            <size>30</size>
+            <size>25</size>
         </font>
         <font>
             <name>font_notification</name>

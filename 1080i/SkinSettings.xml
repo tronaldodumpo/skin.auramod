@@ -656,14 +656,14 @@
                         <!-- =============-->
                         <!-- Mods----------->
                         <!-- =============-->
-			 <control type="button" id="9407" description="Widget Highlight Color">
+			 <control type="button" id="9407" description="Main Menu Highlight Color">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
                             <include>Defs_Settings_Button</include>
                             <enable>!Skin.HasSetting(CycleColors)</enable>
                             <label>31416</label>
-                            <label2>$INFO[Skin.String(widgetcolor.name)]</label2>
+                            <label2>$INFO[Skin.String(mainmenutcolor.name)]</label2>
                             <onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-                            <onclick>RunScript(script.skin.helper.colorpicker,skinstring=widgetcolor.name)</onclick>
+                            <onclick>RunScript(script.skin.helper.colorpicker,skinstring=mainmenutcolor.name)</onclick>
                         </control>
 			<control type="radiobutton" id="9618" description="Enable skin helper artwork lookups for addons">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
