@@ -269,13 +269,6 @@
   <include name="Widget_Items_PosterDetails">
     <param name="posterdetails" default="false" />
     <definition>
-	<animation type="Focus">
-        <effect type="fade" time="400" />
-        </animation>
-        <animation type="Unfocus">
-        <effect type="slide" time="0" />
-        </animation>
-
       <control type="image">
         <height>370</height>
         <texture colordiffuse="70000000" border="10" flipy="true">diffuse/halfbox.png</texture>

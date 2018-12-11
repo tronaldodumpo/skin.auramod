@@ -231,14 +231,14 @@
         </font>
         <font>
             <name>font_topbar</name>
-            <filename>Bold-new.ttf</filename>
+            <filename>RobotoCondensed-Bold.ttf</filename>
             <size>40</size>
             <aspect>0.9</aspect>
             <style>bold</style>
         </font>
         <font>
             <name>font_topbar_small</name>
-            <filename>Bold-new.ttf</filename>
+            <filename>RobotoCondensed-Light.ttf</filename>
             <size>25</size>
         </font>
         <font>
