@@ -231,15 +231,15 @@
         </font>
         <font>
             <name>font_topbar</name>
-            <filename>RobotoCondensed-Bold.ttf</filename>
+            <filename>Bold-new.ttf</filename>
             <size>40</size>
             <aspect>0.9</aspect>
             <style>bold</style>
         </font>
         <font>
             <name>font_topbar_small</name>
-            <filename>RobotoCondensed-Light.ttf</filename>
-            <size>30</size>
+            <filename>Bold-new.ttf</filename>
+            <size>25</size>
         </font>
         <font>
             <name>font_notification</name>
