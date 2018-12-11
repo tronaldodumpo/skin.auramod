@@ -1,36 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <includes>
-  <!-- Start LandscapeBanner Widget -->
-  <include name="Widget_Items_LandscapeBanner">
-    <control type="group">
-      <control type="image">
-        <texture fallback="diffuse/widgetlandscape.png" background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Fanart]</texture>
-        <aspectratio scalediffuse="false">scale</aspectratio>
-      </control>
-      <!-- Add diffuse to widget fanart when Overlays buttons enabled -->
-      <control type="image">
-        <height>310</height>
-        <texture colordiffuse="40000000" border="10" flipy="true">diffuse/halfbox.png</texture>
-        <visible>!Skin.HasSetting(DisableWidgetOverlays) + !Skin.HasSetting(DisableBanners)</visible>
-      </control>
-      <control type="image">
-        <bottom>30</bottom>
-        <top>170</top>
-        <left>120</left>
-        <right>120</right>
-        <aspectratio aligny="bottom" scalediffuse="false">keep</aspectratio>
-        <texture background="true" diffuse="diffuse/widgetlandscape.png">$INFO[ListItem.Art(clearlogo)]</texture>
-        <visible>Skin.HasSetting(DisableWidgetOverlays) + !Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]</visible>
-      </control>
-      <control type="group">
-        <height>70</height>
-        <bottom>0</bottom>
-        <visible>![!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]]</visible>
-        <control type="image">
-          <texture colordiffuse="99000000" border="10" flipy="true">diffuse/halfbox.png</texture>
-          <visible>!Skin.HasSetting(WidgetLabels)</visible>
-        </control>
-        <!-- START Widget buttons -->
+   <!-- START Widget buttons -->
+	<include name="widget_buttons">
         <control type="group">
           <visible>!Skin.HasSetting(DisableWidgetOverlays)</visible>
           <!-- START Studio Button -->
@@ -136,7 +107,38 @@
             <left>18</left>
           </control>
         </control>
-        <!-- End Widget buttons -->
+	</include>
+  <!-- Start LandscapeBanner Widget -->
+  <include name="Widget_Items_LandscapeBanner">
+    <control type="group">
+      <control type="image">
+        <texture fallback="diffuse/widgetlandscape.png" background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Fanart]</texture>
+        <aspectratio scalediffuse="false">scale</aspectratio>
+      </control>
+      <!-- Add diffuse to widget fanart when Overlays buttons enabled -->
+      <control type="image">
+        <height>310</height>
+        <texture colordiffuse="40000000" border="10" flipy="true">diffuse/halfbox.png</texture>
+        <visible>!Skin.HasSetting(DisableWidgetOverlays) + !Skin.HasSetting(DisableBanners)</visible>
+      </control>
+      <control type="image">
+        <bottom>30</bottom>
+        <top>170</top>
+        <left>120</left>
+        <right>120</right>
+        <aspectratio aligny="bottom" scalediffuse="false">keep</aspectratio>
+        <texture background="true" diffuse="diffuse/widgetlandscape.png">$INFO[ListItem.Art(clearlogo)]</texture>
+        <visible>Skin.HasSetting(DisableWidgetOverlays) + !Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]</visible>
+      </control>
+      <control type="group">
+        <height>70</height>
+        <bottom>0</bottom>
+        <visible>![!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]]</visible>
+        <control type="image">
+          <texture colordiffuse="99000000" border="10" flipy="true">diffuse/halfbox.png</texture>
+          <visible>!Skin.HasSetting(WidgetLabels)</visible>
+        </control>
+	<include>widget_buttons</include>
         <!-- Add Banner to landscape Image -->
         <control type="image">
           <top>0</top>
@@ -243,7 +245,7 @@
         <control type="label">
           <bottom>0</bottom>
           <height>75</height>
-          <font>font_small</font>
+          <font>widget_live_title</font>
           <textcolor>$VAR[ColorHighlight]</textcolor>
           <align>center</align>
           <label>$INFO[ListItem.Title]</label>
