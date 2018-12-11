@@ -6,12 +6,13 @@
                 <visible>Control.IsVisible(10)</visible>
                 <include>Animation_Right</include>
                 <control type="group">
-                    <height>518</height>
-                    <width>524</width>
-                    <bottom>0</bottom>
+		   <left>-20</left>
+                    <height>600</height>
+                    <width>590</width>
+                    <bottom>-40</bottom>
                     <control type="image">
                         <include>Defs_Shadow_Opaque</include>
-                        <texture colordiffuse="AAffffff">common/gradient-solid-blue.png</texture>
+                        <texture colordiffuse="AAffffff">common/grey_bg.png</texture>
                     </control>
                 </control>
                 <control type="image">
@@ -42,8 +43,8 @@
                             <align>left</align>
                             <aligny>top</aligny>
                             <font>font_epg_timeline</font>
-                            <label>$INFO[ListItem.Label]</label>
-                            <textcolor>main_fg_30</textcolor>
+                            <label>[B]$INFO[ListItem.Label][/B]</label>
+                            <textcolor>main_fg_100</textcolor>
                         </control>
                     </rulerlayout>
                     <channellayout height="103.6" width="524">

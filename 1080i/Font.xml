@@ -12,7 +12,11 @@
             <linespacing>0.9</linespacing>
             <size>64</size>
         </font>
-
+	<font>
+            <name>widget_live_title</name>
+            <filename>Bold-new.ttf</filename>
+            <size>26</size>
+        </font>
 	<font>
             <name>widget_overlaybutton</name>
             <filename>Bold-new.ttf</filename>
