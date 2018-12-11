@@ -30,7 +30,7 @@
 	<font>
             <name>font_widget_time</name>
             <filename>RobotoCondensed-Regular.ttf</filename>
-            <size>18</size>
+            <size>20</size>
         </font>
 	<font>
             <name>font_widget_plot</name>

@@ -235,19 +235,21 @@
                     </control>   
                 </control>
                 <control type="group">
-                    <left>20</left>
+                    <left>15</left>
                     <visible>Window.IsVisible(MyPVRChannels.xml)</visible>
                     <control type="image">
                         <bordersize>10</bordersize>
-                        <height>$PARAM[height]</height>
-                        <width>$PARAM[height]</width>
+<!--                        <height>$PARAM[height]</height>
+                        <width>$PARAM[height]</width> -->
+			<width>130</width>
+			<height>110</height>
                         <aspectratio>keep</aspectratio>
                         <texture fallback="special://skin/extras/icons/tv.png">$INFO[ListItem.Icon]</texture>
                     </control>
                     <control type="group">
                         <left>$PARAM[height]</left>
                         <control type="label">
-                            <left>30</left>
+                            <left>60</left>
                             <width>340</width>
                             <height>100%</height>
                             <aligny>center</aligny>
@@ -478,15 +480,18 @@
                             <visible>Window.IsVisible(MyPVRChannels.xml)</visible>
                             <control type="image">
                                 <bordersize>10</bordersize>
-                                <height>$PARAM[height]</height>
+<!--                                <height>$PARAM[height]</height>
                                 <width>$PARAM[height]</width>
+-->
+				<width>130</width>
+	                        <height>110</height>
                                 <aspectratio>keep</aspectratio>
                                 <texture fallback="special://skin/extras/icons/tv.png">$INFO[ListItem.Icon]</texture>
                             </control>
                             <control type="group">
                                 <left>$PARAM[height]</left>
                                 <control type="label">
-                                    <left>30</left>
+                                    <left>60</left>
                                     <width>340</width>
                                     <height>100%</height>
                                     <aligny>center</aligny>
