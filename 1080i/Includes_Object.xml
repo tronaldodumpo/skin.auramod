@@ -650,6 +650,7 @@
                         <height>400</height>
                         <aspectratio scalediffuse="false" aligny="center">keep</aspectratio>
                          <texture background="true">$INFO[$PARAM[fallback]]</texture>
+			<visible>String.IsEmpty(Control.GetLabel(33000))</visible>
                     </control>
                 </control>
 	        <control type="group">
@@ -1332,7 +1333,7 @@
                     <height>32</height>
                     <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/ratings/popcorn.png</texture>
                     <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter))</visible>
-                    <visible>Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Us​erMeter),59)</visible>
+                    <visible>Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter),59)</visible>
                     <visible>$PARAM[usermeter]</visible>
                     <visible>!Skin.HasSetting(Ratings.RottenTomatoes)</visible>
                 </control>
@@ -1342,7 +1343,7 @@
                     <height>32</height>
                     <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/ratings/spilt.png</texture>
                     <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter))</visible>
-                    <visible>!Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Us​erMeter),59)</visible>
+                    <visible>!Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter),59)</visible>
                     <visible>$PARAM[usermeter]</visible>
                     <visible>!Skin.HasSetting(Ratings.RottenTomatoes)</visible>
                 </control>
