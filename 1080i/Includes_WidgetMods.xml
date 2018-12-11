@@ -179,6 +179,12 @@
   <include name="Widget_Items_WidgetLive">
     <control type="group">
       <control type="image">
+	  <width>360</width>
+	  <height>280</height>
+          <texture colordiffuse="4DFFFFFF" border="10" flipy="true">diffuse/halfbox.png</texture>
+        </control>
+
+      <control type="image">
         <height>300</height>
         <texture background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Poster]</texture>
         <aspectratio scalediffuse="false">keep</aspectratio>
@@ -204,7 +210,7 @@
         <control type="progress">
           <top>25</top>
           <height>12</height>
-          <width>380</width>
+          <width>360</width>
           <info>ListItem.Progress</info>
           <texturebg colordiffuse="00ffffff" border="4">diffuse/progress-bg.png</texturebg>
           <lefttexture colordiffuse="00ffffff" border="4">diffuse/progress-left.png</lefttexture>
@@ -238,7 +244,7 @@
           <bottom>0</bottom>
           <height>75</height>
           <font>font_small</font>
-          <textcolor>$VAR[ColorHighlight2]</textcolor>
+          <textcolor>$VAR[ColorHighlight]</textcolor>
           <align>center</align>
           <label>$INFO[ListItem.Title]</label>
           <visible>!Integer.IsEqual(ListItem.Progress,0)</visible>
@@ -246,7 +252,7 @@
         <control type="label">
           <height>75</height>
           <font>font_small</font>
-          <textcolor>$INFO[Skin.String(widgetcolor.name)]</textcolor>
+          <textcolor>$VAR[ColorHighlight]</textcolor>
           <align>center</align>
           <label>$INFO[ListItem.Title, - , -,]</label>
           <visible>Integer.IsEqual(ListItem.Progress,0)</visible>

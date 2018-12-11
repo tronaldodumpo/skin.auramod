@@ -8,10 +8,12 @@
         </control>
 	</include>
             <include name="trailer_onup">
+		<onup condition="!Player.HasVideo">SetProperty(TrailerPlaying,true,home)</onup>
                 <!-- play yt trailer if scraped empty -->
-                <onup condition="!Player.HasVideo + [[String.IsEmpty(Window(home).Property(trailer_avail)) + String.IsEmpty(ListItem.Trailer)] | ListItem.IsCollection | String.Contains(ListItem.Path,http)]">RunScript(script.skin.helper.service,action=playtraileryoutube,mode=windowed,title=$INFO[ListItem.Title],local=true)</onup>
+                <onup condition="!Player.HasVideo">RunScript(script.skin.helper.service,action=playtraileryoutube,mode=windowed,title=$INFO[ListItem.Title],local=true)</onup>
                 <!-- get fullscreen , <tab>FullScreen</tab> -->
                 <onup condition="Player.HasVideo">fullscreen</onup>
+	        <ondown condition="Player.HasVideo">Stop</ondown>
         </include>
 
     <include name="Animation_FocusBounce">

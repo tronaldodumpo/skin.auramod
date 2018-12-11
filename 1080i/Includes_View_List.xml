@@ -112,10 +112,18 @@
         <control type="group">
             <visible>Control.IsVisible(50)</visible>
             <control type="group">
+		<control type="image">
+		<height>450</height>
+		<left>0</left>
+		<right>0</right>
+		<bottom>0</bottom>
+		<texture background="true">common/darkblue-black-gradient.png</texture>
+		</control>
+		
                 <height>450</height>
-                <left>view_pad</left>
-                <right>view_pad</right>
-                <bottom>view_pad</bottom>
+                <left>0</left>
+                <right>0</right>
+                <bottom>0</bottom>
                 <control type="fixedlist" id="50">
                     <focusposition>2</focusposition>
                     <movement>2</movement>

@@ -7,7 +7,7 @@
     <views>10</views>
 
     <controls>
-        <include>Global_Background</include>
+       <include condition="Skin.HasSetting(DisableGuideInfo)">Global_Background</include>
         <include>View_Library</include>
         
         <control type="label" id="29"><visible>false</visible></control>

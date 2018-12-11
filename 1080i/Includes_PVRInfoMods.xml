@@ -3,17 +3,15 @@
 	<include name="View_PVRGuide_WithInfo">
         <control type="group" id="50">
             <control type="group">
-                <include>Animation_Home_Textbar_Slideover_Library</include>
                 <visible>Control.IsVisible(10)</visible>
                 <include>Animation_Right</include>
                 <control type="group">
                     <height>518</height>
                     <width>524</width>
-                    <left>10</left>
                     <bottom>0</bottom>
                     <control type="image">
                         <include>Defs_Shadow_Opaque</include>
-                        <texture colordiffuse="AAffffff">common/gradient-solid.png</texture>
+                        <texture colordiffuse="AAffffff">common/gradient-solid-blue.png</texture>
                     </control>
                 </control>
                 <control type="image">
@@ -260,7 +258,6 @@
             </control>
         </control>
         <control type="group">
-            <right>80</right>
             <include>Object_PVR_Info</include>
         </control>
     </include>

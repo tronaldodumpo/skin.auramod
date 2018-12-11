@@ -735,7 +735,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </itemlayout>
-            <itemlayout width="700" height="widget_poster_height" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31038]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+            <itemlayout width="606.67" height="widget_poster_height" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31038]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_ItemLayout">
                     <param name="landscape" value="true" />
                     <param name="genres" value="$PARAM[genres]" />
@@ -830,7 +830,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </focusedlayout>
-            <focusedlayout width="700" height="widget_poster_height" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31038]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+            <focusedlayout width="606.67" height="widget_poster_height" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31038]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="landscape" value="true" />
