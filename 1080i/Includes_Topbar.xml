@@ -69,7 +69,7 @@
             <onclick>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
             <usealttexture>Control.HasFocus($PARAM[id]) + String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</usealttexture>
             <font>font_topbar</font>
-            <textcolor>00ffffff</textcolor>
+            <textcolor>$INFO[Skin.String(mainmenutcolor.name)]</textcolor>
             <textoffsetx>1</textoffsetx>
             <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)">Conditional</animation>
             <texturenofocus />
