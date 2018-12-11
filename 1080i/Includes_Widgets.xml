@@ -24,6 +24,7 @@
             <onback condition="!Integer.IsEqual(Container($PARAM[id]).Position,0) | Container($PARAM[id]).HasPrevious">Control.Move($PARAM[id],1)</onback>
             <onback condition="Integer.IsEqual(Container($PARAM[id]).Position,0) + !Container($PARAM[id]).HasPrevious">SetFocus(302)</onback>
             <onback condition="Integer.IsEqual(Container($PARAM[id]).Position,0) + !Container($PARAM[id]).HasPrevious">SetFocus(300)</onback>
+	    <scrolltime tween="sine" easing="out">500</scrolltime>
         </definition>
     </include>
 
@@ -393,11 +394,11 @@
             <visible>!String.IsEqual(Container(300).ListItem.Property(widget),Weather) + !String.IsEqual(Container(300).ListItem.Property(widget),Settings)</visible>
             <itemgap>0</itemgap>
             <usecontrolcoords>true</usecontrolcoords>
-            <scrolltime tween="cubic" easing="out">500</scrolltime>
+            <scrolltime tween="sine" easing="out">500</scrolltime>
             <control type="group" id="331" description="Spacer"> 
                 <height>widget_spacer_top</height>
             </control>
-            <include content="Widget" condition="!Skin.HasSetting(HideSubmenuWidget)">
+	    <include content="Widget" condition="!Skin.HasSetting(HideSubmenuWidget)">
                 <param name="id" value="302" />
                 <param name="submenu" value="true" />
                 <param name="aspect" value="$LOCALIZE[31263]" />
@@ -447,7 +448,8 @@
                     <visible>Container($PARAM[id]).IsUpdating + !Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
                 </control>
             </control>
-            <control type="list" id="$PARAM[id]">
+            <control type="fixedlist" id="$PARAM[id]">
+		<movement>2</movement>
                 <top>widget_top</top>
                 <include condition="$PARAM[submenu] + !Skin.HasSetting(SubmenuLabel)">Widget_Items_Submenu_Height</include>
                 <include condition="$PARAM[submenu] + Skin.HasSetting(SubmenuLabel)">Widget_Items_Submenu_Big_Height</include>
@@ -481,7 +483,6 @@
             </control>
         </definition>
     </include>
-
     <include name="Widget_Items_Submenu_Height"><height>widget_submenu_spacer</height></include>
     <include name="Widget_Items_Submenu_Big_Height"><height>widget_submenu_big_spacer</height></include>
 
@@ -546,49 +547,46 @@
                     <visible>!String.IsEqual(Container($PARAM[id]).ListItem.Label,Container($PARAM[id]).ListItem.Artist) + !String.IsEmpty(Container($PARAM[id]).ListItem.Artist)</visible>
                     <visible>!Skin.HasSetting(WidgetsLabel.DisableArtist)</visible>
                 </control>
-
-
 <!-- Add Title, Rating and Plot to Widget Bar -->
 		<!-- Add TvShow Title to widget bar only at Show level  -->
                 <control type="label">
-                    <textcolor>$INFO[Skin.String(widgetcolor.name)]</textcolor>
+                    <textcolor>$VAR[ColorHighlight2]</textcolor>
                     <label>$INFO[Container($PARAM[id]).ListItem.Label,| , |]</label>
                     <include>Statusbar_Menubar_Items</include>
                     <visible>Control.HasFocus($PARAM[id])</visible>
 		    <visible>!Skin.HasSetting(DisableWidgetTitle)</visible>
                 </control>
 <!-- Add Ratings -->
-        <control type="image">
+		<control type="grouplist">
+		    <visible>Control.HasFocus($PARAM[id]) + !Control.HasFocus(302) + !Skin.HasSetting(DisableWidgetIMDB)</visible>
                     <bottom>5</bottom>
-                    <width>40</width>
                     <height>30</height>
-                    <texture>flags/color/ratings/imdbicon.png</texture>
-                    <visible>!String.IsEmpty(ListItem.RatingAndVotes)</visible>
-                    <visible>Control.HasFocus($PARAM[id]) + !Skin.HasSetting(DisableWidgetIMDB)</visible>
-        </control>
-        <control type="label">
+               <include content="Object_Ratings_Content">
+                    <param name="directory" value="color" />
+                    <param name="align" value="left" />
+                    <param name="width" value="1200" />
+                    <param name="rottentomatoes" value="true" />
+                    <param name="imdbvotes" value="false" />
+                    <param name="usermeter" value="false" />
+                    <param name="imdb" value="true" />
+                    <param name="tmdb" value="true" />
+                    <param name="metacritic" value="true" />
+                    <param name="oscars" value="$PARAM[oscars]" />
+                    <param name="top250" value="$PARAM[top250]" />
+                    <param name="plot" value="true" />
+                </include>
+		</control>
+		<control type="label">
+                    <left>5</left>
+                    <visible>Control.HasFocus($PARAM[id]) + !Skin.HasSetting(DisableWidgetPlot) + Skin.HasSetting(DisableWidgetIMDB)</visible>
                     <textcolor>main_fg_70</textcolor>
                     <height>20</height>
                     <top>10</top>
-                    <label>$INFO[Container($PARAM[id]).ListItem.Rating,, |]</label>
-                    <include>Statusbar_Menubar_Items</include>
-                    <visible>!String.IsEmpty(ListItem.RatingAndVotes)</visible>
-                    <visible>Control.HasFocus($PARAM[id]) + !Skin.HasSetting(DisableWidgetIMDB)</visible>
-        </control>
-
-<!-- Add Plot to Widget Bar -->
-          <control type="label">
-                    <visible>Control.HasFocus($PARAM[id]) + !Skin.HasSetting(DisableWidgetPlot)</visible>
-                    <textcolor>main_fg_70</textcolor>
-                    <height>20</height>
-                    <top>10</top>
-                    <aligny>center</aligny>
-                    <width min="500" max="1200">auto</width>
+                    <align>right</align>
+                    <width min="500" max="1500">auto</width>
                     <scroll>true</scroll>
-<!--                    <label>$VAR[Label_Plot]</label> -->
-		   <label>$INFO[ListItem.Plot]</label>
+                    <label>$INFO[ListItem.Plot]</label>
                 </control>
-<!-- END Add Plot -->
 <!-- END Add Widget Bar Mods -->
             </control>
         </definition>
@@ -688,7 +686,7 @@
             </include>
 	
 	<!-- START New Mod Widgets -->
-            <itemlayout width="606.67" height="widget_poster_height" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31411]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+            <itemlayout width="700" height="widget_poster_height" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31411]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_ItemLayout">
                     <param name="landscapebanner" value="true" />
                     <param name="genres" value="$PARAM[genres]" />
@@ -698,7 +696,7 @@
             </itemlayout>
 	    <itemlayout width="widget_poster_width" height="widget_poster_height" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31414]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_ItemLayout">
-                    <param name="landscapewide" value="true" />
+                    <param name="poster" value="true" />
                     <param name="genres" value="$PARAM[genres]" />
                     <param name="studios" value="$PARAM[studios]" />
                     <param name="text" value="$PARAM[text]" />
@@ -758,7 +756,7 @@
 
 	<!-- START Focused New Mods Widgets -->
 
-	   <focusedlayout width="606.67" height="widget_poster_height" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31411]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+	   <focusedlayout width="700" height="widget_poster_height" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31411]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="landscapebanner" value="true" />
@@ -767,7 +765,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </focusedlayout>
-	   <focusedlayout width="606.67" height="widget_poster_height" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31414]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + Control.HasFocus($PARAM[id])">
+	   <focusedlayout width="700" height="widget_poster_height" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31414]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + Control.HasFocus($PARAM[id])">
                 <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="landscapebanner" value="true" />
@@ -1242,6 +1240,7 @@
                 <aspectratio scalediffuse="false">scale</aspectratio>
                 <visible>!String.IsEmpty(ListItem.Art(poster)) | [!String.IsEmpty(ListItem.Art(tvshow.poster)) + !String.IsEqual(ListItem.DBType,episode)] | $PARAM[poster]</visible>
             </control>
+
         </definition>
     </include>
 
@@ -1251,17 +1250,15 @@
                 <texture background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Fanart]</texture>
                 <aspectratio scalediffuse="false">scale</aspectratio>
             </control>
-<!--
             <control type="image">
                 <bottom>30</bottom>
                 <top>170</top>
                 <left>120</left>
                 <right>120</right>
                 <aspectratio aligny="bottom" scalediffuse="false">keep</aspectratio>
-                <texture background="true" diffuse="diffuse/widgetlandscape.png">$INFO[ListItem.Art(clearlogo)]</texture>
-                <visible>!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]</visible>
+                <texture background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_ClearLogo]</texture>
+                <visible>!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo)) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]</visible>
             </control>
--->
             <control type="group">
                 <height>70</height>
                 <bottom>0</bottom>
@@ -1277,7 +1274,7 @@
                     <right>20</right>
                     <align>center</align>
                     <aligny>center</aligny>
-                    <font>font_tiny</font>
+                    <font>font_tiny_bold</font>
                     <textcolor>main_fg_70</textcolor>
                     <label>$VAR[Label_Widget]</label>
                 </control>

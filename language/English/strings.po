@@ -1986,7 +1986,7 @@ msgstr ""
 
 #: /1080i/SkinSettings.xml
 msgctxt "#31416"
-msgid "Widget Label Color"
+msgid "Main Menu Focus Label Color"
 msgstr ""
 
 #: /1080i/SkinSettings.xml
@@ -2034,7 +2034,7 @@ msgstr
 
 #: /1080i/SkinSettings.xml
 msgctxt "#31426"
-msgid "Enable IMDB Rating on Widget Bar"
+msgid "Enable Ratings on Widget Bar"
 msgstr
 
 #: /1080i/SkinSettings.xml

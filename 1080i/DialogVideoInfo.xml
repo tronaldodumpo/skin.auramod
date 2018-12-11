@@ -412,7 +412,7 @@
                     </include>
 
                     <!-- Similar Movies 9502 -->
-                    <include content="Object_VideoInfo_CastList" condition="String.IsEqual(ListItem.DBType,movie)">
+                    <include content="Object_VideoInfo_CastList" condition="String.IsEqual(ListItem.DBType,movie) + Library.HasContent(movies)">
                         <param name="onup" value="9501" />
                         <param name="id" value="9502" />
                         <param name="ondown" value="9503" />
@@ -425,7 +425,7 @@
                     </include>
 
                     <!-- Similar TvShows 9502 -->
-                    <include content="Object_VideoInfo_CastList" condition="!String.IsEqual(ListItem.DBType,movie)">
+                    <include content="Object_VideoInfo_CastList" condition="!String.IsEqual(ListItem.DBType,movie) + Library.HasContent(tvshows)">
                         <param name="onup" value="9501" />
                         <param name="id" value="9502" />
                         <param name="ondown" value="9503" />

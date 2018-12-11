@@ -16,44 +16,25 @@
 
         <definition>
 	     <!-- trailer window -->
-<!--                <control type="group" id="5633400">
+                <control type="group">
                     <visible>Player.HasVideo</visible>
-                    <top>-35</top>
-                    <right>0</right>
-                    <width>900</width>
-                    <height>500</height>
-                    <animation effect="slide" start="0" end="0,-80" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)" reversible="true">Conditional</animation>
-                    <control type="videowindow"></control>
-                </control> -->
-	      <!-- Spotlight Widget trailer window -->
-            <control type="group" id="5633399">
-                <visible>Player.HasVideo + [ControlGroup(505).HasFocus() | Control(55).HasFocus()]</visible>
-                <width>100%</width>
-                <height>100%</height>
-                <animation effect="slide" start="0" end="0,-80" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)" reversible="true">Conditional</animation>
-                <control type="videowindow">
-                                        <width>100%</width>
-                                        <height>100%</height>
-                                </control>
-            </control>
-            <!--Spotlight Widget fullscreen trailer fade in,need check -->
-            <control type="image">
-                <visible>Control.IsVisible(5633399)</visible>
-                <width>100%</width>
-                <height>100%</height>
-                <texture border="15">diffuse/bgpanel.png</texture>
-                <animation effect="fade" start="100" end="0" delay="0" time="3000">Visible</animation>
-                <animation effect="fade" start="50" end="0" delay="0" time="1500">Hidden</animation>
-            </control>
-
-
+                    <top>0</top>
+                    <right>-80</right>
+                    <width>1080</width>
+                    <height>550</height>
+	            <bottom>5</bottom> 
+                    <control type="videowindow">
+		     </control>
+		    <visible>!Skin.HasSetting(DisableNetflixView)</visible>
+		 <control type="image">
+			<texture colordiffuse="ff000000">overlay/netflix_corner.png</texture>
+		</control>
+		</control>
 
 	    <!-- Add Netflix view Fanart with corner diffuse -->
 	    <control type="group">
 	     <control type="image">
-		    <visible>!Skin.HasSetting(DisableNetflixView)</visible>
-		    <visible>Control.IsVisible(55) | Control.IsVisible(56)</visible>
-		    <visible>!Player.HasVideo</visible>
+		    <visible>!Skin.HasSetting(DisableNetflixView) + !Player.HasVideo + [Control.IsVisible(55) | Control.IsVisible(56)]</visible>
                     <fadetime>350</fadetime>
                     <width>1080</width>
                     <height>720</height>
@@ -61,7 +42,7 @@
 		    <top>-35</top>
 	            <bottom>5</bottom>	
                     <texture background="true" diffuse="Right Corner.png">$VAR[Image_Fanart]</texture>
-                    <aspectratio scalediffuse="true" aligny="top">scale</aspectratio>
+                    <aspectratio scalediffuse="false" aligny="top">scale</aspectratio>
 		</control>
 	     </control>
 	   <!-- End Netflix view Fanart with corner diffuse -->
@@ -75,27 +56,28 @@
                 <usecontrolcoords>true</usecontrolcoords>
                 <itemgap>0</itemgap>
 
-	        <control type="image">
-		    <visible>!Skin.HasSetting(DisableNetflixView)</visible>
-		    <visible>Control.IsVisible(55) | Control.IsVisible(56)</visible>
-		    <left>0</left>
-                    <right>0</right>
-		    <top>-5</top>
-		    <bottom>5</bottom>
+		 <control type="image" id="55443">
+                    <visible>!Skin.HasSetting(DisableNetflixView) + [Control.IsVisible(55) | Control.IsVisible(56)]</visible>
+                    <left>0</left>
+                    <right>$PARAM[titleright]</right>
+                    <top>-5</top>
+                    <bottom>10</bottom>
                     <height>240</height>
-		    <width>450</width>
+                    <width>450</width>
                     <aligny>top</aligny>
-		    <texture>$INFO[Window(home).Property(SkinHelper.ListItem.Art.Clearlogo]</texture>
-		 </control>
-	       <control type="label">
-		    <visible>String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Art.Clearlogo)</visible> 
-		    <visible>!String.EndsWith(Window(home).Property(SkinHelper.ListItem.Art.ClearLogo),.png)</visible>
+                    <texture>$VAR[Image_ClearLogo]</texture>
+                 </control>
+
+		   <control type="label">
+                    <visible>String.IsEmpty(Control.GetLabel(55443)) + String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))</visible>
                     <left>0</left>
                     <right>$PARAM[titleright]</right>
                     <label>$INFO[ListItem.Label]</label>
-		    <top>-250</top>
-                    <textcolor>main_fg_100</textcolor>
-                    <font>font_showcase_title</font>
+                    <top>-250</top>
+                    <textcolor>red</textcolor>
+                    <font>netflix_heading</font>
+                    <width min="200" max="700">auto</width>
+                    <scroll>true</scroll>
                 </control>
 
                 <control type="label">
@@ -114,7 +96,7 @@
                     <usecontrolcoords>true</usecontrolcoords>
                     <itemgap>0</itemgap>
                     <left>0</left>
-                    <right>0</right>
+                    <right>$PARAM[titleright]</right>
                     <control type="image">
                         <left>0</left>
                         <top>10</top>
@@ -219,8 +201,17 @@
                     <visible>$PARAM[genre]</visible>
                 </control>
                 <control type="textbox">
+		    <visible>Skin.HasSetting(DisableNetflixView)</visible>
                     <label fallback="19055">$VAR[Label_Plot]</label>
-		    <width>850</width>
+                    <height>$PARAM[plot_height]</height>
+                    <aligny>top</aligny>
+                    <textcolor>main_fg_70</textcolor>
+                    <font>font_plotbox</font>
+                </control>
+		 <control type="textbox">
+		    <visible>!Skin.HasSetting(DisableNetflixView)</visible>
+                    <label fallback="19055">$VAR[Label_Plot]</label>
+                    <width>850</width>
                     <height>$PARAM[plot_height]</height>
                     <aligny>top</aligny>
                     <textcolor>main_fg_70</textcolor>
@@ -633,63 +624,56 @@
     </variable>
     <include name="Object_PVR_Info">
         <param name="artwork" default="Window(Home).Property(SkinHelper.ListItem.Art.Fanart)" />
-        <param name="fallback" default="Window(Home).Property(SkinHelper.ListItem.Art.Fanart)" />
+        <param name="fallback" default="ListItem.Icon" />
         <definition>
             <control type="group">
-                <include>Animation_Right</include>
-                <control type="image" id="9123">
-                    <left>-2160</left>
-                    <width>1</width>
-                    <height>1</height>
-                    <texture>$INFO[$PARAM[artwork]]</texture>
+		 <control type="group">
+                        <visible>Player.HasVideo</visible>
+		        <top>-15</top>
+                        <right>-90</right>
+                        <width>1180</width>
+                        <height>550</height>
+                        <animation effect="slide" start="0" end="0,-80" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)" reversible="true">Conditional</animation>
+                        <control type="videowindow">
+                        </control>
+                        <control type="image">
+                        <texture colordiffuse="ff000000" border="20">overlay/netflix_corner.png</texture>
+                        </control>
                 </control>
-                <control type="group">
-                    <height>430</height>
-                    <top>view_top</top>
-                    <right>view_pad</right>
-                    <width>765</width>
-                    <control type="group">
-                        <left>-10</left>
-                        <right>-10</right>
-                        <top>-10</top>
-                        <bottom>-10</bottom>
-                        <include>Defs_PosterBack</include>
-                        <visible>!String.IsEmpty($PARAM[fallback]) + [String.IsEmpty(Control.GetLabel(9123)) | String.StartsWith(Control.GetLabel(9123),Default)]</visible>
-                        <control type="image">
-                            <bordersize>10</bordersize>
-                            <fadetime>100</fadetime>
-                            <aspectratio scalediffuse="false">scale</aspectratio>
-                            <texture diffuse="diffuse/mediainfo.png">$INFO[$PARAM[fallback]]</texture>
-                        </control>
-                        <control type="image">
-                            <bordersize>10</bordersize>
-                            <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
-                        </control>
-                    </control>
-                    <control type="group">
-                        <left>-10</left>
-                        <right>-10</right>
-                        <top>-10</top>
-                        <bottom>-10</bottom>
-                        <include>Defs_PosterBack</include>
-                        <visible>!String.IsEmpty(Control.GetLabel(9123)) + !String.StartsWith(Control.GetLabel(9123),Default)</visible>
-                        <control type="image">
-                            <bordersize>10</bordersize>
-                            <fadetime>100</fadetime>
-                            <aspectratio scalediffuse="false">scale</aspectratio>
-                            <texture diffuse="diffuse/mediainfo.png">$INFO[$PARAM[artwork]]</texture>
-                        </control>
-                        <control type="image">
-                            <bordersize>10</bordersize>
-                            <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
-                        </control>
+		<control type="group">
+                    <visible>!Player.HasVideo</visible>
+                    <animation effect="fade" time="250">VisibleChange</animation>
+                    <control type="image">
+                        <top>100</top>
+                        <right>150</right>
+                        <width>600</width>
+                        <height>400</height>
+                        <aspectratio scalediffuse="false" aligny="center">keep</aspectratio>
+                         <texture background="true">$INFO[$PARAM[fallback]]</texture>
                     </control>
                 </control>
+	        <control type="group">
+                    <visible>!Player.HasVideo</visible>
+		        <top>10</top>
+                        <right>-70</right>
+                        <width>1280</width>
+                        <height>720</height>
+                    <animation effect="fade" time="250">VisibleChange</animation>
+                    <control type="image" id="33000">
+		        <top>-35</top>
+                        <right>20</right>
+                        <width>1180</width>
+                        <height>720</height>
+                        <aspectratio scalediffuse="false" aligny="top">scale</aspectratio>
+                        <texture background="true" diffuse="Right Corner.png">$INFO[$PARAM[artwork]]</texture>
+                    </control>
+                </control>
+
                 <control type="grouplist">
                     <visible>[[!String.IsEmpty($PARAM[fallback]) + [String.IsEmpty(Control.GetLabel(9123)) | String.StartsWith(Control.GetLabel(9123),Default)]] | [!String.IsEmpty(Control.GetLabel(9123)) + !String.StartsWith(Control.GetLabel(9123),Default)]]</visible>
-                    <height>430</height>
-                    <top>view_top</top>
-                    <left>view_pad</left>
+                    <height>550</height>
+                    <top>40</top>
+                    <left>40</left>
                     <right>865</right>
                     <orientation>vertical</orientation>
                     <usecontrolcoords>true</usecontrolcoords>
@@ -698,9 +682,9 @@
                 </control>
                 <control type="grouplist">
                     <visible>![[!String.IsEmpty($PARAM[fallback]) + [String.IsEmpty(Control.GetLabel(9123)) | String.StartsWith(Control.GetLabel(9123),Default)]] | [!String.IsEmpty(Control.GetLabel(9123)) + !String.StartsWith(Control.GetLabel(9123),Default)]]</visible>
-                    <height>430</height>
-                    <top>view_top</top>
-                    <left>view_pad</left>
+                    <height>550</height>
+                    <top>40</top>
+		    <left>40</left>
                     <right>view_pad</right>
                     <orientation>vertical</orientation>
                     <usecontrolcoords>true</usecontrolcoords>
@@ -714,38 +698,73 @@
     <include name="Object_PVR_Info_Content">
         <control type="group">
             <height>80</height>
-            <control type="label">
+	    <control type="image" id="55444">
+		    <top>5</top>
+                    <bottom>20</bottom>
+                    <height>140</height>
+                    <width>450</width>
+                    <texture>$VAR[PVRInfoThumb]</texture> 
+                 </control>
+           <control type="label">
+	        <visible>String.IsEmpty(Control.GetLabel(55444))</visible>	
                 <label>$INFO[ListItem.EpgEventTitle]$INFO[ListItem.EpisodeName, - ,]</label>
                 <height>80</height>
+		<top>20</top>
                 <aligny>top</aligny>
-                <textcolor>main_fg_100</textcolor>
-                <font>font_showcase_title</font>
+                <textcolor>$VAR[ColorHighlight]</textcolor>
+                <font>netflix_heading</font>
+		 <width min="200" max="900">auto</width>
+                 <scroll>true</scroll>
                 <visible>!String.IsEmpty(ListItem.EpgEventTitle)</visible>
             </control>
             <control type="label">
                 <label>$INFO[ListItem.Label]</label>
                 <height>80</height>
+		<top>20</top>
                 <aligny>top</aligny>
                 <textcolor>main_fg_100</textcolor>
                 <font>font_showcase_title</font>
-                <visible>String.IsEmpty(ListItem.EpgEventTitle)</visible>
+                <visible>String.IsEmpty(ListItem.EpgEventTitle) + String.IsEmpty(Control.GetLabel(55444))</visible>
+		<bottom>40</bottom>
             </control>
-        </control>
+         </control>
         <control type="label">
-            <label>$INFO[ListItem.ChannelNumber,[COLOR=main_fg_100],. [/COLOR]]$INFO[ListItem.ChannelName,[COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.StartTime,  |  [COLOR=main_fg_100]$LOCALIZE[19126] ,[/COLOR]]$INFO[ListItem.EndTime,  |  [COLOR=main_fg_100]$LOCALIZE[19127] ,[/COLOR]]</label>
-            <height>75</height>
-            <aligny>top</aligny>
-            <textcolor>$VAR[ColorHighlight]</textcolor>
-            <font>font_small</font>
-            <visible>!String.IsEmpty(ListItem.Title) | !String.IsEmpty(ListItem.ChannelNumber)</visible>
-        </control>
+		<top>70</top>
+		<label>[B]$INFO[ListItem.ChannelName][/B] | [COLOR=$VAR[ColorHighlight2]]$LOCALIZE[19126]: [/COLOR]$INFO[ListItem.StartTime] | [COLOR=$VAR[ColorHighlight2]]$LOCALIZE[19127]: [/COLOR] $INFO[ListItem.EndTime]</label> 
+      	 	<height>40</height>
+                <aligny>top</aligny>
+                <textcolor>main_fg_100</textcolor>
+                <font>font_small</font>
+                <visible>!String.IsEmpty(ListItem.Title) | !String.IsEmpty(ListItem.ChannelNumber)</visible>
+         </control>
         <control type="textbox">
-            <label fallback="19055">$VAR[Label_Plot]</label>
-            <height>260</height>
-            <aligny>top</aligny>
+	    <top>15</top>
+	    <width>900</width>
+	    <height min="100" max="220">auto</height>
+            <label fallback="19055">[COLOR=$VAR[ColorHighlight2]]Plot: [/COLOR]$VAR[Label_Plot]</label>
+            <aligny>bottom</aligny>
             <textcolor>main_fg_70</textcolor>
             <font>font_plotbox</font>
         </control>
+	<control type="grouplist">
+                    <top>15</top>
+                    <height>40</height>
+        <include content="Object_Ratings_Content" id="44212">
+                    <param name="directory" value="color" />
+                    <param name="align" value="left" />
+                    <param name="width" value="1200" />
+                    <param name="rottentomatoes" value="true" />
+                    <param name="imdbvotes" value="false" />
+                    <param name="usermeter" value="false" />
+                    <param name="imdb" value="true" />
+                    <param name="tmdb" value="true" />
+                    <param name="metacritic" value="true" />
+                    <param name="oscars" value="$PARAM[oscars]" />
+                    <param name="top250" value="$PARAM[top250]" />
+                    <param name="plot" value="false" />
+        </include>
+        </control>
+
     </include>
 
     <include name="Object_UpDownInfoArrows">
@@ -1208,6 +1227,7 @@
         <param name="metacritic" default="true" />
         <param name="oscars" default="true" />
         <param name="top250" default="true" />
+        <param name="plot" default="false" />
         <definition>
             <control type="grouplist">
                 <width>$PARAM[width]</width>
@@ -1287,6 +1307,7 @@
                     <height>32</height>
                     <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/ratings/tvdb.png</texture>
                     <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Rating.TVDB))</visible>
+		    <visible>!String.IsEqual(Window(Home).Property(SkinHelper.ListItem.Rating.TVDB),0.0)</visible>
                     <visible>$PARAM[tvdb]</visible>
                     <visible>!Skin.HasSetting(Ratings.TVDB)</visible>
                 </control>
@@ -1299,6 +1320,7 @@
                     <font>font_tiny</font>
                     <label>$INFO[Window(Home).Property(SkinHelper.ListItem.Rating.TVDB), ,   ]</label>
                     <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Rating.TVDB))</visible>
+		    <visible>!String.IsEqual(Window(Home).Property(SkinHelper.ListItem.Rating.TVDB),0.0)</visible>
                     <visible>$PARAM[tvdb]</visible>
                     <visible>!Skin.HasSetting(Ratings.TVDB)</visible>
                 </control>
@@ -1451,6 +1473,18 @@
                     <visible>$PARAM[imdb]</visible>
                     <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
                     <visible>$PARAM[top250]</visible>
+                </control>
+		<control type="label">
+		    <left>5</left>
+                    <visible>!Skin.HasSetting(DisableWidgetPlot)</visible>
+                    <textcolor>main_fg_70</textcolor>
+                    <height>20</height>
+                    <top>5</top>
+                    <align>right</align>
+                    <width min="500" max="1500">auto</width>
+                    <scroll>true</scroll>
+                    <label>$INFO[ListItem.Plot]</label>
+		    <visible>$PARAM[plot]</visible>
                 </control>
             </control>
         </definition>

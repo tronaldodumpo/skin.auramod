@@ -112,10 +112,19 @@
         <control type="group">
             <visible>Control.IsVisible(50)</visible>
             <control type="group">
-                <height>450</height>
-                <left>view_pad</left>
-                <right>view_pad</right>
-                <bottom>view_pad</bottom>
+		<height>510</height>
+                <left>0</left>
+                <right>0</right>
+                <top>500</top>
+                <bottom>0</bottom>
+
+		<control type="image">
+		<height>510</height>
+		<left>0</left>
+		<right>0</right>
+		<bottom>0</bottom>
+		<texture background="true">common/darkblue-black-gradient.png</texture>
+		</control>
                 <control type="fixedlist" id="50">
                     <focusposition>2</focusposition>
                     <movement>2</movement>
@@ -226,19 +235,21 @@
                     </control>   
                 </control>
                 <control type="group">
-                    <left>20</left>
+                    <left>15</left>
                     <visible>Window.IsVisible(MyPVRChannels.xml)</visible>
                     <control type="image">
                         <bordersize>10</bordersize>
-                        <height>$PARAM[height]</height>
-                        <width>$PARAM[height]</width>
+<!--                        <height>$PARAM[height]</height>
+                        <width>$PARAM[height]</width> -->
+			<width>130</width>
+			<height>110</height>
                         <aspectratio>keep</aspectratio>
                         <texture fallback="special://skin/extras/icons/tv.png">$INFO[ListItem.Icon]</texture>
                     </control>
                     <control type="group">
                         <left>$PARAM[height]</left>
                         <control type="label">
-                            <left>30</left>
+                            <left>60</left>
                             <width>340</width>
                             <height>100%</height>
                             <aligny>center</aligny>
@@ -469,15 +480,18 @@
                             <visible>Window.IsVisible(MyPVRChannels.xml)</visible>
                             <control type="image">
                                 <bordersize>10</bordersize>
-                                <height>$PARAM[height]</height>
+<!--                                <height>$PARAM[height]</height>
                                 <width>$PARAM[height]</width>
+-->
+				<width>130</width>
+	                        <height>110</height>
                                 <aspectratio>keep</aspectratio>
                                 <texture fallback="special://skin/extras/icons/tv.png">$INFO[ListItem.Icon]</texture>
                             </control>
                             <control type="group">
                                 <left>$PARAM[height]</left>
                                 <control type="label">
-                                    <left>30</left>
+                                    <left>60</left>
                                     <width>340</width>
                                     <height>100%</height>
                                     <aligny>center</aligny>

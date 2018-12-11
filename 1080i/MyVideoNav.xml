@@ -9,7 +9,7 @@
 
         <!-- Standard Furniture -->
         <include condition="Skin.HasSetting(DisableNetflixView)">Global_Background</include>
-        <include condition="Skin.HasSetting(DisableNetflixView)">Topbar</include> 
+        <include>Topbar</include> 
         <include>Object_PlotOverlay</include>
         <include>View_Library</include>
        
