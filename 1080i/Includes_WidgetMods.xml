@@ -281,7 +281,7 @@
         <texture colordiffuse="70000000" border="10" flipy="true">diffuse/halfbox.png</texture>
       </control>
       <control type="image">
-        <left>5</left>
+        <left>0</left>
         <width>260</width>
         <texture background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Poster]</texture>
         <aspectratio scalediffuse="false">keep</aspectratio>
