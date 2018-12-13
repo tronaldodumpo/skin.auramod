@@ -118,10 +118,11 @@
       </control>
       <!-- Add diffuse to widget fanart when Overlays buttons enabled -->
       <control type="image">
-	<bottom>0</bottom>
-        <height>90</height>
-        <texture colordiffuse="50000000" border="10" flipy="true">diffuse/halfbox.png</texture>
+        <height>330</height>
+        <bottom>0</bottom>
+        <texture colordiffuse="60000000" flipy="true">diffuse/halfbox.png</texture>
       </control>
+
       <control type="image">
         <bottom>30</bottom>
         <top>170</top>
@@ -183,7 +184,7 @@
 	  <label>$INFO[ListItem.TvShowTitle]</label>
 	  <textcolor>white</textcolor>
           <shadowcolor>black</shadowcolor>
-          <font>font_tiny</font>
+          <font>widget_trakt_title2</font>
           <left>20</left>
 	  </control>
 
@@ -195,7 +196,7 @@
             <!--                    <label>$INFO[Container($PARAM[id]).ListItem.Title]</label> -->
             <label>$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</label>
             <shadowcolor>black</shadowcolor>
-            <font>font_small_bold</font>
+            <font>widget_trakt_title</font>
             <left>20</left>
           </control>
           <control type="label">
@@ -206,7 +207,7 @@
             <!--                    <label>$INFO[ListItem.Label2]</label> -->
             <label>$INFO[ListItem.Season,Season , ]$INFO[ListItem.Episode,Episode , ]</label>
             <shadowcolor>black</shadowcolor>
-            <font>font_small_bold</font>
+            <font>widget_trakt_title</font>
             <left>20</left>
           </control>
         </control>
