@@ -89,6 +89,7 @@
                         <texture>$INFO[ListItem.Thumb]</texture>
                         <aspectratio>keep</aspectratio>
                     </control>
+<!--
                     <control type="label">
                         <left>561</left>
                         <height>66</height>
@@ -100,9 +101,10 @@
                         <label>$INFO[ListItem.ChannelNumberLabel]</label>
                         <selectedcolor>main_fg_70</selectedcolor>
                     </control>
-                    <control type="progress">
+-->    
+                <control type="progress">
                         <left>561</left>
-                        <top>65</top>
+                        <top>30</top>
                         <width>67</width>
                         <height>19</height>
                         <reveal>true</reveal>
@@ -159,6 +161,7 @@
                         <texture>$INFO[ListItem.Thumb]</texture>
                         <aspectratio>keep</aspectratio>
                     </control>
+<!--
                     <control type="label">
                         <left>561</left>
                         <top>5</top>
@@ -170,9 +173,10 @@
                         <label>$INFO[ListItem.ChannelNumberLabel]</label>
                         <selectedcolor>Selected</selectedcolor>
                     </control>
+-->
                     <control type="progress">
                         <left>561</left>
-                        <top>65</top>
+                        <top>30</top>
                         <width>67</width>
                         <height>19</height>
                         <reveal>true</reveal>
@@ -191,7 +195,8 @@
                         <align>left</align>
                         <textcolor>Selected</textcolor>
                         <font>font_small_bold</font>
-                        <label>$INFO[ListItem.Title]</label>
+                        <label>[B]$INFO[ListItem.Title][/B]</label>
+			<shadowcolor>black</shadowcolor>
                         <selectedcolor>Selected</selectedcolor>
                     </control>
                     <control type="label">
@@ -202,7 +207,7 @@
                         <align>left</align>
                         <font>font_tiny</font>
                         <textcolor>Selected</textcolor>
-                        <label>$INFO[ListItem.ChannelName]</label>
+                        <label>[B][COLOR=$VAR[ColorHighlight2]]Next: [/COLOR][/B]$INFO[ListItem.NextTitle]</label>
                         <selectedcolor>Selected</selectedcolor>
                     </control>
                 </focusedlayout>
