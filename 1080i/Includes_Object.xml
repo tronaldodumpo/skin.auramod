@@ -62,8 +62,8 @@
                     <right>$PARAM[titleright]</right>
                     <top>-5</top>
                     <bottom>10</bottom>
-                    <height>240</height>
-                    <width>450</width>
+                    <height>155</height>
+                    <width>400</width>
                     <aligny>top</aligny>
                     <texture>$VAR[Image_ClearLogo]</texture>
                  </control>
@@ -73,7 +73,7 @@
                     <left>0</left>
                     <right>$PARAM[titleright]</right>
                     <label>$INFO[ListItem.Label]</label>
-                    <top>-250</top>
+                    <top>-100</top>
                     <textcolor>red</textcolor>
                     <font>netflix_heading</font>
                     <width min="200" max="700">auto</width>
