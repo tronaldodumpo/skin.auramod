@@ -108,6 +108,130 @@
           </control>
         </control>
 	</include>
+	
+  <!-- Start LandscapeTrakt Widget -->
+  <include name="Widget_Items_LandscapeTrakt">
+    <control type="group">
+      <control type="image">
+        <texture fallback="diffuse/widgetlandscape.png" background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Fanart]</texture>
+        <aspectratio scalediffuse="false">stretch</aspectratio>
+      </control>
+      <!-- Add diffuse to widget fanart when Overlays buttons enabled -->
+      <control type="image">
+        <height>330</height>
+        <bottom>0</bottom>
+        <texture colordiffuse="60000000" flipy="true">diffuse/halfbox.png</texture>
+      </control>
+
+      <control type="image">
+        <bottom>30</bottom>
+        <top>170</top>
+        <left>120</left>
+        <right>120</right>
+        <aspectratio aligny="bottom" scalediffuse="false">keep</aspectratio>
+        <texture background="true" diffuse="diffuse/widgetlandscape.png">$INFO[ListItem.Art(clearlogo)]</texture>
+        <visible>Skin.HasSetting(DisableWidgetOverlays) + !Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]</visible>
+      </control>
+      <control type="group">
+        <height>70</height>
+        <bottom>0</bottom>
+        <visible>![!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]]</visible>
+
+	<control type="group">
+          <!-- START Studio Button -->
+          <control type="group">
+	    <bottom>90</bottom>
+            <width min="10" max="110">auto</width>
+            <height>30</height>
+            <left>15</left>
+            <visible>!String.IsEmpty(ListItem.Studio)</visible>
+            <control type="image">
+              <texture colordiffuse="red">diffuse/halfbox.png</texture>
+            </control>
+            <control type="label">
+              <label>$INFO[ListItem.Studio]</label>
+              <align>center</align>
+              <font>font_widget_time</font>
+              <textcolor>white</textcolor>
+              <shadowcolor>black</shadowcolor>
+            </control>
+          </control>
+          <!-- END Studio Button -->
+          <!-- START Airdate Button -->
+          <control type="group">
+	    <bottom>90</bottom>
+            <width min="10" max="105">auto</width>
+            <height>30</height>
+            <left>135</left>
+            <visible>!String.IsEmpty(ListItem.Studio)</visible>
+            <visible>!String.IsEmpty(ListItem.Premiered)</visible>
+            <control type="image">
+              <texture colordiffuse="red">diffuse/halfbox.png</texture>
+            </control>
+            <control type="label">
+              <label>$INFO[ListItem.Premiered(dd MMM yyyy)]</label>
+              <font>font_widget_time</font>
+              <align>center</align>
+              <textcolor>white</textcolor>
+              <shadowcolor>black</shadowcolor>
+            </control>
+          </control>
+          <!-- END Air Date Button -->
+
+	  <control type="label">
+	  <visible>!String.IsEmpty(ListItem.TvShowTitle)</visible>
+	  <bottom>69</bottom>
+	  <label>$INFO[ListItem.TvShowTitle]</label>
+	  <textcolor>white</textcolor>
+          <shadowcolor>black</shadowcolor>
+          <font>widget_trakt_title2</font>
+          <left>20</left>
+	  </control>
+
+          <control type="label">
+            <visible>!String.IsEqual(ListItem.Title,ListItem.Label)</visible>
+            <visible>!String.IsEmpty(ListItem.Episode)</visible>
+	    <bottom>0</bottom>
+            <textcolor>white</textcolor>
+            <!--                    <label>$INFO[Container($PARAM[id]).ListItem.Title]</label> -->
+            <label>$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</label>
+            <shadowcolor>black</shadowcolor>
+            <font>widget_trakt_title</font>
+            <left>20</left>
+          </control>
+          <control type="label">
+            <visible>String.IsEqual(ListItem.Title,ListItem.Label)</visible>
+	    <bottom>0</bottom>
+            <textcolor>white</textcolor>
+            <!--                    <label>$INFO[Container($PARAM[id]).ListItem.Title]</label> -->
+            <!--                    <label>$INFO[ListItem.Label2]</label> -->
+            <label>$INFO[ListItem.Season,Season , ]$INFO[ListItem.Episode,Episode , ]</label>
+            <shadowcolor>black</shadowcolor>
+            <font>widget_trakt_title</font>
+            <left>20</left>
+          </control>
+        </control>
+	
+
+<!--
+        <control type="label">
+          <visible>String.IsEmpty(ListItem.Art(tvshow.clearlogo)) + String.IsEmpty(ListItem.Art(clearlogo)) + !Skin.HasSetting(WidgetLabels)</visible>
+          <top>0</top>
+          <bottom>0</bottom>
+          <left>20</left>
+          <right>20</right>
+          <align>center</align>
+          <aligny>center</aligny>
+          <font>font_tiny_bold</font>
+          <textcolor>main_fg_70</textcolor>
+          <label>$VAR[Label_Widget]</label>
+        </control>
+-->
+      </control>
+    </control>
+  </include>
+  <!-- END LandscapeTrakt Widget -->
+
   <!-- Start LandscapeBanner Widget -->
   <include name="Widget_Items_LandscapeBanner">
     <control type="group">
