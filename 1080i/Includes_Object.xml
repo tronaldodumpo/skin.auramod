@@ -91,6 +91,7 @@
                     <font>font_showcase_title</font>
                 </control>
                 <control type="grouplist">
+		    <top>20</top>
                     <height>40</height>
                     <orientation>horizontal</orientation>
                     <usecontrolcoords>true</usecontrolcoords>
