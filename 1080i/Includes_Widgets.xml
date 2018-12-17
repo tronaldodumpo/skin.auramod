@@ -1086,7 +1086,7 @@
         <param name="color" default="PosterFront_70" />
         <definition>
             <control type="textbox">
-                <top>250</top>
+                <top>270</top>
                 <bottom>10</bottom>
                 <left>20</left>
                 <right>20</right>
@@ -1155,7 +1155,7 @@
         <param name="color" default="PosterFront_70" />
         <definition>
             <control type="group">
-                <height>240</height>
+                <height>260</height>
                 <visible>String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]</visible>
                 <control type="image">
                     <top>0</top>
@@ -1204,7 +1204,7 @@
         <param name="color" default="PosterFront_70" />
         <definition>
             <control type="group">
-                <height>240</height>
+                <height>260</height>
                 <control type="image">
                     <top>0</top>
                     <left>0</left>

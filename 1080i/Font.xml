@@ -10,7 +10,7 @@
             <aspect>1.3</aspect>
             <style>lowercase</style>
             <linespacing>0.9</linespacing>
-            <size>64</size>
+            <size>54</size>
         </font>
 	<font>
             <name>widget_trakt_title</name>
@@ -270,6 +270,16 @@
 
 
         <!-- Required for system -->
+	<font>
+            <name>font10</name>
+            <filename>RobotoCondensed-Regular.ttf</filename>
+            <size>21</size>
+        </font>
+        <font>
+            <name>font12</name>
+            <filename>RobotoCondensed-Regular.ttf</filename>
+            <size>26</size>
+        </font>
         <font>
             <name>font13</name>
             <filename>RobotoCondensed-Regular.ttf</filename>
