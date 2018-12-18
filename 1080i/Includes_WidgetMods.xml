@@ -16,7 +16,6 @@
       <control type="group">
         <height>70</height>
         <bottom>0</bottom>
-
 	<control type="group">
           <!-- START TvShowTitle Button -->
           <control type="group">
@@ -286,7 +285,7 @@
     <param name="posterdetails" default="false" />
     <definition>
       <control type="image">
-        <height>370</height>
+        <height>390</height>
         <texture colordiffuse="70000000" border="10" flipy="true">diffuse/halfbox.png</texture>
       </control>
       <control type="image">
@@ -331,7 +330,7 @@
         <label>[COLOR=$VAR[ColorHighlight]]Genre: [/COLOR]$INFO[ListItem.Genre]</label>
       </control>
       <control type="textbox">
-        <height>205</height>
+        <height>225</height>
         <left>280</left>
         <right>30</right>
         <top>130</top>
