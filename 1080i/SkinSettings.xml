@@ -656,7 +656,7 @@
                         <!-- =============-->
                         <!-- Mods----------->
                         <!-- =============-->
-			 <control type="button" id="9407" description="Main Menu Highlight Color">
+			 <control type="button" id="9417" description="Main Menu Highlight Color">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
                             <include>Defs_Settings_Button</include>
                             <enable>!Skin.HasSetting(CycleColors)</enable>
@@ -672,19 +672,19 @@
                             <onclick>Skin.ToggleSetting(SkinHelper.EnableExtendedArt)</onclick>
                             <selected>Skin.HasSetting(SkinHelper.EnableExtendedArt)</selected>
                         </control>
-                        <control type="radiobutton" id="9619" description="PVR Guide Info">
+                         <control type="radiobutton" id="9619" description="Enable Large Category Widget">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31420]</label>
+                            <selected>!Skin.HasSetting(DisableBigCat)</selected>
+                            <onclick>Skin.ToggleSetting(DisableBigCat)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9620" description="PVR Guide Info">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31415]</label>
                             <selected>!Skin.HasSetting(DisableGuideInfo)</selected>
                             <onclick>Skin.ToggleSetting(DisableGuideInfo)</onclick>
-                        </control>
-                        <control type="radiobutton" id="9620" description="Enable Widget Overlays">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31417]</label>
-                            <selected>!Skin.HasSetting(DisableWidgetOverlays)</selected>
-                            <onclick>Skin.ToggleSetting(DisableWidgetOverlays)</onclick>
                         </control>
                          <control type="radiobutton" id="9621" description="Enable Banners on Widgets">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
@@ -692,13 +692,6 @@
                             <label>$LOCALIZE[31419]</label>
                             <selected>!Skin.HasSetting(DisableBanners)</selected>
                             <onclick>Skin.ToggleSetting(DisableBanners)</onclick>
-                        </control>
-                         <control type="radiobutton" id="9622" description="Enable Large Category Widget">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31420]</label>
-                            <selected>!Skin.HasSetting(DisableBigCat)</selected>
-                            <onclick>Skin.ToggleSetting(DisableBigCat)</onclick>
                         </control>
 			<control type="radiobutton" id="9623" description="Enable Categories Label ">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
@@ -734,13 +727,6 @@
                             <label>$LOCALIZE[31428]</label>
                             <selected>!Skin.HasSetting(DisableNetflixView)</selected>
                             <onclick>Skin.ToggleSetting(DisableNetflixView)</onclick>
-                        </control>
-			<control type="radiobutton" id="9628" description="Enable Widget FixedFocus">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31424]</label>
-                            <selected>!Skin.HasSetting(DisableWidgetFixedFocus)</selected>
-                            <onclick>Skin.ToggleSetting(DisableWidgetFixedFocus)</onclick>
                         </control>
 	
                         <!-- ================= -->
@@ -1138,26 +1124,6 @@
                     </include>
                 </control>
                 <!-- Info -->
-                <control type="grouplist">
-                    <left>view_pad</left>
-                    <right>view_pad</right>
-                    <top>806</top>
-                    <bottom>0</bottom>
-                    <orientation>vertical</orientation>
-                    <itemgap>0</itemgap>
-                    <control type="label">
-                        <height>50</height>
-                        <label>$LOCALIZE[19033]</label>
-                        <font>font_button</font>
-                        <textcolor>main_fg_30</textcolor>
-                    </control>
-                    <control type="textbox">
-                        <height>64</height>
-                        <label>19055</label>
-                        <font>font_tiny</font>
-                        <textcolor>main_fg_70</textcolor>
-                    </control>
-                </control>
             </control>
         </control>
 

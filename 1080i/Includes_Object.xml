@@ -81,7 +81,7 @@
                 </control>
 
                 <control type="label">
-		    <visible>Skin.HasSetting(DisableNetflixView)</visible>
+		    <visible>Skin.HasSetting(DisableNetflixView) | Window.IsVisible(DialogVideoInfo.xml)</visible>
                     <left>0</left>
                     <right>$PARAM[titleright]</right>
                     <label>$INFO[ListItem.Label]</label>
