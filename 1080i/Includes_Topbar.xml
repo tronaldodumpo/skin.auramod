@@ -783,7 +783,7 @@
                             <width>auto</width>
                             <font>font_topbar</font>
                             <textcolor>main_fg_100</textcolor>
-                            <label>$INFO[Container(300).ListItem.Label]</label>
+                            <label>$INFO[Container(300).ListItem.Label]</label> 
                             <visible>Control.HasFocus(300)</visible>
                         </control>
                     </control>
@@ -836,6 +836,7 @@
     </include>
 
     <include name="Topbar_Menu">
+	<top>-40</top>
         <control type="list" id="300">
             <include>Topbar_Menu_Layout</include>
             <include condition="Window.IsVisible(Home) + !Window.IsVisible(script-globalsearch-main.xml)">Items_MainMenu</include>
