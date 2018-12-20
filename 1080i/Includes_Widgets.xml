@@ -934,7 +934,7 @@
                     </control>
 		    <control type="image">
                         <bordersize>10</bordersize>
-                        <height>145</height>
+                        <height>125</height>
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
@@ -1011,7 +1011,7 @@
                     </control>
 		     <control type="image">
                         <bordersize>10</bordersize>
-                        <height>145</height>
+                        <height>125</height>
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
