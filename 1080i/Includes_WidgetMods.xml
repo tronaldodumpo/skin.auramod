@@ -111,7 +111,6 @@
       </control>
       <control type="group">
         <visible>![!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]]</visible>
-	<include>widget_buttons</include>
         <!-- Add Banner to landscape Image -->
         <control type="image" id="46789">
          <bottom>0</bottom>
@@ -131,7 +130,8 @@
 	  <height>40%</height>
           <aspectratio>keep</aspectratio>
           <animation effect="slide" start="0" end="0,50" time="0" condition="String.IsEmpty(ListItem.Episode)">Conditional</animation>
-          <texture background="true">http://localhost:52307/getartwork&amp;title=$ESCINFO[ListItem.TvShowTitle]&amp;type=clearlogo&amp;mediatype=tvshow</texture>
+<!--          <texture background="true">http://localhost:52307/getartwork&amp;title=$ESCINFO[ListItem.TvShowTitle]&amp;type=clearlogo&amp;mediatype=tvshow</texture> -->
+	  <texture background="true">$VAR[Widget_ClearLogo]</texture>
           <visible>Skin.HasSetting(DisableBanners) + !String.IsEmpty(ListItem.TvShowTitle)</visible>
         </control>
         <control type="image" id="467811">
@@ -140,7 +140,8 @@
           <width>50%</width>
           <height>50%</height>
           <aspectratio>keep</aspectratio>
-          <texture background="true">http://localhost:52307/getpvrthumb&amp;title=$ESCINFO[ListItem.Label]&amp;type=clearlogo&amp;mediatype=movies</texture>
+<!--          <texture background="true">http://localhost:52307/getpvrthumb&amp;title=$ESCINFO[ListItem.Label]&amp;type=clearlogo&amp;mediatype=movies</texture> -->
+          <texture background="true">$VAR[Widget_ClearLogo]</texture>
           <visible>String.IsEmpty(ListItem.TvShowTitle)</visible>
         </control>
 
