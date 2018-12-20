@@ -642,27 +642,15 @@
                 </include>
             </focusedlayout>
 
-            <itemlayout width="260" height="170" condition="Skin.HasSetting(SubmenuLabel) + Skin.HasSetting(DisableBigCat)">
+            <itemlayout width="260" height="170" condition="Skin.HasSetting(SubmenuLabel)">
                 <include>Widget_Submenu_ItemLayout</include>
             </itemlayout>
             
-            <focusedlayout width="260" height="170" condition="Skin.HasSetting(SubmenuLabel) + Skin.HasSetting(DisableBigCat)">
+            <focusedlayout width="260" height="170" condition="Skin.HasSetting(SubmenuLabel)">
                 <include content="Widget_Submenu_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                 </include>
             </focusedlayout>
-
-<!-- Add Larger Category Icon -->
-	   <itemlayout width="260" height="200" condition="Skin.HasSetting(SubmenuLabel) + !Skin.HasSetting(DisableBigCat)">
-                <include>Widget_Submenu_ItemLayout</include>
-            </itemlayout>
-
-            <focusedlayout width="260" height="200" condition="Skin.HasSetting(SubmenuLabel) + !Skin.HasSetting(DisableBigCat)">
-                <include content="Widget_Submenu_FocusedLayout">
-                    <param name="id" value="$PARAM[id]" />
-                </include>
-            </focusedlayout>
-
 
             <include>Items_SubMenu</include>
         </definition>
@@ -911,16 +899,8 @@
                 <bottom>-0</bottom>
                 <control type="group">
                     <include>Defs_PosterBack</include>
-                    <control type="image">
-                        <height>130</height>
-                        <bordersize>10</bordersize>
-                        <aspectratio>keep</aspectratio>
-                        <texture background="true" colordiffuse="PosterFront_70" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
-                        <visible>String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
-			<visible>Skin.HasSetting(DisableBigCat)</visible>
-                    </control>
                     <control type="label">
-                        <bottom>30</bottom>
+                        <bottom>25</bottom>
                         <height>30</height>
                         <align>center</align>
                         <font>font_tiny</font>
@@ -930,10 +910,10 @@
                         <label>$INFO[ListItem.Label]</label>
                         <scroll>false</scroll>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
+                        <visible>Skin.HasSetting(DisableBigCat)</visible>
                     </control>
 		    <control type="label">
-                        <bottom>30</bottom>
+                        <bottom>25</bottom>
                         <height>30</height>
                         <align>center</align>
                         <font>font_tiny</font>
@@ -943,14 +923,14 @@
                         <label>$INFO[ListItem.Label]</label>
                         <scroll>false</scroll>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>!Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>Skin.HasSetting(DisableBigCat)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
                         <aspectratio scalediffuse="false">stretch</aspectratio>
                         <texture background="true" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
-                        <visible>!String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
                         <visible>!Skin.HasSetting(SubmenuLabel)</visible>
+                        <visible>Skin.HasSetting(DisableBigCat)</visible>
                     </control>
 		    <control type="image">
                         <bordersize>10</bordersize>
@@ -958,15 +938,14 @@
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>!Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>Skin.HasSetting(DisableBigCat)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
                         <aspectratio scalediffuse="false">stretch</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
-                        <visible>!String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
-			<visible>Skin.HasSetting(DisableBigCat)</visible>
+			<visible>!Skin.HasSetting(DisableBigCat)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
@@ -999,16 +978,8 @@
                 <include>Animation_FocusBounce_Large</include>
                 <control type="group">
                     <include>Defs_PosterBack</include>
-                    <control type="image">
-                        <height>130</height>
-                        <bordersize>10</bordersize>
-                        <aspectratio>keep</aspectratio>
-                        <texture background="true" colordiffuse="PosterFront" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
-                        <visible>String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
-			<visible>Skin.HasSetting(DisableBigCat)</visible>
-                    </control>
                     <control type="label">
-                        <bottom>30</bottom>
+                        <bottom>25</bottom>
                         <height>30</height>
                         <align>center</align>
                         <font>font_tiny</font>
@@ -1017,10 +988,10 @@
                         <left>30</left>
                         <label>$INFO[ListItem.Label]</label>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
+                        <visible>Skin.HasSetting(DisableBigCat)</visible>
                     </control>
 		    <control type="label">
-                        <bottom>30</bottom>
+                        <bottom>25</bottom>
                         <height>30</height>
                         <align>center</align>
                         <font>font_tiny</font>
@@ -1029,14 +1000,14 @@
                         <left>30</left>
                         <label>$INFO[ListItem.Label]</label>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>!Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>Skin.HasSetting(DisableBigCat)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
                         <aspectratio scalediffuse="false">stretch</aspectratio>
                         <texture background="true" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
-                        <visible>!String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
                         <visible>!Skin.HasSetting(SubmenuLabel)</visible>
+                        <visible>Skin.HasSetting(DisableBigCat)</visible>
                     </control>
 		     <control type="image">
                         <bordersize>10</bordersize>
@@ -1044,15 +1015,14 @@
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>!Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>Skin.HasSetting(DisableBigCat)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
                         <aspectratio scalediffuse="false">stretch</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
-                        <visible>!String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
-			 <visible>Skin.HasSetting(DisableBigCat)</visible>
+			 <visible>!Skin.HasSetting(DisableBigCat)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
