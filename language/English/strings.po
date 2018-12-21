@@ -1961,7 +1961,7 @@ msgstr ""
 
 #: /1080i/Includes_View.xml
 msgctxt "#31411"
-msgid "LandscapeBanner"
+msgid "LandscapeWide"
 msgstr ""
 
 #: /1080i/Includes_View.xml
@@ -1976,7 +1976,7 @@ msgstr ""
 
 #: /1080i/Includes_View.xml
 msgctxt "#31414"
-msgid "LandscapeWide"
+msgid "LandscapeWidePoster"
 msgstr ""
 
 #: /1080i/SkinSettings.xml
