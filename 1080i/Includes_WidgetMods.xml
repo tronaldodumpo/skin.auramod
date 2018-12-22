@@ -94,7 +94,7 @@
   <!-- END LandscapeTrakt Widget -->
 
   <!-- Start LandscapeBanner Widget -->
-  <include name="Widget_Items_LandscapeWide">
+  <include name="Widget_Items_LandscapeBanner">
     <control type="group">
       <control type="image">
         <texture fallback="diffuse/widgetlandscape.png" background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Fanart]</texture>
@@ -110,35 +110,23 @@
         <visible>!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]</visible>
       </control>
       <control type="group">
-        <visible>![!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]]</visible>
-        <!-- Add Banner to landscape Image -->
-        <control type="image" id="46789">
-         <bottom>0</bottom>
-         <height>70</height>
-          <align>center</align>
-          <aligny>center</aligny>
-          <aspectratio align="center" aligny="center">stretch</aspectratio>
-          <texture>$VAR[WidgetBannerVar]</texture>
-          <visible>!Skin.HasSetting(DisableBanners)</visible>
-        </control>
-        <!-- END add Banner -->
-        <!-- Add Clearlogo to landscape Image -->
-        <control type="image" id="467810">
+<!-- Add Clearlogo to landscape Image -->
+        <control type="image">
           <bottom>35</bottom>
-	  <right>10</right>
-	  <width>40%</width>
-	  <height>40%</height>
+          <right>10</right>
+          <width>40%</width>
+          <height>40%</height>
           <aspectratio>keep</aspectratio>
-          <animation effect="slide" start="0" end="0,50" time="0" condition="String.IsEmpty(ListItem.Episode)">Conditional</animation>
-<!--          <texture background="true">http://localhost:52307/getartwork&amp;title=$ESCINFO[ListItem.TvShowTitle]&amp;type=clearlogo&amp;mediatype=tvshow</texture> -->
-	  <texture background="true">$VAR[Widget_ClearLogo]</texture>
+          <animation effect="slide" start="0" end="0,40" time="0" condition="String.IsEmpty(ListItem.Episode)">Conditional</animation>
+<!--         <texture background="true">http://localhost:52307/getartwork&amp;title=$ESCINFO[ListItem.TvShowTitle]&amp;type=clearlogo&amp;mediatype=tvshow</texture> -->
+          <texture background="true">$VAR[Widget_ClearLogo]</texture>
           <visible>Skin.HasSetting(DisableBanners) + !String.IsEmpty(ListItem.TvShowTitle)</visible>
         </control>
-        <control type="image" id="467811">
-          <bottom>0</bottom>
+        <control type="image">
+          <bottom>5</bottom>
           <right>10</right>
-          <width>50%</width>
-          <height>50%</height>
+          <width>45%</width>
+          <height>45%</height>
           <aspectratio>keep</aspectratio>
 <!--          <texture background="true">http://localhost:52307/getpvrthumb&amp;title=$ESCINFO[ListItem.Label]&amp;type=clearlogo&amp;mediatype=movies</texture> -->
           <texture background="true">$VAR[Widget_ClearLogo]</texture>
@@ -146,6 +134,21 @@
         </control>
 
         <!-- END add Clearlogo -->
+
+      </control>
+      <control type="group">
+        <visible>![!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]]</visible>
+        <!-- Add Banner to landscape Image -->
+        <control type="image">
+         <bottom>0</bottom>
+         <height>70</height>
+          <align>center</align>
+          <aligny>center</aligny>
+          <aspectratio align="center" aligny="center">stretch</aspectratio>
+          <texture background="true">$VAR[WidgetBannerVar]</texture>
+          <visible>!Skin.HasSetting(DisableBanners)</visible>
+        </control>
+        <!-- END add Banner -->
         <!-- Start Add label box if Episode -->
 	<control type="group">
 	<bottom>0</bottom>
@@ -193,6 +196,7 @@
     </control>
   </include>
   <!-- END LandscapeBanner Widget -->
+
   <!-- Start WidgetLive Widget -->
   <include name="Widget_Items_WidgetLive">
     <control type="group">
@@ -271,7 +275,7 @@
   <!-- END WidgetLive Widget -->
   <!-- START Landscape Wide Widget -->
   <include name="Widget_Items_LandscapeWidePoster">
-    <param name="landscapewide" default="false" />
+    <param name="landscapewideposter" default="false" />
     <definition>
       <control type="image">
         <texture background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Poster]</texture>
