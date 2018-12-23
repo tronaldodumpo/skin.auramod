@@ -571,7 +571,7 @@
                     <param name="imdb" value="true" />
                     <param name="tmdb" value="true" />
                     <param name="metacritic" value="true" />
-                    <param name="oscars" value="$PARAM[oscars]" />
+                    <param name="oscars" value="true" />
                     <param name="top250" value="$PARAM[top250]" />
                     <param name="plot" value="true" />
                 </include>
@@ -598,6 +598,7 @@
         <height>$PARAM[height]</height>
         <preloaditems>2</preloaditems>
         <onfocus>SetProperty(WidgetFocus,1,Home)</onfocus>
+        <onfocus>SetProperty(SkinHelper.WidgetContainer,$PARAM[id],Home)</onfocus>
         <include content="Widget_Movement" condition="!Skin.HasSetting(SubmenuLabel)">
             <param name="id" value="$PARAM[id]" />
             <param name="aspect" value="$PARAM[aspect]" />
