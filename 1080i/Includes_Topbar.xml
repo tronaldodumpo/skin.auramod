@@ -836,7 +836,7 @@
     </include>
 
     <include name="Topbar_Menu">
-	<animation effect="slide" start="0,0" end="0,-40" condition="Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml) | Control.IsVisible(55) | Control.IsVisible(56)">Conditional</animation>
+	<animation effect="slide" start="0,0" end="0,-30" condition="Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml) | Control.IsVisible(55) | Control.IsVisible(56)">Conditional</animation>
         <control type="list" id="300">
             <include>Topbar_Menu_Layout</include>
             <include condition="Window.IsVisible(Home) + !Window.IsVisible(script-globalsearch-main.xml)">Items_MainMenu</include>
