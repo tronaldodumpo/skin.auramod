@@ -242,7 +242,6 @@
         </definition>
     </include>
 
-
     <include name="Object_Info_Netflix">
         <param name="hdsd_flag" default="false" />
         <param name="rottentomatoes" default="true" />
@@ -258,7 +257,6 @@
 
         <definition>
 	     <!-- trailer window -->
-<!--
                 <control type="group">
                     <visible>Player.HasVideo</visible>
                     <top>0</top>
@@ -273,11 +271,11 @@
 			<texture colordiffuse="ff000000">overlay/netflix_corner.png</texture>
 		</control>
 		</control>
--->
+
 	    <!-- Add Netflix view Fanart with corner diffuse -->
 	    <control type="group">
 	     <control type="image">
-		    <visible>!Skin.HasSetting(DisableNetflixView) + [Control.IsVisible(55) | Control.IsVisible(56)]</visible>
+		    <visible>!Skin.HasSetting(DisableNetflixView) + !Player.HasVideo + [Control.IsVisible(55) | Control.IsVisible(56)]</visible>
                     <fadetime>350</fadetime>
                     <width>1400</width>
                     <height>720</height>
@@ -304,6 +302,7 @@
                                 <param name="metacritic" value="$PARAM[metacritic]" />
                                 <param name="oscars" value="$PARAM[oscars]" />
                                 <param name="top250" value="$PARAM[top250]" />
+                                <param name="plot" value="false" />
                             </include>
                         </control>
 
@@ -360,18 +359,6 @@
                     <param name="width" value="50" />
                     </include>
 		  </control>
-<!--
-                    <control type="image">
-                        <left>50</left>
-                        <top>20</top>
-                        <width>37</width>
-                        <height>24</height>
-                        <texture colordiffuse="main_fg_100">$VAR[Image_HDSD]</texture>
-                        <visible>Container.Content(movies) | Container.Content(episodes)</visible>
-                        <visible>$PARAM[hdsd_flag]</visible>
-                        <visible>![Skin.HasSetting(DisableInfoRatings) + !Window.IsVisible(DialogVideoInfo.xml)]</visible>
-                    </control>
--->
 		<control type="grouplist">
                         <left>190</left>
                         <top>30</top>
@@ -386,8 +373,9 @@
                         <textcolor>white</textcolor>
                         <font>font_tiny_bold</font>
                     </control>
-                    <control type="radiobutton">
+                    <control type="button">
                         <texturenofocus border="40" colordiffuse="FF484848">diffuse/halfbox.png</texturenofocus>
+                        <texturefocus border="40" colordiffuse="FF484848">diffuse/halfbox.png</texturefocus>
                         <width>80</width>
                         <textoffsetx>5</textoffsetx>
                         <label>$INFO[ListItem.MPAA]</label>
@@ -396,8 +384,9 @@
                         <font>widget_trakt_title2</font>
                         <visible>!String.IsEmpty(ListItem.MPAA) + [Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
                     </control>
-                    <control type="radiobutton">
+                    <control type="button">
                         <texturenofocus border="40" colordiffuse="FF484848">diffuse/halfbox.png</texturenofocus>
+                        <texturefocus border="40" colordiffuse="FF484848">diffuse/halfbox.png</texturefocus>
                         <width>100</width>
                         <textoffsetx>5</textoffsetx>
                         <label>$INFO[ListItem.Duration(h),,h] $INFO[ListItem.Duration(mm),,m]</label>

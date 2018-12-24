@@ -154,7 +154,7 @@
 		<include condition="Skin.HasSetting(DisableNetflixView)">View_Pad</include>
                 <include condition="!Skin.HasSetting(DisableNetflixView)">View_Pad_Netflix</include>
                 <control type="fixedlist" id="55">
-                    <bottom>-10</bottom>
+                    <bottom>-20</bottom>
                     <right>-70</right>
                     <left>-70</left>
                     <height>500</height>
@@ -1308,6 +1308,7 @@
     </include>
     <include name="View_Posters_Text">
         <control type="label">
+	    <visible>Skin.HasSetting(DisableNetflixView)</visible>
             <label>$INFO[ListItem.Label]</label>
             <align>center</align>
             <aligny>top</aligny>
@@ -1318,6 +1319,7 @@
             <top>385</top>
         </control>
         <control type="label">
+	    <visible>Skin.HasSetting(DisableNetflixView)</visible>
             <label>$INFO[ListItem.Year]</label>
             <align>center</align>
             <aligny>top</aligny>
@@ -1327,6 +1329,29 @@
             <right>10</right>
             <top>415</top>
         </control>
+        <control type="label">
+            <visible>!Skin.HasSetting(DisableNetflixView) + [Container.Content(seasons) | Container.Content(episodes)]</visible>
+            <label>$INFO[ListItem.Label]</label>
+            <align>center</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_100</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>385</top>
+        </control>
+        <control type="label">
+            <visible>!Skin.HasSetting(DisableNetflixView) + [Container.Content(seasons) | Container.Content(episodes)]</visible>
+            <label>$INFO[ListItem.Year]</label>
+            <align>center</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_30</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>415</top>
+        </control>
+
     </include>
     <include name="View_Posters_Itemlayout_Artwork">
         <control type="group" description="ParentFolder and DefaultIcon">
