@@ -50,6 +50,7 @@
 
             <control type="grouplist">
                 <top>-10</top>
+		<posx>10</posx>
                 <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(videos) | Container.Content(seaons) | Window.IsVisible(script-script.extendedinfo-VideoList.xml) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                 <visible>!Container($PARAM[id]).ListItem.IsParentFolder</visible>
                 <orientation>vertical</orientation>
@@ -65,11 +66,11 @@
                     <height>155</height>
                     <width>400</width>
                     <aligny>top</aligny>
-                    <texture>$VAR[Image_ClearLogo]</texture>
+                    <texture background="true">$VAR[Image_ClearLogo]</texture>
                  </control>
 
 		   <control type="label">
-                    <visible>String.IsEmpty(Control.GetLabel(55443)) + String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))</visible>
+                    <visible>String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))</visible>
                     <left>0</left>
                     <right>$PARAM[titleright]</right>
                     <label>$INFO[ListItem.Label]</label>
@@ -628,6 +629,7 @@
         <param name="fallback" default="ListItem.Icon" />
         <definition>
             <control type="group">
+		<left>10</left>
 		 <control type="group">
                         <visible>Player.HasVideo</visible>
 		        <top>-15</top>

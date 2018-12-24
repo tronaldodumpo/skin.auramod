@@ -2,6 +2,7 @@
 <includes>
 	<include name="View_PVRGuide_WithInfo">
         <control type="group" id="50">
+	    <left>10</left>
             <control type="group">
                 <visible>Control.IsVisible(10)</visible>
                 <include>Animation_Right</include>
