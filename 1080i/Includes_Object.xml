@@ -242,6 +242,84 @@
         </definition>
     </include>
 
+
+    <include name="Object_Episodes_Info">
+	<control type="group">
+		<control type="image">
+		<top>-40</top>
+		<left>20</left>
+		<width>100%</width>
+		<height>100%</height>
+		<texture bakgroun="true">http://localhost:52307/getartwork&amp;title=$ESCINFO[ListItem.TvShowTitle]&amp;type=fanart&amp;mediatype=tvshow</texture>
+		</control>
+
+                <control type="image">
+                <top>-40</top>
+                <left>0</left>
+                <width>100%</width>
+                <height>100%</height>
+                <texture background="true" colordiffuse="FF000000" flipy="true">common/vignette-full.png</texture>
+                </control>
+                 <control type="image">
+                    <left>40</left>
+                    <top>-5</top>
+                    <height>151</height>
+                    <width>380</width>
+                    <aligny>top</aligny>
+                    <align>left</align>
+                    <texture background="true">http://localhost:52307/getartwork&amp;title=$ESCINFO[ListItem.TvShowTitle]&amp;type=clearlogo&amp;mediatype=tvshow</texture>
+                 </control>
+                <control type="group">
+		   <top>155</top>
+		   <left>40</left>
+                   <include content="Object_StarRating" condition="![Skin.HasSetting(DisableInfoRatings) + !Window.IsVisible(DialogVideoInfo.xml)] | [!Container.Content(movies) + !Container.Content(episodes)]">
+                    <param name="height" value="45" />
+                    <param name="width" value="45" />
+                    </include>
+                  </control>
+	      <control type="grouplist">
+                <orientation>horizontal</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+		<itemgap>20</itemgap>
+                <top>180</top>
+                <left>210</left>
+		<width>800</width>
+                    <control type="label">
+                        <width>auto</width>
+                        <height>40</height>
+                        <label>$INFO[ListItem.Year]</label>
+                        <textcolor>white</textcolor>
+                        <font>font_tiny_bold</font>
+                    </control>
+                    <control type="label">
+                        <width>auto</width>
+                        <height>40</height>
+                        <label>$INFO[ListItem.MPAA]</label>
+                        <textcolor>white</textcolor>
+                        <font>font_tiny_bold</font>
+                    </control>
+
+	</control>
+            <control type="button">
+		    <top>240</top>
+		    <left>50</left>
+                    <texturenofocus border="10" colordiffuse="FFFFFFFF">common/selectbox.png</texturenofocus>
+                    <texturefocus border="10" colordiffuse="FFFFFFFF">common/selectbox.png</texturefocus>
+                    <width>300</width>
+		    <height>60</height>
+                    <textoffsetx>15</textoffsetx>
+		    <align>left</align>
+                    <label>Season $INFO[ListItem.Season]</label>
+                    <textcolor>white</textcolor>
+                    <shadowcolor>black</shadowcolor>
+                    <font>font_tiny_bold</font>
+                    </control>
+	
+       </control>
+    </include>
+
+
+
     <include name="Object_Info_Netflix">
         <param name="hdsd_flag" default="false" />
         <param name="rottentomatoes" default="true" />
