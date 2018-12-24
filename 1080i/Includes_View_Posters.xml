@@ -154,7 +154,6 @@
 		<include condition="Skin.HasSetting(DisableNetflixView)">View_Pad</include>
                 <include condition="!Skin.HasSetting(DisableNetflixView)">View_Pad_Netflix</include>
                 <control type="fixedlist" id="55">
-
                     <bottom>-10</bottom>
                     <right>-70</right>
                     <left>-70</left>
@@ -178,13 +177,21 @@
                         <param name="posters" default="true" />
                     </include>
                 </control>
-                <include content="Object_Info">
+                <include content="Object_Info" condition="Skin.HasSetting(DisableNetflixView)">
                     <param name="id" value="55" />
                     <param name="width" value="1654" />
                     <param name="discart" value="true" />
                     <param name="hdsd_flag" value="true" />
                     <param name="plot_height" value="170" />
                 </include>
+                <include content="Object_Info_Netflix" condition="!Skin.HasSetting(DisableNetflixView)">
+                    <param name="id" value="55" />
+                    <param name="width" value="1654" />
+                    <param name="discart" value="true" />
+                    <param name="hdsd_flag" value="true" />
+                    <param name="plot_height" value="170" />
+                </include>
+
             </control>
 
         </control>
@@ -219,7 +226,14 @@
                         <param name="landscape" default="true" />
                     </include>
                 </control>
-                <include content="Object_Info">
+                <include content="Object_Info" condition="Skin.HasSetting(DisableNetflixView)">
+                    <param name="id" value="56" />
+                    <param name="width" value="1654" />
+                    <param name="discart" value="true" />
+                    <param name="hdsd_flag" value="true" />
+                    <param name="plot_height" value="170" />
+                </include>
+                <include content="Object_Info_Netflix" condition="!Skin.HasSetting(DisableNetflixView)">
                     <param name="id" value="56" />
                     <param name="width" value="1654" />
                     <param name="discart" value="true" />
