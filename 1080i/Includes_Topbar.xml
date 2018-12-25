@@ -95,7 +95,7 @@
 
     <include name="Topbar">
 	<control type="group">
-	<visible>Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixView)</visible>
+	<visible>!Player.HasVideo + Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixView)</visible>
        	    <top>0</top>
             <left>0</left>
             <right>0</right>
@@ -124,6 +124,7 @@
                     <effect type="slide" end="0,-20" time="180" tween="sine" delay="80" />
                 </animation>
                 <control type="group">
+		    <visible>!Player.HasVideo</visible>
                     <height>view_pad</height>
                     <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
                     <include>Animation_FadeInOut</include>

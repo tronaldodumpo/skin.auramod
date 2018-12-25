@@ -7,13 +7,12 @@
             <onunfocus condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + !String.IsEqual(Window(Home).Property(TrailerPlaying),fullscreen)">PlayerControl(Stop)</onunfocus>
         </control>
 	</include>
-            <include name="trailer_onup">
-		<onup condition="!Player.HasVideo">SetProperty(TrailerPlaying,true,home)</onup>
+            <include name="trailer_down">
                 <!-- play yt trailer if scraped empty -->
-                <onup condition="!Player.HasVideo">RunScript(script.skin.helper.service,action=playtraileryoutube,mode=windowed,title=$INFO[ListItem.Title],local=true)</onup>
+                <ondown condition="!Player.HasVideo">PlayMedia($INFO[ListItem.Trailer],false,1)</ondown>
                 <!-- get fullscreen , <tab>FullScreen</tab> -->
-                <onup condition="Player.HasVideo">fullscreen</onup>
-	        <ondown condition="Player.HasVideo">Stop</ondown>
+                <ondown condition="Player.HasVideo">fullscreen</ondown>
+	        <onup condition="Player.HasVideo">Stop</onup>
         </include>
 
     <include name="Animation_FocusBounce">

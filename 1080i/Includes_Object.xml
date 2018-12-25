@@ -335,6 +335,7 @@
 
         <definition>
 	     <!-- trailer window -->
+<!--
                 <control type="group">
                     <visible>Player.HasVideo</visible>
                     <top>0</top>
@@ -349,6 +350,31 @@
 			<texture colordiffuse="ff000000">overlay/netflix_corner.png</texture>
 		</control>
 		</control>
+-->
+                                <control type="group">
+<!--
+                                        <animation effect="slide" start="0" end="-170,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)" reversible="true">Conditional</animation>
+                                        <animation effect="slide" start="0" end="200,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.33)">Conditional</animation>
+-->
+                                        <animation effect="slide" start="0" end="285,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.78)">Conditional</animation>
+                                        <visible>Player.HasVideo</visible>
+					<right>0</right>
+                                        <width>1600</width>
+                                        <height>570</height>
+					<top>-35</top>
+					<bottom>5</bottom>
+                                        <control type="videowindow">
+					<width>100%</width>
+					<height>100%</height>
+                                        </control>
+                                        <control type="image">
+                                        <animation effect="slide" start="0" end="265,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.78)">Conditional</animation>
+<!--
+                                        <animation effect="slide" start="0" end="0,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)">Conditional</animation>
+-->
+                                                <texture colordiffuse="ff000000" border="40">netflix/netflix_corner.png</texture>
+                                        </control>
+                                </control>
 
 	    <!-- Add Netflix view Fanart with corner diffuse -->
 	    <control type="group">
@@ -2227,6 +2253,7 @@
 
     <include name="Object_Scrollbar_Horz">
         <control type="scrollbar" id="60">
+	    <visible>Skin.HasSetting(DisableNetflixView)</visible>
             <onback>50</onback>
             <height>8</height>
             <left>0</left>

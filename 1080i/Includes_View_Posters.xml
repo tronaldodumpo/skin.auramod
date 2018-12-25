@@ -167,6 +167,7 @@
                     <pagecontrol>60</pagecontrol>
                     <onleft>55</onleft>
                     <onright>55</onright>
+		    <include condition="!Skin.HasSetting(DisableNetflixView)">trailer_down</include>
                    <include content="View_Forced">
                         <param name="string" value="$LOCALIZE[31161]" />
                     </include>
@@ -191,7 +192,6 @@
                     <param name="hdsd_flag" value="true" />
                     <param name="plot_height" value="170" />
                 </include>
-
             </control>
 
         </control>
@@ -215,6 +215,7 @@
                     <pagecontrol>60</pagecontrol>
                     <onleft>56</onleft>
                     <onright>56</onright>
+                    <include condition="!Skin.HasSetting(DisableNetflixView)">trailer_down</include>
                     <include content="View_Forced">
                         <param name="string" value="$LOCALIZE[31361]" />
                     </include>
