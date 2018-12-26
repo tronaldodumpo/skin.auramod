@@ -103,7 +103,7 @@
                         <top>0</top>
                         <bottom>0</bottom>
 		       <control type="group">
-                        <left>80</left>
+                        <left>50</left>
                         <top>100</top>
                         <include condition="!Skin.HasSetting(DisableNetflixView)">Object_Home_Netflix</include>
 	            </control>
@@ -395,6 +395,7 @@
     <include name="Widgets_Grouplist">
         <control type="grouplist" id="330">
             <posy>590</posy>
+	    <left>-10</left>
             <onup>300</onup>
             <ondown>431</ondown>
             <pagecontrol>9060</pagecontrol>

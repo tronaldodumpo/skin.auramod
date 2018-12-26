@@ -327,7 +327,7 @@
              <control type="image">
                     <visible>!Player.HasVideo</visible>
                     <fadetime>350</fadetime>
-                    <width>1300</width>
+                    <width>1380</width>
                     <height>720</height>
 		    <left>510</left>
                     <top>-45</top>
@@ -376,6 +376,7 @@
                  </control>
 
                    <control type="label">
+                    <animation effect="slide" end="0,-60" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
                     <visible>String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))</visible>
                     <left>0</left>
                     <right>$PARAM[titleright]</right>
@@ -387,7 +388,7 @@
                     <scroll>true</scroll>
                 </control>
                 <control type="grouplist">
-                    <animation effect="slide" end="0,-60" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
+                    <animation effect="slide" end="0,-120" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
 		    <top>-20</top>
                     <height>60</height>
                     <orientation>horizontal</orientation>
@@ -468,7 +469,7 @@
                 </control>
 
 		 <control type="textbox">
-                 <animation effect="slide" end="0,-60" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
+                 <animation effect="slide" end="0,-110" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
 		    <top>-40</top>
 		    <visible>!Skin.HasSetting(DisableNetflixView)</visible>
                     <label fallback="19055">$VAR[Label_Plot]</label>
@@ -479,7 +480,7 @@
                     <font>font_tiny_bold</font>
                 </control>
 		<control type="group">
-                 <animation effect="slide" end="0,-60" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
+                 <animation effect="slide" end="0,-80" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
 		<top>20</top>
 	 	 <control type="image">
 		    <width>70</width>
