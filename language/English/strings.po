@@ -2056,3 +2056,8 @@ msgctxt "#31430"
 msgid "LandscapeTrakt"
 msgstr ""
 
+#: /1080i/SkinSettings.xml
+msgctxt "#31431"
+msgid "Enable Netflix Home"
+msgstr
+

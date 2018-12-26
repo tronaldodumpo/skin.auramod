@@ -314,11 +314,195 @@
                     <shadowcolor>black</shadowcolor>
                     <font>font_tiny_bold</font>
                     </control>
-	
        </control>
     </include>
 
 
+    <include name="Object_Home_Netflix">
+   	<control type="group"> 
+        <visible>!String.IsEqual(Container(300).ListItem.Property(widget),Weather) + !String.IsEqual(Container(300).ListItem.Property(widget),Settings)</visible>
+            <!-- Add Netflix view Fanart with corner diffuse -->
+	    <top>-50</top>
+            <control type="group">
+             <control type="image">
+                    <visible>!Player.HasVideo</visible>
+                    <fadetime>350</fadetime>
+                    <width>1300</width>
+                    <height>720</height>
+		    <left>510</left>
+                    <top>-45</top>
+                    <bottom>5</bottom>
+                    <texture background="true" diffuse="Right Corner.png">$VAR[Image_Fanart]</texture>
+                    <aspectratio scalediffuse="false" aligny="top">scale</aspectratio>
+                </control>
+                        <control type="group">
+                            <top>480</top>
+                            <right>470</right>
+                            <width>$PARAM[width]</width>
+                            <include content="Object_Ratings" condition="Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(Home.xml) | Window.IsVisible(script-globalsearch.xml)">
+                                <param name="directory" value="monochrome" />
+                                <param name="align" value="right" />
+                                <param name="width" value="$PARAM[width]" />
+                                <param name="rottentomatoes" value="$PARAM[rottentomatoes]" />
+                                <param name="imdbvotes" value="false" />
+                                <param name="usermeter" value="false" />
+                                <param name="imdb" value="$PARAM[imdb]" />
+                                <param name="tmdb" value="$PARAM[tmdb]" />
+                                <param name="metacritic" value="$PARAM[metacritic]" />
+                                <param name="oscars" value="$PARAM[oscars]" />
+                                <param name="top250" value="$PARAM[top250]" />
+                                <param name="plot" value="false" />
+                            </include>
+                        </control>
+
+             </control>
+           <!-- End Netflix view Fanart with corner diffuse -->
+	<control type="group">
+	<visible>!Control.HasFocus(300) + !Control.HasFocus(302) + !String.IsEqual(Container(300).ListItem.Property(widget),Weather) + !String.IsEqual(Container(300).ListItem.Property(widget),Settings)</visible>
+            <control type="grouplist">
+                <orientation>vertical</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>0</itemgap>
+                 <control type="image" id="55443">
+                    <left>0</left>
+                    <right>$PARAM[titleright]</right>
+                    <top>-10</top>
+                    <bottom>10</bottom>
+                    <height>251</height>
+                    <width>650</width>
+                    <aligny>top</aligny>
+                    <align>left</align>
+                    <texture background="true">$VAR[Image_ClearLogo]</texture>
+                 </control>
+
+                   <control type="label">
+                    <visible>String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))</visible>
+                    <left>0</left>
+                    <right>$PARAM[titleright]</right>
+                    <label>$INFO[ListItem.Label]</label>
+                    <top>-250</top>
+                    <textcolor>red</textcolor>
+                    <font>netflix_heading</font>
+                    <width min="200" max="700">auto</width>
+                    <scroll>true</scroll>
+                </control>
+                <control type="grouplist">
+                    <animation effect="slide" end="0,-60" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
+		    <top>-20</top>
+                    <height>60</height>
+                    <orientation>horizontal</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <itemgap>0</itemgap>
+                    <left>0</left>
+                    <right>$PARAM[titleright]</right>
+		<control type="group">
+		    <left>-5</left>
+                    <include content="Object_StarRating" condition="![Skin.HasSetting(DisableInfoRatings) + !Window.IsVisible(DialogVideoInfo.xml)] | [!Container.Content(movies) + !Container.Content(episodes)]">
+                    <param name="height" value="50" />
+                    <param name="width" value="50" />
+                    </include>
+		  </control>
+		<control type="grouplist">
+                        <left>190</left>
+                        <top>30</top>
+			<orientation>horizontal</orientation>
+			<itemgap>20</itemgap>
+                    <control type="label">
+                        <left>170</left>
+                        <top>25</top>
+                        <width>auto</width>
+                        <height>40</height>
+                        <label>$INFO[ListItem.Year]</label>
+                        <textcolor>white</textcolor>
+                        <font>font_tiny_bold</font>
+                    </control>
+                    <control type="label">
+                        <top>25</top>
+                        <width>80</width>
+                        <height>40</height>
+                        <textoffsetx>5</textoffsetx>
+                        <label>$INFO[ListItem.MPAA]</label>
+                        <textcolor>white</textcolor>
+			<shadowcolor>black</shadowcolor>
+                        <font>widget_trakt_title2</font>
+			<visible>!String.IsEmpty($INFO[ListItem.MPAA])</visible>
+                    </control>
+                    <control type="label">
+                        <top>25</top>
+                        <width>80</width>
+                        <height>40</height>
+                        <label>$INFO[ListItem.Duration(h),,h] $INFO[ListItem.Duration(mm),,m]</label>
+                        <textcolor>white</textcolor>
+                        <font>font_tiny</font>
+                    </control>
+<!--
+                    <control type="label">
+                        <left>170</left>
+                        <top>25</top>
+                        <width>auto</width>
+                        <height>40</height>
+                        <label>[B]Ends:[/B] $VAR[Label_EndTime]</label>
+                        <textcolor>white</textcolor>
+                        <font>font_tiny</font>
+                        <visible>!String.IsEmpty(ListItem.EndTime)</visible>
+                    </control>
+-->
+                    <control type="label">
+                        <top>25</top>
+                        <width>auto</width>
+                        <label>[B]$VAR[Label_Info_NextAired_Status] $VAR[Label_Info_NextAired_Date][/B]</label>
+                        <height>40</height>
+                        <aligny>top</aligny>
+                        <textcolor>$VAR[ColorHighlight2]</textcolor>
+                        <font>font_tiny</font>
+                    </control>
+		  </control>
+		  </control>
+                <control type="group">
+                    <height>65</height>
+                    <left>0</left>
+                    <right>0</right>
+                    <control type="group">
+                        <visible>[Skin.HasSetting(DisableInfoRatings) + !Window.IsVisible(DialogVideoInfo.xml)] + [Container.Content(movies) | Container.Content(episodes)]</visible>
+                    </control>
+                </control>
+
+		 <control type="textbox">
+                 <animation effect="slide" end="0,-60" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
+		    <top>-40</top>
+		    <visible>!Skin.HasSetting(DisableNetflixView)</visible>
+                    <label fallback="19055">$VAR[Label_Plot]</label>
+                    <width>750</width>
+                    <height  min="20" max="150">auto</height>
+                    <aligny>top</aligny>
+                    <textcolor>main_fg_70</textcolor>
+                    <font>font_tiny_bold</font>
+                </control>
+		<control type="group">
+                 <animation effect="slide" end="0,-60" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
+		<top>20</top>
+	 	 <control type="image">
+		    <width>70</width>
+                    <height>40</height>
+                    <left>10</left>
+                    <aspectratio>keep</aspectratio>
+                    <texture colordiffuse="FFFF0000">netflix/genre.png</texture>
+                    </control>
+                <control type="label">
+                    <left>90</left>
+                    <right>0</right>
+                    <label>[I]$VAR[Label_Genre][/I]</label>
+                    <height>60</height>
+                    <aligny>bottom</aligny>
+                    <textcolor>FFFFFFFF</textcolor>
+                    <font>font_tiny</font>
+                </control>
+            </control>
+
+	</control>
+	</control>
+	</control>
+    </include>
 
     <include name="Object_Info_Netflix">
         <param name="hdsd_flag" default="false" />

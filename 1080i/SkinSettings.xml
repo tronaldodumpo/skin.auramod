@@ -728,6 +728,15 @@
                             <selected>!Skin.HasSetting(DisableNetflixView)</selected>
                             <onclick>Skin.ToggleSetting(DisableNetflixView)</onclick>
                         </control>
+                        <control type="radiobutton" id="9628" description="Enable Netflix Home">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31431]</label>
+                            <selected>!Skin.HasSetting(DisableNetflixHome)</selected>
+                            <onclick>Skin.ToggleSetting(DisableNetflixHome)</onclick>
+                            <onclick condition="!Skin.HasSetting(HideSubmenuWidget)">Skin.ToggleSetting(HideSubmenuWidget)</onclick>
+                            <onclick>ReloadSkin()</onclick>
+                        </control>
 	
                         <!-- ================= -->
                         <!-- Video / Music OSD -->

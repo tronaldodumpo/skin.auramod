@@ -35,7 +35,7 @@
             <content>$INFO[Container(300).ListItem.Property(backgroundPlaylist)]</content>
         </control>
 
-        <include>Global_Background</include>
+        <include condition="Skin.HasSetting(DisableNetflixHome)">Global_Background</include>
         <include>Widgets</include>
         <include>Topbar</include>
         <include>Object_PlotOverlay</include>
