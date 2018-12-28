@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	     <include name="AutoTrailerButton">
-        <control type="button">
-            <visible>false</visible>
-            <onfocus>RunScript(script.skin.helper.service,ACTION=playtrailer,MODE=windowed,YOUTUBE=$INFO[Skin.String(AutoYoutubeTrailer)])</onfocus>
-            <onunfocus condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + !String.IsEqual(Window(Home).Property(TrailerPlaying),fullscreen)">PlayerControl(Stop)</onunfocus>
-        </control>
-	</include>
+   <include name="Animation_Home_Textbar_Slideover">
+        <animation effect="slide" start="0" end="-301" time="300" tween="sine" easing="inout" condition="[![Control.HasFocus(300) | Control.HasFocus(3904) | Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903)] + !Control.HasFocus(302)] | [!Control.HasFocus(302) + Skin.HasSetting(IconOnlyMode)]">Conditional</animation>
+        <animation effect="slide" start="0" end="-301" time="300" tween="sine" easing="inout" condition="[[Control.HasFocus(300) | Control.HasFocus(3904) | Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903)] | Control.HasFocus(302)] + !Window.IsNext(Home) + ![!Control.HasFocus(302) + Skin.HasSetting(IconOnlyMode)]">WindowClose</animation>
+    </include>
+  <include name="AutoTrailerButton">
+                <control type="button">
+                        <visible>false</visible>
+                        <!-- <onfocus>RunScript(script.skin.helper.service,action=fileexists,file=$INFO[listitem.path,,theme.mp3],winprop=osttheme_avail)</onfocus> -->
+                        <onfocus condition="!Player.HasVideo + !String.IsEqual(trailer_avail,true)">AlarmClock(trailer_delay,PlayMedia($INFO[ListItem.Trailer],false,1),00:06,silent)</onfocus>
+			<onfocus>SetProperty(trailer_avail,true,home)</onfocus>
+                        <onunfocus condition="System.HasAlarm(trailer_delay)">CancelAlarm(trailer_delay,true)</onunfocus>
+                        <onunfocus condition="Player.HasVideo + ![VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | VideoPlayer.Content(musicvideos) | VideoPlayer.Content(livetv)]">PlayerControl(Stop)</onunfocus>
+			<onunfocus>ClearProperty(TrailerPlaying)</onunfocus>
+                        <onunfocus condition="!String.IsEmpty(Window(home).Property(trailer_avail))">ClearProperty(trailer_avail,home)</onunfocus>
+                        <onunfocus condition="!String.IsEmpty(Window(home).Property(trailer_trailerwillplaying))">ClearProperty(trailer_trailerwillplaying)</onunfocus>
+                </control>
+        </include>
+
             <include name="trailer_down">
                 <!-- play yt trailer if scraped empty -->
                 <ondown condition="!Player.HasVideo">PlayMedia($INFO[ListItem.Trailer],false,1)</ondown>

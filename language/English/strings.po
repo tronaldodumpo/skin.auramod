@@ -2061,3 +2061,23 @@ msgctxt "#31431"
 msgid "Enable Netflix Home"
 msgstr
 
+#: /1080i/SkinSettings.xml
+msgctxt "#31432"
+msgid "Enable Netflix Home Trailer Autoplay"
+msgstr
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31433"
+msgid "Enable Netflix Home Sidemenu"
+msgstr
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31434"
+msgid "Enable Icon Only SideMenu"
+msgstr
+
+msgctxt "#31435"
+msgid "Netflix View"
+msgstr ""
+
+

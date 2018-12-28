@@ -320,12 +320,15 @@
 
     <include name="Object_Home_Netflix">
    	<control type="group"> 
+        <animation effect="slide" end="10,0" condition="Skin.HasSetting(DisableNetflixHomeSidemenu)">Conditional</animation>
+        <animation effect="slide" end="60,0" condition="!Skin.HasSetting(DisableNetflixHomeSidemenu)">Conditional</animation>
+
         <visible>!String.IsEqual(Container(300).ListItem.Property(widget),Weather) + !String.IsEqual(Container(300).ListItem.Property(widget),Settings)</visible>
             <!-- Add Netflix view Fanart with corner diffuse -->
 	    <top>-50</top>
             <control type="group">
              <control type="image">
-                    <visible>!Player.HasVideo</visible>
+                    <visible>!Player.HasVideo + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]</visible>
                     <fadetime>350</fadetime>
                     <width>1380</width>
                     <height>720</height>
@@ -335,6 +338,19 @@
                     <texture background="true" diffuse="Right Corner.png">$VAR[Image_Fanart]</texture>
                     <aspectratio scalediffuse="false" aligny="top">scale</aspectratio>
                 </control>
+             <control type="image">
+
+                    <visible>!Player.HasVideo + ![String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]</visible>
+                    <fadetime>350</fadetime>
+                    <width>1080</width>
+                    <height>620</height>
+                    <left>750</left>
+                    <top>-35</top>
+                    <bottom>5</bottom>
+                    <texture background="true" diffuse="Right Corner.png">$VAR[Image_Fanart]</texture>
+                    <aspectratio scalediffuse="false" aligny="top">stretch</aspectratio>
+                </control>
+
                         <control type="group">
                             <top>480</top>
                             <right>470</right>
@@ -359,6 +375,33 @@
            <!-- End Netflix view Fanart with corner diffuse -->
 	<control type="group">
 	<visible>!Control.HasFocus(300) + !Control.HasFocus(302) + !String.IsEqual(Container(300).ListItem.Property(widget),Weather) + !String.IsEqual(Container(300).ListItem.Property(widget),Settings)</visible>
+             <!-- trailer window -->
+             <control type="group">
+<!--
+                  <animation effect="slide" start="0" end="-170,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)" reversible="true">Conditional</animation>
+                  <animation effect="slide" start="0" end="200,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.33)">Conditional</animation>
+-->
+                  <animation effect="slide" start="0" end="285,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.78)">Conditional</animation>
+                  <animation effect="slide" start="0" end="285,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,0.00)">Conditional</animation>
+                  <visible>Player.HasVideo</visible>
+                  <left>210</left>
+                  <width>1600</width>
+                  <height>640</height>
+                  <top>-115</top>
+                  <bottom>5</bottom>
+                  <control type="videowindow">
+                  <width>100%</width>
+                  <height>100%</height>
+                  </control>
+                  <control type="image">
+                  <animation effect="slide" start="0" end="225,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.78)">Conditional</animation>
+                  <animation effect="slide" start="0" end="225,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,0.00)">Conditional</animation>
+<!--
+                  <animation effect="slide" start="0" end="0,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)">Conditional</animation>
+-->
+                  <texture colordiffuse="ff000000" border="40">netflix/netflix_corner.png</texture>
+                  </control>
+               </control>
             <control type="grouplist">
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
@@ -366,17 +409,17 @@
                  <control type="image" id="55443">
                     <left>0</left>
                     <right>$PARAM[titleright]</right>
-                    <top>-10</top>
+                    <top>-15</top>
                     <bottom>10</bottom>
                     <height>251</height>
                     <width>650</width>
                     <aligny>top</aligny>
                     <align>left</align>
-                    <texture background="true">$VAR[Image_ClearLogo]</texture>
+                    <texture aspectratio="keep" background="true">$VAR[Image_ClearLogo]</texture>
                  </control>
 
                    <control type="label">
-                    <animation effect="slide" end="0,-60" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
+                    <animation effect="slide" end="0,-40" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
                     <visible>String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))</visible>
                     <left>0</left>
                     <right>$PARAM[titleright]</right>
@@ -390,7 +433,7 @@
                 <control type="grouplist">
                     <animation effect="slide" end="0,-120" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
 		    <top>-20</top>
-                    <height>60</height>
+                    <height>65</height>
                     <orientation>horizontal</orientation>
                     <usecontrolcoords>true</usecontrolcoords>
                     <itemgap>0</itemgap>
@@ -410,7 +453,7 @@
 			<itemgap>20</itemgap>
                     <control type="label">
                         <left>170</left>
-                        <top>25</top>
+                        <top>20</top>
                         <width>auto</width>
                         <height>40</height>
                         <label>$INFO[ListItem.Year]</label>
@@ -418,7 +461,7 @@
                         <font>font_tiny_bold</font>
                     </control>
                     <control type="label">
-                        <top>25</top>
+                        <top>20</top>
                         <width>80</width>
                         <height>40</height>
                         <textoffsetx>5</textoffsetx>
@@ -429,13 +472,25 @@
 			<visible>!String.IsEmpty($INFO[ListItem.MPAA])</visible>
                     </control>
                     <control type="label">
-                        <top>25</top>
+                        <top>20</top>
                         <width>80</width>
                         <height>40</height>
                         <label>$INFO[ListItem.Duration(h),,h] $INFO[ListItem.Duration(mm),,m]</label>
                         <textcolor>white</textcolor>
                         <font>font_tiny</font>
                     </control>
+<!--
+                    <control type="button">
+                       <texturenofocus border="0" colordiffuse="FF484848">diffuse/halfbox.png</texturenofocus>
+			<top>30</top>
+                        <width>90</width>
+                        <height>30</height>
+                        <label>$INFO[ListItem.Duration(h),,h] $INFO[ListItem.Duration(mm),,m]</label>
+                        <textcolor>white</textcolor>
+                        <textoffsetx>5</textoffsetx>
+                        <font>font_widget_time</font>
+                    </control>
+-->
 <!--
                     <control type="label">
                         <left>170</left>
@@ -450,13 +505,22 @@
 -->
                     <control type="label">
                         <top>25</top>
-                        <width>auto</width>
-                        <label>[B]$VAR[Label_Info_NextAired_Status] $VAR[Label_Info_NextAired_Date][/B]</label>
-                        <height>40</height>
+                        <width>195</width>
+                        <label>Aired: $INFO[ListItem.Premiered(dd MMM yyyy)]</label>
+                        <height>30</height>
                         <aligny>top</aligny>
                         <textcolor>$VAR[ColorHighlight2]</textcolor>
-                        <font>font_tiny</font>
+                        <font>font_tiny_bold</font>
+			<visible>String.IsEqual(ListItem.DBType,episode)</visible>
                     </control>
+		    <control type="label">
+                        <top>25</top>
+                        <width>auto</width>
+                        <height>40</height>
+		     	<label>$VAR[Label_Info_NextAired_Status]</label>
+			<font>font_tiny</font>
+			<textcolor>$VAR[ColorHighlight2]</textcolor>
+		    </control>
 		  </control>
 		  </control>
                 <control type="group">

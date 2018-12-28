@@ -29,14 +29,10 @@
     </include>
 
     <include name="Widgets">
-
-<!--
         <control type="list" id="302">
-            <onleft>300</onleft>
-	    <onright>300</onright>
+            <onup>430</onup>
             <onback>300</onback>
-	    <onup>302</onup>
-            <ondown>302</ondown>
+            <ondown>300</ondown>
             <orientation>horizontal</orientation>
             <height>10</height>
             <top>-1000</top>
@@ -47,21 +43,22 @@
             <visible>Skin.HasSetting(HideSubmenuWidget)</visible>
         </control>
         <control type="list" id="300">
-            <onleft condition="Control.HasFocus(300)">302</onleft>
-            <onright condition="Control.IsVisible(3902)">3902</onright>
-            <onright condition="!Control.IsVisible(3902)">300</onright>
+            <onup condition="Skin.HasSetting(HideSubmenuWidget)">302</onup>
+            <onup condition="!Skin.HasSetting(HideSubmenuWidget)">430</onup>
+            <ondown>3000</ondown>
+            <ondown condition="Control.IsVisible(3902)">3902</ondown>
+            <ondown condition="!Control.IsVisible(3902)">300</ondown>
             <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
             <onfocus>ClearProperty(WidgetLoading,Home)</onfocus>
             <onfocus>AlarmClock(SetLoad,SetProperty(WidgetLoading,1,Home),00:00,silent)</onfocus>
-            <orientation>vertical</orientation>
+            <orientation>horizontal</orientation>
             <height>10</height>
             <top>-1000</top>
             <itemlayout width="10" />
             <focusedlayout width="10" />
             <content><include>skinshortcuts-mainmenu</include></content>
         </control>
-
-       <control type="button" id="430">
+        <control type="button" id="430">
             <width>1</width>
             <height>1</height>
             <left>-2000</left>
@@ -79,7 +76,6 @@
             <onfocus>SetFocus(3000)</onfocus>
             <onclick>noop</onclick>
         </control>
--->
         <control type="group">
             <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
             <include>Animation_FadeInOut</include>
@@ -143,9 +139,7 @@
     <include name="Widget_Settings">
         <control type="group">
             <top>view_top</top>
-        <animation effect="slide" end="60,0" condition="Skin.HasSetting(DisableNetflixHomeSidemenu)">Conditional</animation>
-        <animation effect="slide" end="90,-50" condition="!Skin.HasSetting(DisableNetflixHomeSidemenu)">Conditional</animation>
-
+            <left>view_pad</left>
             <right>view_pad</right>
             <bottom>view_pad</bottom>
             <control type="grouplist">
@@ -396,6 +390,7 @@
             </control>
         </control>
     </include>
+    <include name="Widget_Busy_Top_Mouse"><top>455</top></include>
 
     <include name="Widgets_Grouplist">
         <control type="grouplist" id="330">
@@ -410,7 +405,7 @@
             <usecontrolcoords>true</usecontrolcoords>
             <scrolltime tween="sine" easing="out">500</scrolltime>
 	    <include content="Widget" condition="!Skin.HasSetting(HideSubmenuWidget)">
-                <param name="id" value="3001" />
+                <param name="id" value="302" />
                 <param name="submenu" value="true" />
                 <param name="aspect" value="$LOCALIZE[31263]" />
                 <param name="label" value="$VAR[catlabel]" />
@@ -447,7 +442,7 @@
                 </include>
                 <control type="group">
                     <include condition="Skin.HasSetting(MouseMode)">Widget_Busy_Top_Mouse</include>
-                    <top>155</top>
+                    <top>655</top>
                     <left>-395</left>
                     <include content="Defs_BusySpinner">
                         <param name="label" value="$LOCALIZE[31138]..." />
@@ -777,6 +772,7 @@
                 </include>
             </focusedlayout>
 	   <focusedlayout width="700" height="widget_poster_height" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31414]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + Control.HasFocus($PARAM[id])">
+           <include>AutoTrailerButton</include>
                 <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="landscapewide" value="true" />
@@ -1383,7 +1379,6 @@
 		    <include condition="$PARAM[landscapetrakt] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">Widget_Items_LandscapeTrakt</include>
                 </control>
                 <include>View_WatchedOverlay</include>
-           <include condition="!Skin.HasSetting(DisableNetflixHomeTrailer)">AutoTrailerButton</include>
                 <control type="group">
                     <include>View_Selectbox</include>
                 </control>
