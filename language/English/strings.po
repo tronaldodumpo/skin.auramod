@@ -2019,7 +2019,7 @@ msgid "Enable Categories Label"
 msgstr
 
 msgctxt "#31423"
-msgid "Mods"
+msgid "Widget Mods"
 msgstr ""
 
 #: /1080i/SkinSettings.xml
@@ -2080,4 +2080,7 @@ msgctxt "#31435"
 msgid "Netflix View"
 msgstr ""
 
+msgctxt "#31436"
+msgid "General Mods"
+msgstr ""
 
