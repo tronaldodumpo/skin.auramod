@@ -321,7 +321,8 @@
     <include name="Object_Home_Netflix">
    	<control type="group"> 
         <animation effect="slide" end="10,0" condition="Skin.HasSetting(DisableNetflixHomeSidemenu)">Conditional</animation>
-        <animation effect="slide" end="-50,0" condition="Skin.HasSetting(DisableNetflixHomeSidemenuHide)">Conditional</animation>
+        <animation effect="slide" end="-50,0" condition="!Skin.HasSetting(DisableNetflixHomeSidemenu) + Skin.HasSetting(DisableNetflixHomeSidemenuHide)">Conditional</animation>
+        <animation effect="slide" end="0,0" condition="Skin.HasSetting(DisableNetflixHomeSidemenu) + Skin.HasSetting(DisableNetflixHomeSidemenuHide)">Conditional</animation>
         <animation effect="slide" end="60,0" condition="!Skin.HasSetting(DisableNetflixHomeSidemenu)">Conditional</animation>
 
         <visible>!String.IsEqual(Container(300).ListItem.Property(widget),Weather) + !String.IsEqual(Container(300).ListItem.Property(widget),Settings)</visible>
@@ -345,8 +346,8 @@
                     <fadetime>350</fadetime>
                     <width>1080</width>
                     <height>620</height>
-                    <left>750</left>
-                    <top>-35</top>
+                    <left>780</left>
+                    <top>-40</top>
                     <bottom>5</bottom>
                     <texture background="true" diffuse="Right Corner.png">$VAR[Image_Fanart]</texture>
                     <aspectratio scalediffuse="false" aligny="top">stretch</aspectratio>

@@ -2,16 +2,12 @@
 <includes>
     <constant name="home_icon">67</constant>
     <constant name="home_left">70</constant>
-    <constant name="sidepad">80</constant>
     <constant name="settings_top">126</constant>
     <constant name="settings_height">954</constant>
     <constant name="topbar_height">156</constant>
     <constant name="view_top">153</constant>
-    <constant name="view_left">616</constant>
     <constant name="view_width">1215</constant>
-    <constant name="info_left">746</constant>
     <constant name="lovefilm_height">844</constant>
-    <constant name="poster_height">924</constant>
     <constant name="musicposter_width">536</constant>
     <constant name="musicposter_infotop">576</constant>
     <constant name="listitem_height">102.66</constant>
