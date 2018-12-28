@@ -374,6 +374,7 @@
                 <include>Home_Separator</include>
             </control>
             <control type="image">
+        <visible>!Skin.HasSetting(DisableNetflixHomeSidemenuHide) | Control.HasFocus(300) | Control.HasFocus(302)</visible>
                 <width>home_icon</width>
                 <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
             </control>
@@ -426,6 +427,7 @@
                 <visible>[![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(3904) |Control.HasFocus(300)] + [Window.IsVisible(Home) | [!Window.IsVisible(Home) + String.IsEqual(ListItem.Property(path),Window(Home).Property(MenuIconFocus))]] + !Skin.HasSetting(IconOnlyMode)] | [[Control.HasFocus(300) | Control.HasFocus(302)] + Skin.HasSetting(IconOnlyMode)]</visible>
                 <include>Animation_FadeIn</include>
                 <control type="image">
+        <visible>!Skin.HasSetting(DisableNetflixHomeSidemenuHide) | Control.HasFocus(300) | Control.HasFocus(302)</visible>
                     <texture colordiffuse="red">common/white.png</texture>
                 </control>
                 <control type="group">
@@ -437,6 +439,7 @@
                 </control>
             </control>
             <control type="image">
+        <visible>!Skin.HasSetting(DisableNetflixHomeSidemenuHide) | Control.HasFocus(300) | Control.HasFocus(302)</visible>
                 <width>home_icon</width>
                 <texture colordiffuse="main_fg_100">$INFO[ListItem.Icon]</texture>
                 <visible>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(3904) | Control.HasFocus(300)] + [Window.IsVisible(Home) | [!Window.IsVisible(Home) + String.IsEqual(ListItem.Property(path),Window(Home).Property(MenuIconFocus))]]</visible>

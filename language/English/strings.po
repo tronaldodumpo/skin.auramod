@@ -2084,3 +2084,7 @@ msgctxt "#31436"
 msgid "General Mods"
 msgstr ""
 
+#: /1080i/SkinSettings.xml
+msgctxt "#31437"
+msgid "Enable Sidemenu Icons auto-hide"
+msgstr
