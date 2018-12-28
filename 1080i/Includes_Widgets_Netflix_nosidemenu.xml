@@ -105,7 +105,7 @@
 		       <control type="group">
                         <left>50</left>
                         <top>100</top>
-                        <include condition="!Skin.HasSetting(DisableNetflixView)">Object_Home_Netflix</include>
+                        <include condition="!Skin.HasSetting(DisableNetflixHome)">Object_Home_Netflix</include>
 	            </control>
 
                         <include>Widgets_Grouplist</include>
@@ -442,7 +442,7 @@
                 </include>
                 <control type="group">
                     <include condition="Skin.HasSetting(MouseMode)">Widget_Busy_Top_Mouse</include>
-                    <top>655</top>
+                    <top>155</top>
                     <left>-395</left>
                     <include content="Defs_BusySpinner">
                         <param name="label" value="$LOCALIZE[31138]..." />
