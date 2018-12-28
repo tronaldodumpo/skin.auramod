@@ -1383,7 +1383,6 @@
 		    <include condition="$PARAM[landscapetrakt] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">Widget_Items_LandscapeTrakt</include>
                 </control>
                 <include>View_WatchedOverlay</include>
-           <include condition="!Skin.HasSetting(DisableNetflixHomeTrailer)">AutoTrailerButton</include>
                 <control type="group">
                     <include>View_Selectbox</include>
                 </control>

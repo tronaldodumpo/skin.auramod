@@ -772,7 +772,6 @@
                 </include>
             </focusedlayout>
 	   <focusedlayout width="700" height="widget_poster_height" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31414]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + Control.HasFocus($PARAM[id])">
-           <include>AutoTrailerButton</include>
                 <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="landscapewide" value="true" />
