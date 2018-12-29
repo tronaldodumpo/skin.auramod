@@ -332,13 +332,13 @@
              <control type="image">
                     <visible>!Player.HasVideo + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]</visible>
                     <fadetime>350</fadetime>
-                    <width>1380</width>
-                    <height>720</height>
-		    <left>510</left>
+                    <width>1400</width>
+                    <height>787</height>
+		    <left>450</left>
                     <top>-45</top>
                     <bottom>5</bottom>
                     <texture background="true" diffuse="Right Corner.png">$VAR[Image_Fanart]</texture>
-                    <aspectratio scalediffuse="false" aligny="top">scale</aspectratio>
+                    <aspectratio scalediffuse="true" aligny="top">scale</aspectratio>
                 </control>
              <control type="image">
 
@@ -354,7 +354,7 @@
                 </control>
 
                 <control type="group">
-                    <top>480</top>
+                    <top>520</top>
                     <right>470</right>
                     <width>$PARAM[width]</width>
                 <include content="Object_Ratings" condition="Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(Home.xml) | Window.IsVisible(script-globalsearch.xml)">
@@ -375,15 +375,12 @@
 
              </control>
            <!-- End Netflix view Fanart with corner diffuse -->
-	<control type="group">
-		<visible>!Control.HasFocus(300) + !Control.HasFocus(302) + !String.IsEqual(Container(300).ListItem.Property(widget),Weather) + !String.IsEqual(Container(300).ListItem.Property(widget),Settings)</visible>
+        <control type="group">
              <!-- trailer window -->
              <control type="group">
-<!--
-                  <animation effect="slide" start="0" end="-170,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)" reversible="true">Conditional</animation>
+                  <animation effect="slide" start="0" end="100,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)" reversible="true">Conditional</animation>
                   <animation effect="slide" start="0" end="200,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.33)">Conditional</animation>
--->
-                  <animation effect="slide" start="0" end="285,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.78)">Conditional</animation>
+                  <animation effect="slide" start="0" end="95,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.78)">Conditional</animation>
                   <animation effect="slide" start="0" end="285,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,0.00)">Conditional</animation>
                   <visible>Player.HasVideo</visible>
                   <left>210</left>
@@ -396,14 +393,13 @@
                   <height>100%</height>
                   </control>
                   <control type="image">
-                  <animation effect="slide" start="0" end="225,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.78)">Conditional</animation>
+                  <animation effect="slide" start="0" end="225,-70" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.78)">Conditional</animation>
                   <animation effect="slide" start="0" end="225,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,0.00)">Conditional</animation>
-<!--
-                  <animation effect="slide" start="0" end="0,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)">Conditional</animation>
--->
+                  <animation effect="slide" start="0" end="30,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)">Conditional</animation>
                   <texture colordiffuse="ff000000" border="40">netflix/netflix_corner.png</texture>
                   </control>
                </control>
+
             <control type="grouplist">
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
@@ -587,31 +583,33 @@
         <param name="titleright" default="0" />
 
         <definition>
-	     <!-- trailer window -->
-                                <control type="group">
-<!--
-                                        <animation effect="slide" start="0" end="-170,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)" reversible="true">Conditional</animation>
-                                        <animation effect="slide" start="0" end="200,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.33)">Conditional</animation>
--->
-                                        <animation effect="slide" start="0" end="285,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.78)">Conditional</animation>
-                                        <visible>Player.HasVideo</visible>
-					<right>0</right>
-                                        <width>1600</width>
-                                        <height>570</height>
-					<top>-35</top>
-					<bottom>5</bottom>
-                                        <control type="videowindow">
-					<width>100%</width>
-					<height>100%</height>
-                                        </control>
-                                        <control type="image">
-                                        <animation effect="slide" start="0" end="265,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.78)">Conditional</animation>
-<!--
-                                        <animation effect="slide" start="0" end="0,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)">Conditional</animation>
--->
-                                                <texture colordiffuse="ff000000" border="40">netflix/netflix_corner.png</texture>
-                                        </control>
-                                </control>
+           <!-- End Netflix view Fanart with corner diffuse -->
+        <control type="group">
+                <visible>!Control.HasFocus(300) + !Control.HasFocus(302) + !String.IsEqual(Container(300).ListItem.Property(widget),Weather) + !String.IsEqual(Container(300).ListItem.Property(widget),Settings)</visible>
+             <!-- trailer window -->
+             <control type="group">
+                  <animation effect="slide" start="0" end="100,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)" reversible="true">Conditional</animation>
+                  <animation effect="slide" start="0" end="200,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.33)">Conditional</animation>
+                  <animation effect="slide" start="0" end="95,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.78)">Conditional</animation>
+                  <animation effect="slide" start="0" end="285,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,0.00)">Conditional</animation>
+                  <visible>Player.HasVideo</visible>
+                  <left>210</left>
+                  <width>1600</width>
+                  <height>640</height>
+                  <top>-115</top>
+                  <bottom>5</bottom>
+                  <control type="videowindow">
+                  <width>100%</width>
+                  <height>100%</height>
+                  </control>
+                  <control type="image">
+                  <animation effect="slide" start="0" end="225,-70" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.78)">Conditional</animation>
+                  <animation effect="slide" start="0" end="225,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,0.00)">Conditional</animation>
+                  <animation effect="slide" start="0" end="30,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)">Conditional</animation>
+                  <texture colordiffuse="ff000000" border="40">netflix/netflix_corner.png</texture>
+                  </control>
+               </control>
+               </control>
 
 	    <!-- Add Netflix view Fanart with corner diffuse -->
 	    <control type="group">
@@ -619,9 +617,9 @@
 		    <visible>!Skin.HasSetting(DisableNetflixView) + !Player.HasVideo + [Control.IsVisible(55) | Control.IsVisible(56)]</visible>
                     <fadetime>350</fadetime>
                     <width>1400</width>
-                    <height>720</height>
-                    <right>0</right>
-		    <top>-35</top>
+                    <height>787</height>
+		    <right>0</right>
+                    <top>-45</top>
 	            <bottom>5</bottom>	
                     <texture background="true" diffuse="Right Corner.png">$VAR[Image_Fanart]</texture>
                     <aspectratio scalediffuse="false" aligny="top">scale</aspectratio>

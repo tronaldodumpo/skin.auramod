@@ -108,7 +108,7 @@
 
 
     <include name="Home_Textbar_Texture">
-	<visible>Control.HasFocus(300) | Control.HasFocus(302)</visible>	
+	<visible>!Skin.HasSetting(IconOnlyMode) + [Control.HasFocus(300) | Control.HasFocus(302)]</visible>	
         <control type="image">
             <texture>common/gradient-solid-horizontal.png</texture>
             <include>Defs_DarkShadow</include>
@@ -444,6 +444,16 @@
                 <texture colordiffuse="main_fg_100">$INFO[ListItem.Icon]</texture>
                 <visible>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(3904) | Control.HasFocus(300)] + [Window.IsVisible(Home) | [!Window.IsVisible(Home) + String.IsEqual(ListItem.Property(path),Window(Home).Property(MenuIconFocus))]]</visible>
             </control>
+               <control type="image">
+     <visible>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(3904) | Control.HasFocus(300)] + [Window.IsVisible(Home) | [!Window.IsVisible(Home) + String.IsEqual(ListItem.Property(path),Window(Home).Property(MenuIconFocus))]]</visible>
+
+                <left>5</left>
+                <top>15</top>
+                <height>40</height>
+                <width>6</width>
+                    <texture colordiffuse="red">common/white.png</texture>
+                </control>
+
             <control type="image">
                 <width>home_icon</width>
                 <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
