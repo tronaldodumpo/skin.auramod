@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+    <include name="Defs_DarkShadow">
+        <left>-24</left>
+        <right>-24</right>
+        <top>-24</top>
+        <bottom>-24</bottom>
+        <bordersize>24</bordersize>
+        <bordertexture border="24">common/dark-shadow-24.png</bordertexture>
+    </include>
+
     <variable name="Defs_PictureBack_DBID">
         <value condition="String.EndsWith(ListItem.DBID,0)">$NUMBER[0]</value>
         <value condition="String.EndsWith(ListItem.DBID,1)">$NUMBER[1]</value>

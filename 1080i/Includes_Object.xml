@@ -321,6 +321,7 @@
     <include name="Object_Home_Netflix">
    	<control type="group"> 
         <animation effect="slide" end="10,0" condition="Skin.HasSetting(DisableNetflixHomeSidemenu)">Conditional</animation>
+        <animation effect="slide" end="-50,0" condition="[Skin.HasSetting(IconOnlyMode) + !Control.HasFocus(300)] + !Skin.HasSetting(DisableNetflixHomeSidemenu) + Skin.HasSetting(DisableNetflixHomeSidemenuHide)">Conditional</animation>
         <animation effect="slide" end="-50,0" condition="!Skin.HasSetting(DisableNetflixHomeSidemenu) + Skin.HasSetting(DisableNetflixHomeSidemenuHide)">Conditional</animation>
         <animation effect="slide" end="0,0" condition="Skin.HasSetting(DisableNetflixHomeSidemenu) + Skin.HasSetting(DisableNetflixHomeSidemenuHide)">Conditional</animation>
         <animation effect="slide" end="60,0" condition="!Skin.HasSetting(DisableNetflixHomeSidemenu)">Conditional</animation>
@@ -419,7 +420,7 @@
                  </control>
 
                    <control type="label">
-                    <visible>Control.HasFocus(300)</visible>
+                    <visible>Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeSidemenu)</visible>
                     <left>0</left>
                     <right>$PARAM[titleright]</right>
                     <label>$INFO[ListItem.Label]</label>
