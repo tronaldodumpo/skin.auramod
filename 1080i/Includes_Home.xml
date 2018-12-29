@@ -72,18 +72,8 @@
                         <onright condition="Window.IsVisible(SettingsSystemInfo.xml)">50</onright>
                         <onright condition="[Window.IsVisible(MyWeather.xml) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(MyPlaylist.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyVideoNav.xml)]">50</onright>
                         <onright condition="Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)">9500</onright>
-
-                        
-
                         <include condition="![Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(MyWeather.xml) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(MyPlaylist.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyVideoNav.xml)]">Home_MainMenu_Layout</include>
-                        <include condition="[Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(MyWeather.xml) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(MyPlaylist.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyVideoNav.xml)]">Home_VideoInfo_Layout</include>
-
                         <include condition="Window.IsVisible(Home) + !Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_Items</include>
-                        <include condition="[Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyVideoNav.xml)] + !Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_OptionsItems</include>
-                        <include condition="Window.IsVisible(MyPlaylist.xml) + !Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_PlaylistItems</include>
-                        <include condition="[Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(Settings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsProfile.xml)] + !Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_SettingsItems</include>
-                        <include condition="[Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)] + !Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_NextAired</include>
-                        <include condition="Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_GlobalSearch</include>
                     </control>
                     <control type="group">
                         <top>view_top</top>
@@ -417,7 +407,6 @@
                 <visible>Integer.IsGreater(Container(302).NumItems,0)</visible>
                 <visible>!Skin.HasSetting(DisableSubMenu)</visible>
                 <visible>Skin.HasSetting(IconOnlyMode)</visible>
-                <animation effect="fade" start="0" end="100" time="350" delay="250" tween="cubic" easing="inout">Focus</animation>
             </control>
             <control type="group">
                 <left>5</left>
@@ -429,13 +418,6 @@
                 <control type="image">
         <visible>!Skin.HasSetting(DisableNetflixHomeSidemenuHide) | Control.HasFocus(300) | Control.HasFocus(302)</visible>
                     <texture colordiffuse="red">common/white.png</texture>
-                </control>
-                <control type="group">
-                    <include>Home_Separator</include>
-                </control>
-                <control type="group">
-                    <top>home_icon</top>
-                    <include>Home_Separator</include>
                 </control>
             </control>
             <control type="image">
@@ -474,7 +456,7 @@
     </include>
 
     <include name="Home_SubMenu_Layout">
-        <top>view_top</top>
+        <top>80</top>
         <width>310</width>
         <right>0</right>
         <preloaditems>2</preloaditems>

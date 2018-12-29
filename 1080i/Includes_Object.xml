@@ -324,6 +324,7 @@
         <animation effect="slide" end="-50,0" condition="!Skin.HasSetting(DisableNetflixHomeSidemenu) + Skin.HasSetting(DisableNetflixHomeSidemenuHide)">Conditional</animation>
         <animation effect="slide" end="0,0" condition="Skin.HasSetting(DisableNetflixHomeSidemenu) + Skin.HasSetting(DisableNetflixHomeSidemenuHide)">Conditional</animation>
         <animation effect="slide" end="60,0" condition="!Skin.HasSetting(DisableNetflixHomeSidemenu)">Conditional</animation>
+        <animation effect="slide" end="300,0" condition="Skin.HasSetting(IconOnlyMode) + Control.HasFocus(302)">Conditional</animation>
 
         <visible>!String.IsEqual(Container(300).ListItem.Property(widget),Weather) + !String.IsEqual(Container(300).ListItem.Property(widget),Settings)</visible>
             <!-- Add Netflix view Fanart with corner diffuse -->
