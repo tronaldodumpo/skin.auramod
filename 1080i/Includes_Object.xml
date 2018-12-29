@@ -414,12 +414,25 @@
                     <width>650</width>
                     <aligny>top</aligny>
                     <align>left</align>
-                    <texture aspectratio="keep" background="true">$VAR[Image_ClearLogo]</texture>
+                    <aspectratio align="left" aligny="center">keep</aspectratio>
+                    <texture aspectratio="keep" background="true">$VAR[Widget_ClearLogo]</texture>
                  </control>
 
                    <control type="label">
+                    <visible>Control.HasFocus(300)</visible>
+                    <left>0</left>
+                    <right>$PARAM[titleright]</right>
+                    <label>$INFO[ListItem.Label]</label>
+                    <top>-320</top>
+                    <textcolor>red</textcolor>
+                    <font>netflix_heading</font>
+                    <width min="200" max="700">auto</width>
+                    <scroll>true</scroll>
+                </control>
+
+                   <control type="label">
                     <animation effect="slide" end="0,-40" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
-                    <visible>String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))</visible>
+                    <visible>!Control.HasFocus(300) + [String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo)) + String.IsEmpty(Control.GetLabel(55443))]</visible>
                     <left>0</left>
                     <right>$PARAM[titleright]</right>
                     <label>$INFO[ListItem.Label]</label>
@@ -430,7 +443,7 @@
                     <scroll>true</scroll>
                 </control>
                 <control type="grouplist">
-                    <animation effect="slide" end="0,-120" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
+                    <animation effect="slide" end="0,-120" condition="String.IsEmpty(Control.GetLabel(55443))">Conditional</animation>
 		    <top>-20</top>
                     <height>65</height>
                     <orientation>horizontal</orientation>
@@ -511,6 +524,7 @@
                         <textcolor>$VAR[ColorHighlight2]</textcolor>
                         <font>font_tiny_bold</font>
 			<visible>String.IsEqual(ListItem.DBType,episode)</visible>
+			<visible>!Control.HasFocus(300) + !Control.HasFocus(302)</visible>
                     </control>
 		    <control type="label">
                         <top>25</top>
@@ -519,6 +533,7 @@
 		     	<label>$VAR[Label_Info_NextAired_Status]</label>
 			<font>font_tiny</font>
 			<textcolor>$VAR[ColorHighlight2]</textcolor>
+			<visible>!Control.HasFocus(300) + !Control.HasFocus(302)</visible>
 		    </control>
 		  </control>
 		  </control>
@@ -533,7 +548,7 @@
 
 		 <control type="textbox">
  <visible>[String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]</visible>
-                 <animation effect="slide" end="0,-110" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
+                 <animation effect="slide" end="0,-110" condition="String.IsEmpty(Control.GetLabel(55443))">Conditional</animation>
 		    <top>-40</top>
 		    <visible>!Skin.HasSetting(DisableNetflixView)</visible>
                     <label fallback="19055">$VAR[Label_Plot]</label>
@@ -544,7 +559,7 @@
                     <font>font_tiny_bold</font>
                 </control>
 		<control type="group">
-                 <animation effect="slide" end="0,-80" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
+                 <animation effect="slide" end="0,-80" condition="String.IsEmpty(Control.GetLabel(55443))">Conditional</animation>
 		<top>20</top>
 	 	 <control type="image">
 		    <visible>[String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]</visible>
