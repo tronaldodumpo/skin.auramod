@@ -394,7 +394,7 @@
                   <height>100%</height>
                   </control>
                   <control type="image">
-                  <animation effect="slide" start="0" end="225,-70" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.78)">Conditional</animation>
+                  <animation effect="slide" start="0" end="225,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.78)">Conditional</animation>
                   <animation effect="slide" start="0" end="225,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,0.00)">Conditional</animation>
                   <animation effect="slide" start="0" end="30,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)">Conditional</animation>
                   <texture colordiffuse="ff000000" border="40">netflix/netflix_corner.png</texture>
@@ -605,7 +605,7 @@
                   <height>100%</height>
                   </control>
                   <control type="image">
-                  <animation effect="slide" start="0" end="225,-70" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.78)">Conditional</animation>
+                  <animation effect="slide" start="0" end="225,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,1.78)">Conditional</animation>
                   <animation effect="slide" start="0" end="225,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,0.00)">Conditional</animation>
                   <animation effect="slide" start="0" end="30,0" time="0" condition="Integer.IsEqual(VideoPlayer.VideoAspect,2.4) | Integer.IsEqual(VideoPlayer.VideoAspect,2.35) | Integer.IsEqual(VideoPlayer.VideoAspect,2.55) | Integer.IsEqual(VideoPlayer.VideoAspect,2.76)">Conditional</animation>
                   <texture colordiffuse="ff000000" border="40">netflix/netflix_corner.png</texture>
