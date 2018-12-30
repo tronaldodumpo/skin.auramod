@@ -18,5 +18,6 @@
     <constant name="view_left">680</constant>
     <constant name="widget_poster_width">290</constant>
     <constant name="widget_poster_height_netflix">390</constant>
+    <constant name="widget_poster_height">420</constant>
     <constant name="sidepad">80</constant>    
 </includes>
