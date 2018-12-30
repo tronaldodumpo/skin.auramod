@@ -351,6 +351,7 @@
     </include>
 
     <include name="Home_MainMenu_Layout">
+        <animation effect="slide" end="0,-70" condition="Integer.IsGreater(Container(300).NumItems,7)">Conditional</animation>
         <top>80</top>
         <width>240</width>
         <!-- <height>890</height> -->

@@ -416,11 +416,16 @@
                     <aligny>top</aligny>
                     <align>left</align>
                     <aspectratio align="left" aligny="center">keep</aspectratio>
-                    <texture aspectratio="keep" background="true">$VAR[Widget_ClearLogo]</texture>
+                    <texture aspectratio="keep" background="true">$VAR[NetflixHome_ClearLogo]</texture>
+		    <visible>!Control.HasFocus(300)</visible>
                  </control>
 
                    <control type="label">
                     <visible>Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeSidemenu)</visible>
+                    <top>-15</top>
+                    <bottom>10</bottom>
+                    <height>251</height>
+                    <width>650</width>
                     <left>0</left>
                     <right>$PARAM[titleright]</right>
                     <label>$INFO[ListItem.Label]</label>
@@ -432,7 +437,7 @@
                 </control>
 
                    <control type="label">
-                    <animation effect="slide" end="0,-40" condition="String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">Conditional</animation>
+                    <animation effect="slide" end="0,-40" condition="String.IsEmpty(Control.GetLabel(55443))">Conditional</animation>
                     <visible>!Control.HasFocus(300) + [String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo)) + String.IsEmpty(Control.GetLabel(55443))]</visible>
                     <left>0</left>
                     <right>$PARAM[titleright]</right>
@@ -454,6 +459,8 @@
                     <right>$PARAM[titleright]</right>
 		<control type="group">
 		    <left>-5</left>
+  <visible>[String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]</visible>
+
                     <include content="Object_StarRating" condition="![Skin.HasSetting(DisableInfoRatings) + !Window.IsVisible(DialogVideoInfo.xml)] | [!Container.Content(movies) + !Container.Content(episodes)]">
                     <param name="height" value="50" />
                     <param name="width" value="50" />
@@ -548,7 +555,7 @@
                 </control>
 
 		 <control type="textbox">
- <visible>[String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]</visible>
+		<visible>!Control.HasFocus(300) + !Control.HasFocus(302)</visible>
                  <animation effect="slide" end="0,-110" condition="String.IsEmpty(Control.GetLabel(55443))">Conditional</animation>
 		    <top>-40</top>
 		    <visible>!Skin.HasSetting(DisableNetflixView)</visible>
@@ -571,7 +578,7 @@
                     <texture colordiffuse="FFFF0000">netflix/genre.png</texture>
                     </control>
                 <control type="label">
-		    <visible>[String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]</visible>
+		    <visible>[String.IsEqual(ListItem.DBType,episode) | Container.Content(livetv) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]</visible>
                     <left>90</left>
                     <right>0</right>
                     <label>[I]$VAR[Label_Genre][/I]</label>

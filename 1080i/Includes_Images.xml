@@ -58,6 +58,14 @@
         <value condition="!String.IsEmpty(ListItem.TvShowTitle)">http://localhost:52307/getartwork&amp;title=$ESCINFO[ListItem.TvShowTitle]&amp;type=clearlogo&amp;mediatype=tvshow</value>
         <value condition="String.IsEmpty(ListItem.TvShowTitle)">http://localhost:52307/getpvrthumb&amp;title=$ESCINFO[ListItem.Label]&amp;type=clearlogo&amp;mediatype=movies</value>
     </variable>
+    <variable name="NetflixHome_ClearLogo">
+        <value condition="!String.IsEmpty(ListItem.Art(tvshow.clearlogo))">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(clearlogo))">$INFO[ListItem.Art(clearlogo)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo)]</value>
+        <value condition="!String.IsEmpty(ListItem.TvShowTitle)">http://localhost:52307/getartwork&amp;title=$ESCINFO[ListItem.TvShowTitle]&amp;type=clearlogo&amp;mediatype=tvshow</value>
+        <value condition="String.IsEmpty(ListItem.TvShowTitle)">http://localhost:52307/getpvrthumb&amp;title=$ESCINFO[ListItem.Label]&amp;type=clearlogo&amp;mediatype=movies</value>
+        <value condition="String.IsEmpty(ListItem.TvShowTitle)">http://localhost:52307/getpvrthumb&amp;title=$ESCINFO[ListItem.Title]&amp;type=clearlogo&amp;mediatype=movies</value>
+    </variable>
 
     <variable name="Image_DiscArt">
         <value condition="!String.IsEmpty(ListItem.Art(discart))">$INFO[ListItem.Art(discart)]</value>
@@ -120,7 +128,7 @@
         <value condition="ListItem.IsCollection">indicator/movieset.png</value>
     </variable>
     <variable name="Image_Overlay_Corner">
-        <value condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml)]+ !String.IsEmpty(ListItem.DBID)">indicator/corner.png</value>
+        <value condition="[Window.IsVisible(Home.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml)] + !String.IsEmpty(ListItem.DBID)">indicator/corner.png</value>
         <value condition="ListItem.IsPlaying">indicator/corner.png</value>
         <value condition="ListItem.IsResumable">indicator/corner.png</value>
         <value condition="String.IsEqual(ListItem.Overlay,OverlayWatched.png)">indicator/corner.png</value>
