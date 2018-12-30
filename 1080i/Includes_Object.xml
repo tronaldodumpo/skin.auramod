@@ -423,7 +423,7 @@
                  </control>
 
                    <control type="label">
-                    <visible>[Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeSidemenu)] + ![String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]</visible>
+                    <visible>[Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeSidemenu)] | [!Skin.HasSetting(DisableNetflixHomeSidemenu) + [![String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]]]</visible>
                     <top>-45</top>
                     <bottom>10</bottom>
                     <height>251</height>
