@@ -418,11 +418,12 @@
                     <aspectratio align="left" aligny="center">keep</aspectratio>
                     <texture aspectratio="keep" background="true">$VAR[NetflixHome_ClearLogo]</texture>
 		    <visible>!Control.HasFocus(300)</visible>
+  <visible>[String.IsEqual(ListItem.DBType,episode) | Container.Content(livetv) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]</visible>
                  </control>
 
                    <control type="label">
-                    <visible>Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeSidemenu)</visible>
-                    <top>-15</top>
+                    <visible>[Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeSidemenu)] | ![String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]</visible>
+                    <top>-45</top>
                     <bottom>10</bottom>
                     <height>251</height>
                     <width>650</width>
@@ -557,6 +558,7 @@
 		 <control type="textbox">
 		<visible>!Control.HasFocus(300) + !Control.HasFocus(302)</visible>
                  <animation effect="slide" end="0,-110" condition="String.IsEmpty(Control.GetLabel(55443))">Conditional</animation>
+                 <animation effect="slide" end="0,-130" condition="![String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]">Conditional</animation>
 		    <top>-40</top>
 		    <visible>!Skin.HasSetting(DisableNetflixView)</visible>
                     <label fallback="19055">$VAR[Label_Plot]</label>
