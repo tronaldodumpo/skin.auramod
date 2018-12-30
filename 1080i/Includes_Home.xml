@@ -362,14 +362,12 @@
             <control type="group">
                 <top>home_icon</top>
                 <width>home_icon</width>
-                <include>Home_Separator</include>
             </control>
             <control type="image">
         <visible>!Skin.HasSetting(DisableNetflixHomeSidemenuHide) | Control.HasFocus(300) | Control.HasFocus(302)</visible>
                 <width>home_icon</width>
                 <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
             </control>
-
             <control type="group">
                 <left>home_icon</left>
                 <width>6</width>

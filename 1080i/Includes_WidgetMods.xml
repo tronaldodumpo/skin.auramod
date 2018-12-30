@@ -4,10 +4,11 @@
   <include name="Widget_Items_LandscapeTrakt">
     <control type="group">
       <control type="image">
-        <texture fallback="diffuse/widgetlandscape.png" background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Fanart]</texture>
+        <texture fallback="diffuse/widgetlandscape.png" background="true">$VAR[Image_Fanart]</texture>
         <aspectratio scalediffuse="false">stretch</aspectratio>
       </control>
       <control type="image">
+          <visible>Skin.HasSetting(DisableNetflixHome)</visible>
         <height>330</height>
         <bottom>0</bottom>
         <texture colordiffuse="60000000" flipy="true">diffuse/halfbox.png</texture>
@@ -19,6 +20,7 @@
 	<control type="group">
           <!-- START TvShowTitle Button -->
           <control type="group">
+	<visible>Skin.HasSetting(DisableNetflixHome)</visible>
 	    <bottom>60</bottom>
             <width min="10" max="120">auto</width>
             <height>30</height>
@@ -38,6 +40,7 @@
           <!-- END Studio Button -->
           <!-- START Airdate Button -->
           <control type="group">
+	  <visible>Skin.HasSetting(DisableNetflixHome)</visible>
 	    <bottom>60</bottom>
             <width min="10" max="105">auto</width>
             <height>30</height>
@@ -48,6 +51,7 @@
               <texture colordiffuse="red">diffuse/halfbox.png</texture>
             </control>
             <control type="label">
+	  <visible>Skin.HasSetting(DisableNetflixHome)</visible>
               <label>$INFO[ListItem.Premiered(dd MMM yyyy)]</label>
               <font>font_widget_time</font>
               <align>center</align>
@@ -67,7 +71,12 @@
           <left>20</left>
           </control>
 -->
-
+       <control type="image">
+          <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
+	  <bottom>0</bottom>
+          <height>60</height>
+          <texture colordiffuse="99000000" border="10" flipy="true">diffuse/halfbox.png</texture>
+        </control>
           <control type="label">
             <visible>!String.IsEqual(ListItem.Title,ListItem.Label)</visible>
             <visible>!String.IsEmpty(ListItem.Episode)</visible>
@@ -101,6 +110,7 @@
         <aspectratio scalediffuse="false">scale</aspectratio>
       </control>
       <control type="image">
+	<visible>Skin.HasSetting(DisableNetflixHome)</visible>
         <bottom>30</bottom>
         <top>170</top>
         <left>120</left>
@@ -112,6 +122,7 @@
       <control type="group">
 <!-- Add Clearlogo to landscape Image -->
         <control type="image">
+	<visible>Skin.HasSetting(DisableNetflixHome)</visible>
           <bottom>35</bottom>
           <right>10</right>
           <width>40%</width>
@@ -123,6 +134,7 @@
           <visible>Skin.HasSetting(DisableBanners) + !String.IsEmpty(ListItem.TvShowTitle)</visible>
         </control>
         <control type="image">
+	<visible>Skin.HasSetting(DisableNetflixHome)</visible>
           <bottom>5</bottom>
           <right>10</right>
           <width>45%</width>
