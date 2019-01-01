@@ -12,6 +12,11 @@
             <linespacing>0.9</linespacing>
             <size>54</size>
         </font>
+        <font>
+            <name>Netflix_Info_main</name>
+            <filename>Regular-new.ttf</filename>
+            <size>26</size>
+        </font>
 	<font>
             <name>widget_trakt_title</name>
             <filename>Bold-new.ttf</filename>

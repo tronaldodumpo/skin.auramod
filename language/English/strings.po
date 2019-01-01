@@ -2063,7 +2063,7 @@ msgstr
 
 #: /1080i/SkinSettings.xml
 msgctxt "#31432"
-msgid "Enable Netflix Home Trailer Autoplay"
+msgid "Enable Netflix Video Info"
 msgstr
 
 #: /1080i/SkinSettings.xml
@@ -2088,3 +2088,14 @@ msgstr ""
 msgctxt "#31437"
 msgid "Enable Sidemenu Icons auto-hide"
 msgstr
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31438"
+msgid "Enable Alternative Home  Spotlight"
+msgstr
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31439"
+msgid "Enable Sumenu Background Image"
+msgstr
+
