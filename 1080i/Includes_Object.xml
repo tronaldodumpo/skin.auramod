@@ -326,7 +326,7 @@
 	    <visible>!Window.IsVisible(DialogVideoInfo.xml)</visible>
 
                 <control type="image">
-                    <visible>!Player.HasVideo</visible>
+                    <visible>!Player.HasVideo + !Control.HasFocus(3001)</visible>
 		    <left>-400</left>
                     <width>100%</width>
                     <height>100%</height>
@@ -351,6 +351,11 @@
                 <visible>!Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(302)</visible>
                 <include>Global_Background</include>
                 </control>
+                <control type="group">
+                <visible>!Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(3001)</visible>
+                <include>Global_Background</include>
+                </control>
+
 	
             <control type="group">
 	      <control type="grouplist" id="9000">
@@ -422,7 +427,7 @@
                           <width>750</width>
                           <textcolor>main_fg_100</textcolor>
 			  <shadowcolor>black</shadowcolor>
-                          <font>font_small_bold</font>
+                          <font>font_small</font>
                 </control>
         </control>
 
@@ -431,7 +436,7 @@
                   <height  min="20" max="130">auto</height>
               <control type="textbox">
              	    <animation effect="slide" end="0,-40" condition="String.IsEmpty(Control.GetLabel(55443))">Conditional</animation> 
-                    <visible>!Skin.HasSetting(DisableNetflixView) + !Control.HasFocus(300) + !Control.HasFocus(302)</visible>
+                    <visible>!Skin.HasSetting(DisableNetflixView) + !Control.HasFocus(300) + !Control.HasFocus(302) + !Control.HasFocus(3001)</visible>
                     <label fallback="19055">$VAR[Label_Plot]</label> 
                     <width>500</width>
                     <textcolor>dimgrey</textcolor>

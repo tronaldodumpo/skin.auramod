@@ -489,9 +489,9 @@
         <value condition="!String.IsEmpty(ListItem.Property(Artist_Description))">$INFO[ListItem.Property(Artist_Description)]</value>
         <value condition="!String.IsEmpty(ListItem.Property(Album_Description))">$INFO[ListItem.Property(Album_Description)]</value>
         <value condition="!String.IsEmpty(ListItem.AddonDescription)">$INFO[ListItem.AddonDescription]</value>
-        <value condition="String.IsEqual(ListItem.DBType,episode)">[I]$INFO[ListItem.Season,Season ,  ]$INFO[ListItem.Episode,Episode , ][/I]</value>
+        <value condition="String.IsEqual(ListItem.DBType,episode)">[I]Continue watching $INFO[ListItem.Season, S,: ]$INFO[ListItem.Episode,E, ][/I]</value>
         <value condition="String.IsEqual(ListItem.DBType,season)">$INFO[ListItem.Season,Season , ]</value>
-        <value condition="String.IsEqual(ListItem.DBType,tvshow)">$INFO[ListItem.Year,Premiered  , ]</value>
+        <value condition="!Control.HasFocus(55) + !Control.HasFocus(56) + String.IsEqual(ListItem.DBType,tvshow)">[I]$INFO[ListItem.Year,Premiered  , ][/I]</value>
     </variable>
 
     <variable name="Label_Rating">
