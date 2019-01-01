@@ -556,11 +556,11 @@
                     <label>$INFO[Container($PARAM[id]).ListItem.Label,| , |]</label>
                     <include>Statusbar_Menubar_Items</include>
                     <visible>Control.HasFocus($PARAM[id])</visible>
-		    <visible>!Skin.HasSetting(DisableWidgetTitle)</visible>
+		    <visible>Skin.HasSetting(DisableWidgetTitle)</visible>
                 </control>
 <!-- Add Ratings -->
 		<control type="grouplist">
-		    <visible>Control.HasFocus($PARAM[id]) + !Control.HasFocus(302) + !Skin.HasSetting(DisableWidgetIMDB)</visible>
+		    <visible>Control.HasFocus($PARAM[id]) + !Control.HasFocus(302) + Skin.HasSetting(DisableWidgetIMDB)</visible>
                     <bottom>5</bottom>
                     <height>30</height>
                <include content="Object_Ratings_Content">
@@ -580,7 +580,7 @@
 		</control>
 		<control type="label">
                     <left>5</left>
-                    <visible>Control.HasFocus($PARAM[id]) + !Skin.HasSetting(DisableWidgetPlot) + Skin.HasSetting(DisableWidgetIMDB)</visible>
+                    <visible>Control.HasFocus($PARAM[id]) + Skin.HasSetting(DisableWidgetPlot) + Skin.HasSetting(DisableWidgetIMDB)</visible>
                     <textcolor>main_fg_70</textcolor>
                     <height>20</height>
                     <top>10</top>

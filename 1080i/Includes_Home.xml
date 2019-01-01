@@ -96,7 +96,7 @@
 
 
     <include name="Home_Textbar_Texture">
-	<visible>!Skin.HasSetting(IconOnlyMode) + [Control.HasFocus(300) | Control.HasFocus(302)]</visible>	
+	<visible>Skin.HasSetting(IconOnlyMode) + [Control.HasFocus(300) | Control.HasFocus(302)]</visible>	
         <control type="image">
             <texture>common/gradient-solid-horizontal.png</texture>
             <include>Defs_DarkShadow</include>
@@ -152,7 +152,7 @@
                     <visible>Skin.HasSetting(SubmenuIndicator)</visible>
                     <visible>Window.IsVisible(Home)</visible>
                     <visible>[Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(3904) | Control.HasFocus(300)]</visible>
-                    <visible>!Skin.HasSetting(IconOnlyMode)</visible>
+                    <visible>Skin.HasSetting(IconOnlyMode)</visible>
                     <visible>!Skin.HasSetting(DisableSubMenu)</visible>
                     <visible>Integer.IsGreater(Container(302).NumItems,0)</visible>
                 </control>
@@ -206,7 +206,7 @@
                 <orientation>horizontal</orientation>
                 <align>center</align>
                 <itemgap>12</itemgap>
-                <visible>!Skin.HasSetting(IconOnlyMode) + Skin.HasSetting(ShowTopIcons)</visible>
+                <visible>Skin.HasSetting(IconOnlyMode) + Skin.HasSetting(ShowTopIcons)</visible>
                 <control type="group">
                     <width>home_icon</width>
                     <height>home_icon</height>
@@ -305,7 +305,7 @@
             <left>0</left>
             <orientation>vertical</orientation>
             <itemgap>0</itemgap>
-            <visible>!Skin.HasSetting(IconOnlyMode) | Control.HasFocus(302)</visible>
+            <visible>Skin.HasSetting(IconOnlyMode) | Control.HasFocus(302)</visible>
             <include content="Home_Textbar_Item">
                 <param name="id" value="0" />
             </include>
@@ -369,7 +369,7 @@
             <control type="group">
                 <left>home_icon</left>
                 <width>6</width>
-                <visible>[![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(3904) | Control.HasFocus(300)] + [!Window.IsVisible(Home) + String.IsEqual(ListItem.Property(path),Window(Home).Property(MenuIconFocus))] + !Skin.HasSetting(IconOnlyMode)]</visible>
+                <visible>[![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(3904) | Control.HasFocus(300)] + [!Window.IsVisible(Home) + String.IsEqual(ListItem.Property(path),Window(Home).Property(MenuIconFocus))] + Skin.HasSetting(IconOnlyMode)]</visible>
                 <include>Animation_FadeIn_Delay</include>
                 <control type="image">
                     <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
@@ -403,14 +403,14 @@
                 <visible>Control.HasFocus(300)</visible>
                 <visible>Integer.IsGreater(Container(302).NumItems,0)</visible>
                 <visible>!Skin.HasSetting(DisableSubMenu)</visible>
-                <visible>Skin.HasSetting(IconOnlyMode)</visible>
+                <visible>!Skin.HasSetting(IconOnlyMode)</visible>
             </control>
             <control type="group">
                 <left>5</left>
 	        <top>15</top>
 		<height>40</height>
                 <width>6</width>
-                <visible>[![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(3904) |Control.HasFocus(300)] + [Window.IsVisible(Home) | [!Window.IsVisible(Home) + String.IsEqual(ListItem.Property(path),Window(Home).Property(MenuIconFocus))]] + !Skin.HasSetting(IconOnlyMode)] | [[Control.HasFocus(300) | Control.HasFocus(302)] + Skin.HasSetting(IconOnlyMode)]</visible>
+                <visible>[![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(3904) |Control.HasFocus(300)] + [Window.IsVisible(Home) | [!Window.IsVisible(Home) + String.IsEqual(ListItem.Property(path),Window(Home).Property(MenuIconFocus))]] + Skin.HasSetting(IconOnlyMode)] | [[Control.HasFocus(300) | Control.HasFocus(302)] + !Skin.HasSetting(IconOnlyMode)]</visible>
                 <include>Animation_FadeIn</include>
                 <control type="image">
         <visible>!Skin.HasSetting(DisableNetflixHomeSidemenuHide) | Control.HasFocus(300) | Control.HasFocus(302)</visible>
@@ -421,8 +421,8 @@
 	<control type="group">
 		<width>800</width>
                <control type="label">
-                <visible>[![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(3904) |Control.HasFocus(300)] + [Window.IsVisible(Home) | [!Window.IsVisible(Home) + String.IsEqual(ListItem.Property(path),Window(Home).Property(MenuIconFocus))]] + !Skin.HasSetting(IconOnlyMode)] | [[Control.HasFocus(300) | Control.HasFocus(302)] + Skin.HasSetting(IconOnlyMode)]</visible>
-                <visible>!Skin.HasSetting(DisableNetflixHomeAlt)</visible>
+                <visible>[![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(3904) |Control.HasFocus(300)] + [Window.IsVisible(Home) | [!Window.IsVisible(Home) + String.IsEqual(ListItem.Property(path),Window(Home).Property(MenuIconFocus))]] + Skin.HasSetting(IconOnlyMode)] | [[Control.HasFocus(300) | Control.HasFocus(302)] + !Skin.HasSetting(IconOnlyMode)]</visible>
+                <visible>Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeAlt)</visible>
                 <visible>!String.IsEqual(Container(300).ListItem.Property(widget),Weather) + !String.IsEqual(Container(300).ListItem.Property(widget),Settings)</visible>
                 <left>80</left>
                 <top>15</top>

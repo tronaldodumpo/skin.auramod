@@ -381,8 +381,8 @@
                    <control type="label">
                     <visible>[Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeSidemenu)] | Control.HasFocus(3001) | ![String.IsEqual(ListItem.DBType,episode) | Container.Content(livetv) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | !String.IsEmpty(ListItem.ChannelName)] </visible>
                    <visible>[!Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeAlt)]</visible>
-                   <animation effect="slide" end="-100,60" condition="![String.IsEqual(ListItem.DBType,episode) | Container.Content(livetv) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | !String.IsEmpty(ListItem.ChannelName)]">Conditional</animation>
-
+                   <animation effect="slide" end="0,60" condition="[Control.HasFocus(3901) | ![String.IsEqual(ListItem.DBType,episode) | Container.Content(livetv) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | !String.IsEmpty(ListItem.ChannelName)]]">Conditional</animation>
+		    <visible>!Control.HasFocus(302)</visible>
 		    <top>120</top>
                     <left>40</left>
                     <right>$PARAM[titleright]</right>
@@ -390,7 +390,7 @@
                     <textcolor>grey</textcolor>
                     <shadowcolor>black</shadowcolor>
                     <font>netflix_heading</font>
-                    <width min="200" max="700">auto</width>
+                    <width min="200" max="400">auto</width>
 		    <align>center</align>
                     <wrapmultiline>true</wrapmultiline>
                 </control>
@@ -452,10 +452,10 @@
     <include name="Object_Home_Netflix">
      <control type="group">
         <animation effect="slide" end="-50,-80" condition="Skin.HasSetting(DisableNetflixHomeSidemenu)">Conditional</animation>
-        <animation effect="slide" end="-50,0" condition="[Skin.HasSetting(IconOnlyMode) + !Control.HasFocus(300)] + !Skin.HasSetting(DisableNetflixHomeSidemenu) + Skin.HasSetting(DisableNetflixHomeSidemenuHide)">Conditional</animation>
+        <animation effect="slide" end="-50,0" condition="[!Skin.HasSetting(IconOnlyMode) + !Control.HasFocus(300)] + !Skin.HasSetting(DisableNetflixHomeSidemenu) + Skin.HasSetting(DisableNetflixHomeSidemenuHide)">Conditional</animation>
         <animation effect="slide" end="-50,0" condition="!Skin.HasSetting(DisableNetflixHomeSidemenu) + Skin.HasSetting(DisableNetflixHomeSidemenuHide)">Conditional</animation>
         <animation effect="slide" end="60,0" condition="!Skin.HasSetting(DisableNetflixHomeSidemenu)">Conditional</animation>
-        <animation effect="slide" end="40,0" condition="Skin.HasSetting(IconOnlyMode) + Skin.HasSetting(DisableNetflixHomeSidemenuHide)">Conditional</animation>
+        <animation effect="slide" end="40,0" condition="!Skin.HasSetting(IconOnlyMode) + Skin.HasSetting(DisableNetflixHomeSidemenuHide)">Conditional</animation>
 
         <visible>!String.IsEqual(Container(300).ListItem.Property(widget),Weather) + !String.IsEqual(Container(300).ListItem.Property(widget),Settings)</visible>
 	<control type="group">
@@ -574,7 +574,7 @@
                    <control type="label">
 <!--                    <visible>[Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeSidemenu)] | [!Skin.HasSetting(DisableNetflixHomeSidemenu) + [![String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]]]</visible> -->
 		    <visible>[Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeSidemenu)] | Control.HasFocus(3001) | ![String.IsEqual(ListItem.DBType,episode) | Container.Content(livetv) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | !String.IsEmpty(ListItem.ChannelName)] </visible>
-		   <visible>Skin.HasSetting(IconOnlyMode)</visible>
+		   <visible>!Skin.HasSetting(IconOnlyMode)</visible>
 	           <animation effect="slide" end="110,0" condition="Control.HasFocus(300)">Conditional</animation>
 		   <visible>!Control.HasFocus(302)</visible>
                     <height>251</height>
@@ -2230,7 +2230,7 @@
                 </control>
 		<control type="label">
 		    <left>5</left>
-                    <visible>!Skin.HasSetting(DisableWidgetPlot)</visible>
+                    <visible>Skin.HasSetting(DisableWidgetPlot)</visible>
                     <textcolor>main_fg_70</textcolor>
                     <height>20</height>
                     <top>5</top>
