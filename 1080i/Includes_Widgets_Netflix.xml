@@ -86,11 +86,6 @@
             <control type="group">
                 <include>Animation_Right</include>
                 <include>Defs_InfoDialog_Visible</include>
-                <include content="Object_UpDownInfoArrows">
-                    <param name="id" value="330" />
-                    <param name="hasprevious" value="false" />
-                    <param name="hasnext" value="!String.IsEqual(Container(300).ListItem.Property(widget),Weather) + !String.IsEqual(Container(300).ListItem.Property(widget),Settings)" />
-                </include>
                 <control type="group">
                     <left>-10</left>
                     <right>-400</right>
@@ -107,10 +102,11 @@
                         <top>0</top>
                         <bottom>0</bottom>
 		       <control type="group">
-                        <left>50</left>
-                        <top>100</top>
-                        <include condition="!Skin.HasSetting(DisableNetflixHome)">Object_Home_Netflix</include>
+                        <include condition="!Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeAlt)">Object_Home_Netflix</include>
 	            </control>
+			  <control type="group">
+                        <include condition="!Skin.HasSetting(DisableNetflixHome) + !Skin.HasSetting(DisableNetflixHomeAlt)">Object_Home_Netflix_Alt</include>
+                    </control>
 
                         <include>Widgets_Grouplist</include>
                         <control type="button" id="9966">

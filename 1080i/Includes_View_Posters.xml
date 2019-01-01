@@ -154,7 +154,7 @@
 		<include condition="Skin.HasSetting(DisableNetflixView)">View_Pad</include>
                 <include condition="!Skin.HasSetting(DisableNetflixView)">View_Pad_Netflix</include>
                 <control type="fixedlist" id="55">
-                    <bottom>-20</bottom>
+                    <bottom>-55</bottom>
                     <right>-70</right>
                     <left>-70</left>
                     <height>500</height>
@@ -204,7 +204,7 @@
                 <include condition="Skin.HasSetting(DisableNetflixView)">View_Pad</include>
                 <include condition="!Skin.HasSetting(DisableNetflixView)">View_Pad_Netflix</include>
                 <control type="fixedlist" id="56">
-                    <bottom>-10</bottom>
+                    <bottom>-55</bottom>
                     <right>-70</right>
                     <left>-70</left>
                     <height>470</height>

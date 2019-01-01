@@ -15,12 +15,12 @@
       </control>
 
       <control type="group">
+          <visible>Skin.HasSetting(DisableNetflixHome)</visible>
         <height>70</height>
         <bottom>0</bottom>
 	<control type="group">
           <!-- START TvShowTitle Button -->
           <control type="group">
-	<visible>Skin.HasSetting(DisableNetflixHome)</visible>
 	    <bottom>60</bottom>
             <width min="10" max="120">auto</width>
             <height>30</height>
@@ -40,7 +40,6 @@
           <!-- END Studio Button -->
           <!-- START Airdate Button -->
           <control type="group">
-	  <visible>Skin.HasSetting(DisableNetflixHome)</visible>
 	    <bottom>60</bottom>
             <width min="10" max="105">auto</width>
             <height>30</height>
@@ -51,7 +50,6 @@
               <texture colordiffuse="red">diffuse/halfbox.png</texture>
             </control>
             <control type="label">
-	  <visible>Skin.HasSetting(DisableNetflixHome)</visible>
               <label>$INFO[ListItem.Premiered(dd MMM yyyy)]</label>
               <font>font_widget_time</font>
               <align>center</align>
@@ -71,13 +69,8 @@
           <left>20</left>
           </control>
 -->
-       <control type="image">
-          <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
-	  <bottom>0</bottom>
-          <height>60</height>
-          <texture colordiffuse="99000000" border="10" flipy="true">diffuse/halfbox.png</texture>
-        </control>
           <control type="label">
+          <visible>Skin.HasSetting(DisableNetflixHome)</visible>
             <visible>!String.IsEqual(ListItem.Title,ListItem.Label)</visible>
             <visible>!String.IsEmpty(ListItem.Episode)</visible>
 	    <bottom>0</bottom>
@@ -88,6 +81,7 @@
             <left>20</left>
           </control>
           <control type="label">
+          <visible>Skin.HasSetting(DisableNetflixHome)</visible>
             <visible>String.IsEqual(ListItem.Title,ListItem.Label)</visible>
 	    <bottom>0</bottom>
             <textcolor>white</textcolor>
