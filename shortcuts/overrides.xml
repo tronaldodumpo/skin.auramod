@@ -330,6 +330,9 @@
     <propertydefault labelID="20342" property="widgetName.Widget2">$LOCALIZE[135]</propertydefault>
     <propertydefault labelID="20342" property="widgetPath.Widget2">library://video/movies/genres.xml</propertydefault>
     <propertydefault labelID="20342" property="widgetTarget.Widget2">videos</propertydefault>
+    <propertydefault labelID="20342" property="widgetName.Widget3">ExtendedInfo - Top rated movies</propertydefault>
+    <propertydefault labelID="20342" property="widgetPath.Widget3"><plugin://script.extendedinfo?info=topratedmovies/propertydefault>
+    <propertydefault labelID="20342" property="widgetTarget.Widget3">videos</propertydefault>
 
     <!-- TvShows -->
     <widgetdefaultnode labelID="tvshows" label="20387" path="videodb://recentlyaddedepisodes/" target="videos">RecentEpisodes</widgetdefaultnode>
