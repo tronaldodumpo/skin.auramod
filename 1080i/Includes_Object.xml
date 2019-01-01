@@ -380,8 +380,9 @@
 
                    <control type="label">
                     <visible>[Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeSidemenu)] | Control.HasFocus(3001) | ![String.IsEqual(ListItem.DBType,episode) | Container.Content(livetv) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | !String.IsEmpty(ListItem.ChannelName)] </visible>
-                   <visible>!Control.HasFocus(302)</visible>
-                   <visible>Skin.HasSetting(DisableNetflixHomeAlt)</visible>
+                   <visible>[!Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeAlt)]</visible>
+                   <animation effect="slide" end="-100,60" condition="![String.IsEqual(ListItem.DBType,episode) | Container.Content(livetv) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | !String.IsEmpty(ListItem.ChannelName)]">Conditional</animation>
+
 		    <top>120</top>
                     <left>40</left>
                     <right>$PARAM[titleright]</right>

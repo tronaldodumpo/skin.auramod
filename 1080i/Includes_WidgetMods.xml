@@ -104,7 +104,6 @@
         <aspectratio scalediffuse="false">scale</aspectratio>
       </control>
       <control type="image">
-	<visible>Skin.HasSetting(DisableNetflixHome)</visible>
         <bottom>30</bottom>
         <top>170</top>
         <left>120</left>
@@ -116,7 +115,6 @@
       <control type="group">
 <!-- Add Clearlogo to landscape Image -->
         <control type="image">
-	<visible>Skin.HasSetting(DisableNetflixHome)</visible>
           <bottom>35</bottom>
           <right>10</right>
           <width>40%</width>
@@ -128,7 +126,6 @@
           <visible>Skin.HasSetting(DisableBanners) + !String.IsEmpty(ListItem.TvShowTitle)</visible>
         </control>
         <control type="image">
-	<visible>Skin.HasSetting(DisableNetflixHome)</visible>
           <bottom>5</bottom>
           <right>10</right>
           <width>45%</width>
@@ -230,7 +227,6 @@
         <height>100</height>
         <bottom>0</bottom>
         <visible>![!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]]</visible>
-        <visible>!Skin.HasSetting(WidgetLabels)</visible>
         <control type="image">
           <texture colordiffuse="99000000" border="10" flipy="true">diffuse/halfbox.png</texture>
         </control>
