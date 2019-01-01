@@ -326,6 +326,7 @@
 	    <visible>!Window.IsVisible(DialogVideoInfo.xml)</visible>
 
                 <control type="image">
+                    <visible>!Player.HasVideo</visible>
 		    <left>-400</left>
                     <width>100%</width>
                     <height>100%</height>
@@ -334,8 +335,14 @@
                     <aspectratio scalediffuse="true" aligny="top">scale</aspectratio>
        		 </control>
 
+              <control type="group">
+		<top>-30</top>
+                <visible>Player.HasVideo</visible>
+		<include>Global_Videowindow</include>
 	    </control>
 
+
+	    </control>
                 <control type="group">
                 <visible>!Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(300)</visible>
                 <include>Global_Background</include>
