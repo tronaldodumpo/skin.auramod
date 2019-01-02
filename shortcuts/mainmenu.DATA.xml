@@ -5,6 +5,7 @@
         <label2>Common Shortcut</label2>
         <defaultID>movies</defaultID>
         <icon>special://skin/extras/icons/film.png</icon>
+	<thumb />
         <action>RunAddon(script.extendedinfo)</action>
     </shortcut>
     <shortcut>
@@ -12,6 +13,7 @@
         <label2>Common Shortcut</label2>
         <defaultID>tvshows</defaultID>
         <icon>special://skin/extras/icons/tv.png</icon>
+	<thumb />
         <action>RunAddon(script.extendedinfo)</action>
     </shortcut>
     <shortcut>

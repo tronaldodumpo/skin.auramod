@@ -323,6 +323,8 @@
 
     <!-- DEFAULT WIDGETS -->
     <!-- Movies -->
+    <propertydefault labelID="20342" property="backgroundName">special://skin/extras/backgrounds/movies-mainmenu-bg.jpg</propertydefault>
+    <propertydefault labelID="20342" property="background">special://skin/extras/backgrounds/movies-mainmenu-bg.jpg</propertydefault>
     <widgetdefaultnode labelID="20342" label="20386" path="videodb://recentlyaddedmovies/" target="videos">RecentMovies</widgetdefaultnode>
     <propertydefault labelID="20342" property="widgetName.Widget1">$LOCALIZE[31200]</propertydefault>
     <propertydefault labelID="20342" property="widgetPath.Widget1">special://skin/extras/playlists/RandomMovies.xsp</propertydefault>
@@ -341,6 +343,8 @@
 
 
     <!-- TvShows -->
+    <propertydefault labelID="tvshows" property="backgroundName">special://skin/extras/backgrounds/tv-shows--mainmenu-bg.jpg</propertydefault>
+    <propertydefault labelID="tvshows" property="background">special://skin/extras/backgrounds/tv-shows-mainmenu-bg.jpg</propertydefault>
     <widgetdefaultnode labelID="tvshows" label="20387" path="videodb://recentlyaddedepisodes/" target="videos">RecentEpisodes</widgetdefaultnode>
     <propertydefault labelID="tvshows" property="widgetAspect">$LOCALIZE[31038]</propertydefault>
     <propertydefault labelID="tvshows" property="widgetName.Widget1">$LOCALIZE[626]</propertydefault>
