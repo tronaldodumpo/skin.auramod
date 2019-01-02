@@ -21,7 +21,7 @@
             <alttexturefocus colordiffuse="$VAR[ColorHighlight]" border="8">common/underline2.png</alttexturefocus>
             <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
             <visible>!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
-	    <visible>[!Skin.HasSetting(DisableNetflixHome) + [Control.HasFocus(300) | Control.HasFocus(302)]] | Skin.HasSetting(DisableNetflixHome)</visible>
+	    <visible>[Skin.HasSetting(DisableNetflixHome) + [Control.HasFocus(300) | Control.HasFocus(302)]] | !Skin.HasSetting(DisableNetflixHome)</visible>
         </control>
         <control type="togglebutton">
             <width>auto</width>
@@ -40,7 +40,7 @@
             <alttexturefocus colordiffuse="$VAR[ColorHighlight]" border="8">common/underline2.png</alttexturefocus>
             <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
             <visible>String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
-	    <visible>[!Skin.HasSetting(DisableNetflixHome) + [Control.HasFocus(300) | Control.HasFocus(302)]] | Skin.HasSetting(DisableNetflixHome)</visible>
+	    <visible>[Skin.HasSetting(DisableNetflixHome) + [Control.HasFocus(300) | Control.HasFocus(302)]] | !Skin.HasSetting(DisableNetflixHome)</visible>
         </control>
     </include>
 
@@ -62,7 +62,7 @@
             <alttexturefocus colordiffuse="$VAR[ColorHighlight]" border="8">common/underline2.png</alttexturefocus>
             <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
             <visible>!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
-	    <visible>[!Skin.HasSetting(DisableNetflixHome) + [Control.HasFocus(300) | Control.HasFocus(302)]] | Skin.HasSetting(DisableNetflixHome)</visible>
+	    <visible>[Skin.HasSetting(DisableNetflixHome) + [Control.HasFocus(300) | Control.HasFocus(302)]] | !Skin.HasSetting(DisableNetflixHome)</visible>
         </control>
         <control type="togglebutton">
             <width>auto</width>
@@ -81,7 +81,7 @@
             <alttexturefocus colordiffuse="$VAR[ColorHighlight2]" border="8" diffuse="common/gradient-diffuse-horizontal.png">common/underline2.png</alttexturefocus>
             <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
             <visible>String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
-	    <visible>[!Skin.HasSetting(DisableNetflixHome) + [Control.HasFocus(300) | Control.HasFocus(302)]] | Skin.HasSetting(DisableNetflixHome)</visible>
+	    <visible>[Skin.HasSetting(DisableNetflixHome) + [Control.HasFocus(300) | Control.HasFocus(302)]] | !Skin.HasSetting(DisableNetflixHome)</visible>
         </control>
     </include>
 
@@ -117,7 +117,7 @@
         </control>
 	</control>
    <control type="group">
-        <visible>!Skin.HasSetting(DisableNetflixHome) + [[Control.HasFocus(300) |  Control.HasFocus(302)] + [Control.IsVisible(55) | Control.IsVisible(56)]]</visible>
+        <visible>Skin.HasSetting(DisableNetflixHome) + [[Control.HasFocus(300) |  Control.HasFocus(302)] + [Control.IsVisible(55) | Control.IsVisible(56)]]</visible>
             <top>0</top>
             <left>0</left>
             <right>0</right>

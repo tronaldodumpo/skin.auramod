@@ -35,12 +35,12 @@
             <content>$INFO[Container(300).ListItem.Property(backgroundPlaylist)]</content>
         </control>
 
-        <include condition="Skin.HasSetting(DisableNetflixHome)">Global_Background</include>
+        <include condition="!Skin.HasSetting(DisableNetflixHome)">Global_Background</include>
         <include>Widgets</include>
-        <include condition="Skin.HasSetting(DisableNetflixHome)">Topbar</include> 
-        <include condition="!Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeSidemenu)">Topbar</include> 
+        <include condition="!Skin.HasSetting(DisableNetflixHome)">Topbar</include> 
+        <include condition="Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeSidemenu)">Topbar</include> 
         <include>Object_PlotOverlay</include>
-        <include condition="!Skin.HasSetting(DisableNetflixHome) + !Skin.HasSetting(DisableNetflixHomeSidemenu)">Home</include>
+        <include condition="Skin.HasSetting(DisableNetflixHome) + !Skin.HasSetting(DisableNetflixHomeSidemenu)">Home</include>
         <control type="button" id="4000">
             <visible allowhiddenfocus="true">false</visible>
             <width>1</width>

@@ -229,7 +229,7 @@
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31371]</label>
                             <enable>!Skin.HasSetting(HideSubmenuWidget)</enable>
-                            <selected>!Skin.HasSetting(SubmenuLabel)</selected>
+                            <selected>Skin.HasSetting(SubmenuLabel)</selected>
                             <onclick>Skin.ToggleSetting(SubmenuLabel)</onclick>
                             <onclick>ReloadSkin()</onclick>
                         </control>
@@ -699,7 +699,7 @@
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31413]</label>
-                            <enable>Skin.HasSetting(DisableNetflixHome)</enable>
+                            <enable>!Skin.HasSetting(DisableNetflixHome)</enable>
                             <selected>Skin.HasSetting(DisableWidgetPlot)</selected>
                             <onclick>Skin.ToggleSetting(DisableWidgetPlot)</onclick>
                         </control>
@@ -707,7 +707,7 @@
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31426]</label>
-                            <enable>Skin.HasSetting(DisableNetflixHome)</enable>
+                            <enable>!Skin.HasSetting(DisableNetflixHome)</enable>
                             <selected>Skin.HasSetting(DisableWidgetIMDB)</selected>
                             <onclick>Skin.ToggleSetting(DisableWidgetIMDB)</onclick>
                         </control>
@@ -715,7 +715,7 @@
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31427]</label>
-                            <enable>Skin.HasSetting(DisableNetflixHome)</enable>
+                            <enable>!Skin.HasSetting(DisableNetflixHome)</enable>
                             <selected>Skin.HasSetting(DisableWidgetTitle)</selected>
                             <onclick>Skin.ToggleSetting(DisableWidgetTitle)</onclick>
                         </control>
@@ -752,7 +752,7 @@
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9013)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31431]</label>
-                            <selected>!Skin.HasSetting(DisableNetflixHome)</selected>
+                            <selected>Skin.HasSetting(DisableNetflixHome)</selected>
                             <onclick>Skin.ToggleSetting(DisableNetflixHome)</onclick>
                             <onclick condition="!Skin.HasSetting(HideSubmenuWidget)">Skin.ToggleSetting(HideSubmenuWidget)</onclick>
                             <onclick condition="!Skin.HasSetting(DisableNetflixHomeSidemenu)">Skin.ToggleSetting(DisableNetflixHomeSidemenu)</onclick>
@@ -761,26 +761,28 @@
 			    <onclick condition="Skin.HasSetting(DisableWidgetIMDB)">Skin.ToggleSetting(DisableWidgetIMDB)</onclick> 
 			    <onclick condition="!Skin.HasSetting(DisableNetflixHomeSidemenu)">Skin.ToggleSetting(DisableNetflixHomeSidemenu)</onclick> 
 			    <onclick condition="Skin.HasSetting(IconOnlyMode)">Skin.ToggleSetting(IconOnlyMode)</onclick> 
+			    <onclick condition="Skin.HasSetting(DisableNetflixVideoInfo)">Skin.ToggleSetting(DisableNetflixVideoInfo)</onclick> 
 			    <onclick condition="Skin.HasSetting(DisableNetflixHomeSidemenuHide)">Skin.ToggleSetting(DisableNetflixHomeSidemenuHide)</onclick> 
+			    <onclick condition="Skin.HasSetting(DisableWidgetTitle)">Skin.ToggleSetting(DisableWidgetTitle)</onclick> 
                             <onclick>ReloadSkin()</onclick>
                         </control>
                         <control type="radiobutton" id="9628" description="Enable Alternative Home  Spotlight">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9013)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31438]</label>
-                            <enable>!Skin.HasSetting(DisableNetflixHome)</enable>
+                            <enable>Skin.HasSetting(DisableNetflixHome)</enable>
                             <selected>!Skin.HasSetting(DisableNetflixHomeAlt)</selected>
                             <onclick>Skin.ToggleSetting(DisableNetflixHomeAlt)</onclick>
                             <onclick condition="Skin.HasSetting(DisableNetflixHomeSidemenu)">Skin.ToggleSetting(DisableNetflixHomeSidemenu)</onclick>
                             <onclick condition="Skin.HasSetting(DisableNetflixVideoInfo)">Skin.ToggleSetting(DisableNetflixVideoInfo)</onclick>
-                            <onclick condition="!Skin.HasSetting(IconOnlyMode)">Skin.ToggleSetting(IconOnlyMode)</onclick>
+                            <onclick condition="Skin.HasSetting(IconOnlyMode)">Skin.ToggleSetting(IconOnlyMode)</onclick>
                             <onclick>ReloadSkin()</onclick>
                         </control>
-			<control type="radiobutton" id="9629" description="Enable Netflix Vieww">
+			<control type="radiobutton" id="9629" description="Enable Netflix Views">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9013)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31428]</label>
-                            <enable>Skin.HasSetting(DisableNetflixHome)</enable>
+                            <enable>!Skin.HasSetting(DisableNetflixHome)</enable>
                             <selected>!Skin.HasSetting(DisableNetflixView)</selected>
                             <onclick>Skin.ToggleSetting(DisableNetflixView)</onclick>
                         </control>
@@ -788,7 +790,7 @@
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9013)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31432]</label>
-                            <enable>[!Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeAlt)] | Skin.HasSetting(DisableNetflixHome)</enable>
+                            <enable>[Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeAlt)] | !Skin.HasSetting(DisableNetflixHome)</enable>
                             <selected>!Skin.HasSetting(DisableNetflixVideoInfo)</selected>
                             <onclick>Skin.ToggleSetting(DisableNetflixVideoInfo)</onclick>
                         </control>
@@ -796,7 +798,7 @@
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9013)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31433]</label>
-                            <enable>!Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeAlt)</enable>
+                            <enable>Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeAlt)</enable>
                             <selected>!Skin.HasSetting(DisableNetflixHomeSidemenu)</selected>
                             <onclick>Skin.ToggleSetting(DisableNetflixHomeSidemenu)</onclick>
                             <onclick condition="Skin.HasSetting(IconOnlyMode)">Skin.ToggleSetting(IconOnlyMode)</onclick>
@@ -807,7 +809,7 @@
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9013)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31434]</label>
-                            <enable>!Skin.HasSetting(DisableNetflixHome) + !Skin.HasSetting(DisableNetflixHomeSidemenu)</enable>
+                            <enable>Skin.HasSetting(DisableNetflixHome) + !Skin.HasSetting(DisableNetflixHomeSidemenu)</enable>
                             <selected>!Skin.HasSetting(IconOnlyMode)</selected>
                             <onclick>Skin.ToggleSetting(IconOnlyMode)</onclick>
                         </control>
@@ -815,7 +817,7 @@
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9013)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31437]</label>
-                            <enable>!Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeAlt)</enable>
+                            <enable>Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeAlt)</enable>
                             <selected>Skin.HasSetting(DisableNetflixHomeSidemenuHide)</selected>
                             <onclick>Skin.ToggleSetting(DisableNetflixHomeSidemenuHide)</onclick>
                         </control>
@@ -823,7 +825,7 @@
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9013)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31439]</label>
-                            <enable>!Skin.HasSetting(DisableNetflixHome)</enable>
+                            <enable>Skin.HasSetting(DisableNetflixHome)</enable>
                             <selected>!Skin.HasSetting(DisableNetflixSubmenuBG)</selected>
                             <onclick>Skin.ToggleSetting(DisableNetflixSubmenuBG)</onclick>
                         </control>

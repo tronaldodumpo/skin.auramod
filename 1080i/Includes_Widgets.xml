@@ -578,7 +578,7 @@
 		</control>
 		<control type="label">
                     <left>5</left>
-                    <visible>Control.HasFocus($PARAM[id]) + Skin.HasSetting(DisableWidgetPlot) + Skin.HasSetting(DisableWidgetIMDB)</visible>
+                    <visible>Control.HasFocus($PARAM[id]) + Skin.HasSetting(DisableWidgetPlot) + !Skin.HasSetting(DisableWidgetIMDB)</visible>
                     <textcolor>main_fg_70</textcolor>
                     <height>20</height>
                     <top>10</top>

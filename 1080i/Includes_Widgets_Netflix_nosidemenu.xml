@@ -105,7 +105,7 @@
 		       <control type="group">
                         <left>50</left>
                         <top>100</top>
-                        <include condition="!Skin.HasSetting(DisableNetflixHome)">Object_Home_Netflix</include>
+                        <include condition="Skin.HasSetting(DisableNetflixHome)">Object_Home_Netflix</include>
 	            </control>
 
                         <include>Widgets_Grouplist</include>

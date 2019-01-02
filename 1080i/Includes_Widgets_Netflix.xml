@@ -102,10 +102,10 @@
                         <top>0</top>
                         <bottom>0</bottom>
 		       <control type="group">
-                        <include condition="!Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeAlt)">Object_Home_Netflix</include>
+                        <include condition="Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeAlt)">Object_Home_Netflix</include>
 	            </control>
 			  <control type="group">
-                        <include condition="!Skin.HasSetting(DisableNetflixHome) + !Skin.HasSetting(DisableNetflixHomeAlt)">Object_Home_Netflix_Alt</include>
+                        <include condition="Skin.HasSetting(DisableNetflixHome) + !Skin.HasSetting(DisableNetflixHomeAlt)">Object_Home_Netflix_Alt</include>
                     </control>
 
                         <include>Widgets_Grouplist</include>

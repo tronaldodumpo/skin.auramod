@@ -8,14 +8,14 @@
         <aspectratio scalediffuse="false">stretch</aspectratio>
       </control>
       <control type="image">
-          <visible>Skin.HasSetting(DisableNetflixHome)</visible>
+          <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
         <height>330</height>
         <bottom>0</bottom>
         <texture colordiffuse="60000000" flipy="true">diffuse/halfbox.png</texture>
       </control>
 
      <control type="group">
-       <visible>!Skin.HasSetting(DisableNetflixHome) + String.IsEqual(ListItem.DBType,episode)</visible>
+       <visible>Skin.HasSetting(DisableNetflixHome) + String.IsEqual(ListItem.DBType,episode)</visible>
       <control type="image">
         <left>0</left>
         <top>0</top>
@@ -36,7 +36,7 @@
 
 <!-- Add Clearlogo to landscape Image -->
 	<control type="group">
-          <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
+          <visible>Skin.HasSetting(DisableNetflixHome)</visible>
         <control type="image">
           <bottom>-10</bottom>
           <right>10</right>
@@ -62,7 +62,7 @@
         <!-- END add Clearlogo -->
 
       <control type="group">
-          <visible>Skin.HasSetting(DisableNetflixHome)</visible>
+          <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
         <height>70</height>
         <bottom>0</bottom>
 	<control type="group">
@@ -117,7 +117,7 @@
           </control>
 -->
           <control type="label">
-          <visible>Skin.HasSetting(DisableNetflixHome)</visible>
+          <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
             <visible>!String.IsEqual(ListItem.Title,ListItem.Label)</visible>
             <visible>!String.IsEmpty(ListItem.Episode)</visible>
 	    <bottom>0</bottom>
@@ -128,7 +128,7 @@
             <left>20</left>
           </control>
           <control type="label">
-          <visible>Skin.HasSetting(DisableNetflixHome)</visible>
+          <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
             <visible>String.IsEqual(ListItem.Title,ListItem.Label)</visible>
 	    <bottom>0</bottom>
             <textcolor>white</textcolor>
@@ -161,9 +161,9 @@
       </control>
 
      <control type="group">
-       <visible>!Skin.HasSetting(DisableNetflixHome) + String.IsEqual(ListItem.DBType,episode)</visible>
+       <visible>Skin.HasSetting(DisableNetflixHome) + String.IsEqual(ListItem.DBType,episode)</visible>
       <control type="image">
-       <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
+       <visible>Skin.HasSetting(DisableNetflixHome)</visible>
         <left>0</left>
         <top>0</top>
         <height>45</height>

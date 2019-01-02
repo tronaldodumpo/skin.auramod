@@ -1138,7 +1138,6 @@
       <control type="group">
                     <height  min="20" max="220">auto</height>
               <control type="textbox">
-                    <visible>!Skin.HasSetting(DisableNetflixView)</visible>
                     <label fallback="19055">$VAR[Label_Plot]</label>
                     <width>750</width>
                     <aligny>top</aligny>
