@@ -18,13 +18,13 @@
        <visible>Skin.HasSetting(DisableNetflixHome) + String.IsEqual(ListItem.DBType,episode)</visible>
       <control type="image">
         <left>0</left>
-        <top>0</top>
+	<bottom>40</bottom>
         <height>45</height>
         <width>90</width>
         <texture colordiffuse="99FF0000" flipy="true">diffuse/halfbox.png</texture>
       </control>
      <control type="textbox">
-        <top>10</top>
+	<bottom>20</bottom>
         <left>4</left>
         <height>55</height>
         <width>75</width>
@@ -165,13 +165,13 @@
       <control type="image">
        <visible>Skin.HasSetting(DisableNetflixHome)</visible>
         <left>0</left>
-        <top>0</top>
+        <bottom>40</bottom>
         <height>45</height>
         <width>90</width>
         <texture colordiffuse="99FF0000" flipy="true">diffuse/halfbox.png</texture>
       </control>
      <control type="textbox">
-        <top>10</top>
+        <bottom>20</bottom>
         <left>4</left>
         <height>55</height>
         <width>75</width>
