@@ -103,7 +103,7 @@
         </control>
         <control type="image">
             <right>6</right>
-            <texture colordiffuse="dialog_bg_100">common/white.png</texture>
+            <texture colordiffuse="dimgrey">common/white.png</texture>
         </control>
         <control type="image">
             <right>6</right>

@@ -579,6 +579,7 @@
                    <control type="label">
 <!--                    <visible>[Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeSidemenu)] | [!Skin.HasSetting(DisableNetflixHomeSidemenu) + [![String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]]]</visible> -->
 		    <visible>[Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeSidemenu)] | Control.HasFocus(3001) | ![String.IsEqual(ListItem.DBType,episode) | Container.Content(livetv) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | !String.IsEmpty(ListItem.ChannelName)] </visible>
+		   <visible>![Control.HasFocus(300) + Skin.HasSetting(DisableNetflixHomeSidemenu)]</visible>
 		   <visible>!Skin.HasSetting(IconOnlyMode)</visible>
 	           <animation effect="slide" end="110,0" condition="Control.HasFocus(300)">Conditional</animation>
 		   <visible>!Control.HasFocus(302)</visible>
