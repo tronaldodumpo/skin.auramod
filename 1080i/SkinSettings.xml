@@ -764,6 +764,8 @@
 			    <onclick condition="Skin.HasSetting(DisableNetflixVideoInfo)">Skin.ToggleSetting(DisableNetflixVideoInfo)</onclick> 
 			    <onclick condition="Skin.HasSetting(DisableNetflixHomeSidemenuHide)">Skin.ToggleSetting(DisableNetflixHomeSidemenuHide)</onclick> 
 			    <onclick condition="Skin.HasSetting(DisableWidgetTitle)">Skin.ToggleSetting(DisableWidgetTitle)</onclick> 
+			    <onclick condition="!Skin.HasSetting(DisableOverlayColor)">Skin.ToggleSetting(DisableOverlayColor)</onclick> 
+			    <onclick condition="!Skin.HasSetting(WidgetLabels)">Skin.ToggleSetting(WidgetLabels)</onclick> 
                             <onclick>ReloadSkin()</onclick>
                         </control>
                         <control type="radiobutton" id="9628" description="Enable Alternative Home  Spotlight">
