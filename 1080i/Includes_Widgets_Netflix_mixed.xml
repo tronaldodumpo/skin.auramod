@@ -102,13 +102,13 @@
                         <top>0</top>
                         <bottom>0</bottom>
 		       <control type="group">
-                        <include condition="Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeAlt)">Object_Home_Netflix</include>
+                        <include condition="Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeAlt) + !Skin.HasSetting(DisableNetflixHomeMixed)">Object_Home_Netflix</include>
 	            </control>
 			  <control type="group">
                         <include condition="Skin.HasSetting(DisableNetflixHome) + !Skin.HasSetting(DisableNetflixHomeAlt) + !Skin.HasSetting(DisableNetflixHomeMixed)">Object_Home_Netflix_Alt</include>
                     </control>
                        <control type="group">
-                        <include condition="Skin.HasSetting(DisableNetflixHomeMixed)">Object_Home_Netflix_Mixed</include>
+                        <include condition="Skin.HasSetting(DisableNetflixHomeMixed) + Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeAlt)">Object_Home_Netflix_Mixed</include>
                     </control>
 
 
@@ -456,7 +456,6 @@
                 </control>
             </control>
             <control type="fixedlist" id="$PARAM[id]">
-
 		<movement>2</movement>
                 <include condition="$PARAM[submenu] + !Skin.HasSetting(SubmenuLabel)">Widget_Items_Submenu_Height</include>
                 <include condition="$PARAM[submenu] + Skin.HasSetting(SubmenuLabel)">Widget_Items_Submenu_Big_Height</include>

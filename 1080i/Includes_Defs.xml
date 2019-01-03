@@ -60,7 +60,6 @@
         <value condition="String.EndsWith(ListItem.Label,7)">$NUMBER[3]</value>
         <value condition="String.EndsWith(ListItem.Label,8)">$NUMBER[4]</value>
         <value condition="String.EndsWith(ListItem.Label,9)">$NUMBER[5]</value>
-        <value condition="String.EndsWith(ListItem.Label,!)">$NUMBER[6]</value>
         <value condition="String.EndsWith(ListItem.Label,?)">$NUMBER[7]</value>
         <value condition="String.EndsWith(ListItem.Label,.)">$NUMBER[8]</value>
         <value>$NUMBER[9]</value>

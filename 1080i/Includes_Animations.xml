@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+
+    <include name="Animation_FadeOut_Delay">
+        <animation effect="fade" end="0" start="100" time="1" delay="300">Hidden</animation>
+    </include>
+    <include name="Animation_FocusBounce_Home">
+        <animation type="Focus" condition="!Skin.HasSetting(BounceAnimations)" reversible="false">
+            <effect type="zoom" end="115" time="75" tween="sine" easing="out" center="auto" />
+            <effect type="zoom" end="86.9565217" time="225" tween="sine" delay="100" easing="out" center="auto" />
+        </animation>
+    </include>
+
    <include name="Animation_Home_Textbar_Slideover">
         <animation effect="slide" start="0" end="-301" time="300" tween="sine" easing="inout" condition="[![Control.HasFocus(300) | Control.HasFocus(3904) | Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903)] + !Control.HasFocus(302)] | [!Control.HasFocus(302) + !Skin.HasSetting(IconOnlyMode)]">Conditional</animation>
         <animation effect="slide" start="0" end="-301" time="300" tween="sine" easing="inout" condition="[[Control.HasFocus(300) | Control.HasFocus(3904) | Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903)] | Control.HasFocus(302)] + !Window.IsNext(Home) + ![!Control.HasFocus(302) + !Skin.HasSetting(IconOnlyMode)]">WindowClose</animation>
@@ -8,12 +19,11 @@
                 <control type="button">
                         <visible>false</visible>
                         <!-- <onfocus>RunScript(script.skin.helper.service,action=fileexists,file=$INFO[listitem.path,,theme.mp3],winprop=osttheme_avail)</onfocus> -->
-                        <onfocus condition="!Player.HasVideo + !String.IsEqual(trailer_avail,true)">AlarmClock(trailer_delay,PlayMedia($INFO[ListItem.Trailer],false,1),00:06,silent)</onfocus>
-			<onfocus>SetProperty(trailer_avail,true,home)</onfocus>
+                        <onfocus condition="!Player.HasVideo + !String.IsEmpty(Window(home).Property(trailer_trailerwillplaying))">AlarmClock(trailer_delay,PlayMedia($INFO[ListItem.Trailer],false,1),00:06,silent)</onfocus>
+                        <onfocus condition="!Player.HasVideo">SetProperty(trailer_trailerwillplaying,true,home)</onfocus>
                         <onunfocus condition="System.HasAlarm(trailer_delay)">CancelAlarm(trailer_delay,true)</onunfocus>
                         <onunfocus condition="Player.HasVideo + ![VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | VideoPlayer.Content(musicvideos) | VideoPlayer.Content(livetv)]">PlayerControl(Stop)</onunfocus>
 			<onunfocus>ClearProperty(TrailerPlaying)</onunfocus>
-                        <onunfocus condition="!String.IsEmpty(Window(home).Property(trailer_avail))">ClearProperty(trailer_avail,home)</onunfocus>
                         <onunfocus condition="!String.IsEmpty(Window(home).Property(trailer_trailerwillplaying))">ClearProperty(trailer_trailerwillplaying)</onunfocus>
                 </control>
         </include>

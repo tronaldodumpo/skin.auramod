@@ -479,7 +479,7 @@
                     <right>-10</right>
                     <bottom>40</bottom>
                     <top>-10</top>
-                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(artists)</visible>
+                    <visible>Container.Content(seasons) | Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(artists)</visible>
                     <pagecontrol>60</pagecontrol>
                     <focusposition>1</focusposition>
                     <movement>1</movement>
@@ -750,6 +750,7 @@
                                 <visible>Container.Content(movies) | Container.Content(episodes)</visible>
                             </control>
                             <control type="label">
+				<visible>!Container.Content(seasons)</visible>
                                 <animation effect="slide" condition="![Container.Content(movies) | Container.Content(episodes)]" end="-73">Conditional</animation>
                                 <left>73</left>
                                 <width>auto</width>
