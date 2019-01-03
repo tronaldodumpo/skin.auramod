@@ -7,6 +7,9 @@
     <constant name="widget_poster_spacer">640</constant>
     <constant name="widget_gap">-640</constant>
     <constant name="widget_top">435</constant>
+    <constant name="widget_gap_netflix">-640</constant>
+    <constant name="widget_top_netflix">440</constant>
+
 
     <!-- Details -->
     <!-- widget_spacer_top/bottom is the space from the top/bottom of screen for first/last widget -->

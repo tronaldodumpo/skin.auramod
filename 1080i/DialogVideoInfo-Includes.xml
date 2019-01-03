@@ -1636,7 +1636,7 @@
                                 <onclick>SetProperty(BaseWindow,InfoDialog,Home)</onclick>
                                 <onclick>close</onclick>
                                 <!-- activate ALL EPISODES view -->
-                                <onclick>ActivateWindow(Videos,videodb://tvshows/titles/$INFO[ListItem.DBID]/,return)</onclick>
+                                <onclick condition="String.IsEmpty(ListItem.DBID)">ActivateWindow(10025,$ESCINFO[ListItem.FileNameAndPath],return)</onclick>
                             </control>
 
 			<!-- Trailer-->

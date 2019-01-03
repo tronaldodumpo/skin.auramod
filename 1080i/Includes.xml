@@ -25,7 +25,8 @@
     <include file="Includes_VideoLyrics.xml" />
     <include file="Includes_Weather.xml" />
     <include condition="!Skin.HasSetting(DisableNetflixHome)" file="Includes_Widgets.xml" />
-    <include condition="Skin.HasSetting(DisableNetflixHome) + !Skin.HasSetting(DisableNetflixHomeSidemenu)" file="Includes_Widgets_Netflix.xml" />
+    <include condition="Skin.HasSetting(DisableNetflixHome) + !Skin.HasSetting(DisableNetflixHomeSidemenu) + !Skin.HasSetting(DisableNetflixHomeMixed)" file="Includes_Widgets_Netflix.xml" />
+    <include condition="Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeMixed)" file="Includes_Widgets_Netflix_mixed.xml" />
     <include condition="Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeSidemenu)" file="Includes_Widgets_Netflix_nosidemenu.xml" />
 
     <include file="Includes_View.xml" />
