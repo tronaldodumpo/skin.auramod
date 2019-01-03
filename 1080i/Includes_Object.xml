@@ -416,7 +416,6 @@
 		    <align>center</align>
                     <wrapmultiline>true</wrapmultiline>
                 </control>
-
                    <control type="label">
                     <visible>!Control.HasFocus(300) + [String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo)) + String.IsEmpty(Control.GetLabel(55443))]</visible>
                     <left>50</left>
@@ -427,8 +426,8 @@
                     <shadowcolor>black</shadowcolor>
                     <font>netflix_heading</font>
                     <width min="200" max="400">auto</width>
-		    <align>center</align>
-       	            <wrapmultiline>true</wrapmultiline>
+                    <align>center</align>
+                    <wrapmultiline>true</wrapmultiline>
                 </control>
                </control>
 
@@ -622,6 +621,7 @@
 
                    <control type="label">
                     <animation effect="slide" end="0,-40" condition="String.IsEmpty(Control.GetLabel(55443))">Conditional</animation>
+		    <visible>[String.IsEqual(ListItem.DBType,episode) | Container.Content(livetv) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | !String.IsEmpty(ListItem.ChannelName)]</visible>
                     <visible>!Control.HasFocus(300) + String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo)) + String.IsEmpty(Control.GetLabel(55443))</visible>
                     <left>0</left>
 	            <top>25</top>
