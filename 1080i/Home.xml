@@ -12,7 +12,6 @@
 
     <onload>ClearProperty(WidgetLoading,Home)</onload>
     <onload>AlarmClock(SetLoad,SetProperty(WidgetLoading,1,Home),00:00,silent)</onload>
-
     <onunload>ClearProperty(SkinHelper.WidgetContainer)</onunload>
 
     <controls>
@@ -52,7 +51,8 @@
             <onfocus condition="!String.IsEmpty(Skin.String(MenuPos))">SetFocus(302)</onfocus>
             <onfocus condition="!String.IsEmpty(Skin.String(MenuPos))">SetFocus(300,$INFO[Skin.String(MenuPos)])</onfocus>
             <onfocus condition="String.IsEmpty(Skin.String(MenuPos)) + String.IsEmpty(Window(Home).Property(WidgetFocus))">SetFocus(300)</onfocus>
-            <onfocus condition="String.IsEmpty(Skin.String(MenuPos)) + !String.IsEmpty(Window(Home).Property(WidgetFocus))">SetFocus(3000,2)</onfocus>
+            <onfocus condition="String.IsEmpty(Skin.String(MenuPos)) + !String.IsEmpty(Window(Home).Property(WidgetFocus))">SetFocus(3000,3)</onfocus>
+	    <onright>Control.Move(330,3)</onright> <!-- move to 2nd widget-->
         </control>
 
         <control type="scrollbar" id="9060">

@@ -765,8 +765,18 @@
 			    <onclick condition="!Skin.HasSetting(DisableOverlayColor)">Skin.ToggleSetting(DisableOverlayColor)</onclick> 
 			    <onclick condition="!Skin.HasSetting(WidgetLabels)">Skin.ToggleSetting(WidgetLabels)</onclick> 
 			    <onclick condition="Skin.HasSetting(DisableNetflixHomeSidemenu)">Skin.ToggleSetting(DisableNetflixHomeSidemenu)</onclick> 
+                            <onclick condition="!Skin.HasSetting(DisableNetflixHomeAlt)">Skin.ToggleSetting(DisableNetflixHomeDefault)</onclick>
+                            <onclick condition="!Skin.HasSetting(DisableNetflixHomeMixed)">Skin.ToggleSetting(DisableNetflixHomeDefault)</onclick>
                             <onclick>ReloadSkin()</onclick>
                         </control>
+                        <control type="button" id="9628" description="Select Netflix Home Style">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9013)</visible>
+			    <enable>Skin.HasSetting(DisableNetflixHome)</enable>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31442]</label>
+                            <onclick>ActivateWindow(1120)</onclick>
+                        </control>
+<!--
                         <control type="radiobutton" id="9628" description="Enable Alternative Home  Spotlight">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9013)</visible>
                             <include>Defs_Settings_Button</include>
@@ -790,6 +800,7 @@
                             <onclick condition="!Skin.HasSetting(DisableNetflixSubmenuBG)">Skin.ToggleSetting(DisableNetflixSubmenuBG)</onclick>
                             <onclick>ReloadSkin()</onclick>
                         </control>
+-->
 			<control type="radiobutton" id="9630" description="Enable Netflix Views">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9013)</visible>
                             <include>Defs_Settings_Button</include>

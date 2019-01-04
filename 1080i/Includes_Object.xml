@@ -400,7 +400,7 @@
 
                    <control type="label">
                     <visible>[Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeSidemenu)] | Control.HasFocus(3001) | ![String.IsEqual(ListItem.DBType,episode) | Container.Content(livetv) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | !String.IsEmpty(ListItem.ChannelName)] </visible>
-                   <visible>[!Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeAlt)]</visible>
+                   <visible>[!Control.HasFocus(300) + Skin.HasSetting(DisableNetflixHomeAlt)]</visible>
                    <animation effect="slide" end="0,60" condition="[Control.HasFocus(3901) | ![String.IsEqual(ListItem.DBType,episode) | Container.Content(livetv) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | !String.IsEmpty(ListItem.ChannelName)]]">Conditional</animation>
 		    <visible>!Control.HasFocus(302)</visible>
 		    <top>120</top>
@@ -766,7 +766,7 @@
      <control type="group">
         <visible>!String.IsEqual(Container(300).ListItem.Property(widget),Weather) + !String.IsEqual(Container(300).ListItem.Property(widget),Settings)</visible>
 	    <control type="group">
-	    <visible>!Skin.HasSetting(DisableNetflixHomeAlt)</visible>
+	    <visible>Skin.HasSetting(DisableNetflixHomeAlt)</visible>
 	    <visible>!Window.IsVisible(DialogVideoInfo.xml)</visible>
 
                 <control type="image">
@@ -829,7 +829,7 @@
 
                    <control type="label">
                     <visible>[Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeSidemenu)] | Control.HasFocus(3001) | ![String.IsEqual(ListItem.DBType,episode) | Container.Content(livetv) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | !String.IsEmpty(ListItem.ChannelName)] </visible>
-                   <visible>[!Control.HasFocus(300) + !Skin.HasSetting(DisableNetflixHomeAlt)]</visible>
+                   <visible>[!Control.HasFocus(300) + Skin.HasSetting(DisableNetflixHomeAlt)]</visible>
                    <animation effect="slide" end="0,60" condition="[Control.HasFocus(3901) | ![String.IsEqual(ListItem.DBType,episode) | Container.Content(livetv) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | !String.IsEmpty(ListItem.ChannelName)]]">Conditional</animation>
 		    <visible>!Control.HasFocus(302)</visible>
 		    <top>120</top>
