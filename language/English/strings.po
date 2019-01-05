@@ -1761,7 +1761,7 @@ msgstr ""
 
 #: /1080i/SkinSettings.xml
 msgctxt "#31371"
-msgid "Categories widget text"
+msgid "Disable Categories widget text"
 msgstr ""
 
 #: /1080i/SkinSettings.xml
@@ -2091,11 +2091,26 @@ msgstr
 
 #: /1080i/SkinSettings.xml
 msgctxt "#31438"
-msgid "Enable Alternative Home  Spotlight"
+msgid "Enable Alternative Home Layout"
 msgstr
 
 #: /1080i/SkinSettings.xml
 msgctxt "#31439"
 msgid "Enable Sumenu Background Image"
+msgstr
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31440"
+msgid "Enable Mixed Netflix Home Layout"
+msgstr
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31441"
+msgid "Enable Default  Netflix Home Layout"
+msgstr
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31442"
+msgid "Choose Netflix Home Style"
 msgstr
 

@@ -699,6 +699,7 @@
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31413]</label>
+                            <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
                             <enable>!Skin.HasSetting(DisableNetflixHome)</enable>
                             <selected>Skin.HasSetting(DisableWidgetPlot)</selected>
                             <onclick>Skin.ToggleSetting(DisableWidgetPlot)</onclick>
@@ -707,6 +708,7 @@
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31426]</label>
+                            <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
                             <enable>!Skin.HasSetting(DisableNetflixHome)</enable>
                             <selected>Skin.HasSetting(DisableWidgetIMDB)</selected>
                             <onclick>Skin.ToggleSetting(DisableWidgetIMDB)</onclick>
@@ -715,6 +717,7 @@
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31427]</label>
+                            <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
                             <enable>!Skin.HasSetting(DisableNetflixHome)</enable>
                             <selected>Skin.HasSetting(DisableWidgetTitle)</selected>
                             <onclick>Skin.ToggleSetting(DisableWidgetTitle)</onclick>
@@ -805,6 +808,7 @@
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9013)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31428]</label>
+                            <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
                             <enable>!Skin.HasSetting(DisableNetflixHome)</enable>
                             <selected>!Skin.HasSetting(DisableNetflixView)</selected>
                             <onclick>Skin.ToggleSetting(DisableNetflixView)</onclick>
@@ -813,6 +817,7 @@
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9013)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31432]</label>
+                            <visible>[Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeAlt)] | !Skin.HasSetting(DisableNetflixHome) | !Skin.HasSetting(DisableNetflixHomeMixed)</visible>
                             <enable>[Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeAlt)] | !Skin.HasSetting(DisableNetflixHome) | !Skin.HasSetting(DisableNetflixHomeMixed)</enable>
                             <selected>!Skin.HasSetting(DisableNetflixVideoInfo)</selected>
                             <onclick>Skin.ToggleSetting(DisableNetflixVideoInfo)</onclick>
@@ -821,6 +826,7 @@
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9013)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31433]</label>
+                            <visible>Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeAlt) + !Skin.HasSetting(DisableNetflixHomeMixed)</visible>
                             <enable>Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeAlt) + !Skin.HasSetting(DisableNetflixHomeMixed)</enable>
                             <selected>!Skin.HasSetting(DisableNetflixHomeSidemenu)</selected>
                             <onclick>Skin.ToggleSetting(DisableNetflixHomeSidemenu)</onclick>
@@ -840,6 +846,7 @@
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9013)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31437]</label>
+                            <visible>Skin.HasSetting(DisableNetflixHome) + !Skin.HasSetting(DisableNetflixHomeSidemenu) + Skin.HasSetting(DisableNetflixHomeAlt)</visible>
                             <enable>Skin.HasSetting(DisableNetflixHome) + !Skin.HasSetting(DisableNetflixHomeSidemenu) + Skin.HasSetting(DisableNetflixHomeAlt)</enable>
                             <selected>Skin.HasSetting(DisableNetflixHomeSidemenuHide)</selected>
                             <onclick>Skin.ToggleSetting(DisableNetflixHomeSidemenuHide)</onclick>
