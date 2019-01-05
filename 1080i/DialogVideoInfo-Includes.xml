@@ -1399,9 +1399,8 @@
                         </control>
 
 
-	<control type="group">
+		<control type="group">
                         <width>550</width>
-
                         <control type="group" id="98">
                             <visible>Control.HasFocus(9)</visible>
                             <animation effect="fade" start="0" end="100" time="" delay="200">Visible</animation>
@@ -1431,6 +1430,8 @@
                             <onleft condition="String.IsEqual(Window.Property(AdditionalInfo),similar)">SetFocus(352)</onleft>
                             <onup>8000</onup>
                             <ondown>8000</ondown>
+			    <onleft>SetProperty(BaseWindow,InfoDialog,Home)</onleft>
+			    <onleft>9601</onleft>
                             <pagecontrol>60</pagecontrol>
 
                            <!-- next-up: play/resume SxxExx -->

@@ -359,15 +359,15 @@
 
 	    </control>
                 <control type="group">
-                <visible>!Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(300)</visible>
+                <visible>Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(300)</visible>
                 <include>Global_Background</include>
                 </control>
                 <control type="group">
-                <visible>!Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(302)</visible>
+                <visible>Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(302)</visible>
                 <include>Global_Background</include>
                 </control>
                 <control type="group">
-                <visible>!Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(3001)</visible>
+                <visible>Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(3001)</visible>
                 <include>Global_Background</include>
                 </control>
 
@@ -456,6 +456,7 @@
                     <textcolor>99D3D3D3</textcolor>
 	   	    <shadowcolor>dimgrey</shadowcolor>
                     <font>widget_trakt_title</font>
+		    <autoscroll>false</autoscroll>
                 </control>
 
 	    </control>
@@ -481,7 +482,7 @@
         <visible>!String.IsEqual(Container(300).ListItem.Property(widget),Weather) + !String.IsEqual(Container(300).ListItem.Property(widget),Settings)</visible>
 	<control type="group">
 	<left>20</left>
-	<visible>!Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(300)</visible>
+	<visible>Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(300)</visible>
 	<include>Global_Background</include>
 	</control>
             <control type="group">
@@ -511,7 +512,7 @@
                     <aspectratio scalediffuse="false" aligny="top">keep</aspectratio>
                 </control>
              <control type="image">
-                    <visible>!Player.HasVideo + [Control.HasFocus(300) | Control.HasFocus(3001)]</visible>
+                    <visible>!Player.HasVideo + !Skin.HasSetting(DisableNetflixSubmenuBG) + [Control.HasFocus(300) | Control.HasFocus(3001)]</visible>
                     <fadetime>2500</fadetime>
                     <width>1400</width>
                     <height>787</height>
@@ -788,15 +789,15 @@
 
 	    </control>
                 <control type="group">
-                <visible>!Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(300)</visible>
+                <visible>Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(300)</visible>
                 <include>Global_Background</include>
                 </control>
                 <control type="group">
-                <visible>!Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(302)</visible>
+                <visible>Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(302)</visible>
                 <include>Global_Background</include>
                 </control>
                 <control type="group">
-                <visible>!Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(3001)</visible>
+                <visible>Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(3001)</visible>
                 <include>Global_Background</include>
                 </control>
 
@@ -912,7 +913,7 @@
         <visible>!String.IsEqual(Container(300).ListItem.Property(widget),Weather) + !String.IsEqual(Container(300).ListItem.Property(widget),Settings)</visible>
 	<control type="group">
 	<left>20</left>
-	<visible>!Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(300)</visible>
+	<visible>Skin.HasSetting(DisableNetflixSubmenuBG) + Control.HasFocus(300)</visible>
 	<include>Global_Background</include>
 	</control>
             <control type="group">
@@ -2419,7 +2420,8 @@
             </include>
         </definition>
     </include>
-
+    <include name="ratings_align_right"><right>0</right></include>
+    <include name="ratings_align_left"><left>0</left></include>
     <include name="Object_Ratings_Content">
         <param name="directory" default="monochrome" />
         <param name="align" default="right" />
@@ -2437,7 +2439,7 @@
         <definition>
             <control type="grouplist">
                 <width>$PARAM[width]</width>
-                <right>0</right>
+		<right>0</right>
                 <height>32</height>
                 <orientation>horizontal</orientation>
                 <align>$PARAM[align]</align>
@@ -3150,7 +3152,8 @@
                     <top>100</top>
                     <left>-1000</left>
                     <bottom>100</bottom>
-                    <onback condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)]">300</onback>
+                    <onback condition="Skin.HasSetting(DisableNetflixVideoInfo) + [Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)]">300</onback>
+                    <onback condition="!Skin.HasSetting(DisableNetflixVideoInfo) + [Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)]">8000</onback>
                     <onup condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)]">300</onup>
                     <ondown condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)]">300</ondown>
                     <onright condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)]">300</onright>
@@ -3176,8 +3179,100 @@
                     <animation effect="fade" condition="true" time="0" start="100" end="0">Conditional</animation>
                 </control>
 
+
+		<!-- Netflix Plot Info -->
+	<control type="group">
+                    <include>Animation_FadeIn</include>
+                    <visible>Control.HasFocus(9601) + $PARAM[visible] + !Skin.HasSetting(DisableNetflixVideoInfo)</visible>
+	        <control type="image">
+                    <width>100%</width>
+                    <height>100%</height>
+               	     <texture background="true" colordiffuse="FF000000" flipy="true">common/white.png</texture>
+                    <aspectratio scalediffuse="true" aligny="top">scale</aspectratio>
+                </control> 
+                <control type="image">
+                    <width>100%</width>
+                    <height>100%</height>
+                    <texture background="true" diffuse="overlay/gradient_overlay_info.png">$VAR[Image_Fanart]</texture>
+                    <aspectratio scalediffuse="true" aligny="top">scale</aspectratio>
+	        </control>
+                <control type="image">
+                <width>100%</width>
+                <height>100%</height>
+                <texture background="true" colordiffuse="FF000000" flipy="true">common/background_diffuse.png</texture>
+                </control>
+
+             <control type="group">
+                    <height min="155" max="251">auto</height>
+                 <control type="image" id="55443">
+                    <left>60</left>
+                    <right>$PARAM[titleright]</right>
+                    <height>251</height>
+                    <width>650</width>
+                    <aligny>top</aligny>
+                    <texture background="true">$VAR[NetflixHome_ClearLogo]</texture>
+                 </control>
+                   <control type="label">
+                    <visible>String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo)) + String.IsEmpty(Control.GetLabel(55443))</visible>
+                    <top>60</top>
+                    <left>60</left>
+                    <right>$PARAM[titleright]</right>
+                    <label>$INFO[ListItem.Label]</label>
+                    <textcolor>grey</textcolor>
+                    <shadowcolor>black</shadowcolor>
+                    <font>netflix_heading</font>
+                    <width min="200" max="400">auto</width>
+                    <align>center</align>
+                    <wrapmultiline>true</wrapmultiline>
+                  </control>
+               </control>
+
+                <control type="grouplist">
+                <orientation>vertical</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>0</itemgap>
+		<top>300</top>
+                      <control type="textbox" id="9609">
+			    <left>60</left>
+                            <description>textarea</description>
+			    <height min="100" max="600">auto</height>
+			    <width>90%</width>
+                            <align>left</align>
+                            <textcolor>main_fg_70</textcolor>
+                            <font>font_overlay_plotbox</font>
+                            <label fallback="19055">$VAR[Label_OverlayPlot]</label>
+                            <autoscroll delay="8000" time="4000" repeat="12000">false</autoscroll>
+                        </control>
+		<control type="label">
+		<height>90</height>
+		</control>
+                  <control type="group">
+                    <height>80</height>
+		<right>950</right>
+                <include content="Object_Ratings" condition="Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(Home.xml) | Window.IsVisible(script-globalsearch.xml)">
+                     <param name="directory" value="color" />
+                     <param name="align" value="left" />
+                     <param name="width" value="$PARAM[width]" />
+                     <param name="rottentomatoes" value="true" />
+                     <param name="imdbvotes" value="true" />
+                     <param name="usermeter" value="true" />
+                     <param name="imdb" value="true" />
+                     <param name="tmdb" value="true" />
+                     <param name="metacritic" value="true" />
+                     <param name="oscars" value="true" />
+                     <param name="top250" value="true" />
+                     <param name="plot" value="false" />
+                     </include>
+            </control>
+	</control>
+ </control>
+
+
+
+
+		<!-- Standard Plot Info -->
                 <control type="group">
-                    <visible>$PARAM[visible]</visible>
+                    <visible>$PARAM[visible] + Skin.HasSetting(DisableNetflixVideoInfo)</visible>
                     <left>view_pad</left>
                     <right>view_pad</right>
                     <top>view_top</top>
