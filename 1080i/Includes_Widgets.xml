@@ -911,20 +911,7 @@
                         <label>$INFO[ListItem.Label]</label>
                         <scroll>false</scroll>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>Skin.HasSetting(DisableBigCat)</visible>
-                    </control>
-		    <control type="label">
-                        <bottom>25</bottom>
-                        <height>30</height>
-                        <align>center</align>
-                        <font>font_tiny</font>
-                        <textcolor>PosterFront_70</textcolor>
-                        <right>30</right>
-                        <left>30</left>
-                        <label>$INFO[ListItem.Label]</label>
-                        <scroll>false</scroll>
-                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>!Skin.HasSetting(DisableBigCat)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
@@ -938,14 +925,14 @@
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>!Skin.HasSetting(DisableBigCat)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
-			<visible>!Skin.HasSetting(DisableBigCat)</visible>
+			<visible>Skin.HasSetting(DisableBigCat)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>

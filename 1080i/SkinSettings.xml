@@ -757,7 +757,6 @@
                             <label>$LOCALIZE[31431]</label>
                             <selected>Skin.HasSetting(DisableNetflixHome)</selected>
                             <onclick>Skin.ToggleSetting(DisableNetflixHome)</onclick>
-                            <onclick condition="!Skin.HasSetting(HideSubmenuWidget)">Skin.ToggleSetting(HideSubmenuWidget)</onclick>
                             <onclick condition="Skin.HasSetting(DisableNetflixView)">Skin.ToggleSetting(DisableNetflixView)</onclick>
 			    <onclick condition="Skin.HasSetting(DisableWidgetPlot)">Skin.ToggleSetting(DisableWidgetPlot)</onclick> 
 			    <onclick condition="Skin.HasSetting(DisableWidgetIMDB)">Skin.ToggleSetting(DisableWidgetIMDB)</onclick> 

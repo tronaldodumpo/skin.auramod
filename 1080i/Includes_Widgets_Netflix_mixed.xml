@@ -640,11 +640,11 @@
                 <param name="submenu" value="$PARAM[submenu]" />
             </include>
 
-            <itemlayout width="130" height="130" condition="!Skin.HasSetting(SubmenuLabel)">
+            <itemlayout width="182" height="130" condition="!Skin.HasSetting(SubmenuLabel)">
                 <include>Widget_Submenu_ItemLayout</include>
             </itemlayout>
             
-            <focusedlayout width="130" height="130" condition="!Skin.HasSetting(SubmenuLabel)">
+            <focusedlayout width="182" height="130" condition="!Skin.HasSetting(SubmenuLabel)">
                 <include content="Widget_Submenu_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                 </include>
@@ -911,7 +911,7 @@
                     <include>Defs_PosterBack</include>
                     <control type="label">
                         <bottom>25</bottom>
-                        <height>30</height>
+                        <height>20</height>
                         <align>center</align>
                         <font>font_tiny</font>
                         <textcolor>PosterFront_70</textcolor>
@@ -919,9 +919,10 @@
                         <left>30</left>
                         <label>$INFO[ListItem.Label]</label>
                         <scroll>false</scroll>
-                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>Skin.HasSetting(SubmenuLabel)</visible> <!-- small cat widget off-->
+                        <visible>!Skin.HasSetting(DisableBigCat)</visible> <!-- cat text on -->
                     </control>
+<!--
 		    <control type="label">
                         <bottom>25</bottom>
                         <height>30</height>
@@ -935,26 +936,29 @@
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
                         <visible>Skin.HasSetting(DisableBigCat)</visible>
                     </control>
+-->
                     <control type="image">
                         <bordersize>10</bordersize>
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
-                        <visible>!Skin.HasSetting(SubmenuLabel)</visible>
+                        <visible>!Skin.HasSetting(SubmenuLabel)</visible> <!-- small cat widget on-->
                     </control>
 		    <control type="image">
+			<width>95%</width>
+			<height>80%</height>
+			<align>top</align>
                         <bordersize>10</bordersize>
-                        <height>125</height>
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
-                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>Skin.HasSetting(SubmenuLabel)</visible> <!-- small cat widget off-->
+                        <visible>!Skin.HasSetting(DisableBigCat)</visible> <!-- cat text on -->
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
-                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
-			<visible>!Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>Skin.HasSetting(SubmenuLabel)</visible> <!-- small cat widget off-->
+			<visible>Skin.HasSetting(DisableBigCat)</visible> <!-- cat text off -->
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
@@ -989,55 +993,64 @@
                     <include>Defs_PosterBack</include>
                     <control type="label">
                         <bottom>25</bottom>
-                        <height>30</height>
+                        <height>20</height>
                         <align>center</align>
                         <font>font_tiny</font>
-                        <textcolor>PosterFront</textcolor>
+                        <textcolor>PosterFront_70</textcolor>
                         <right>30</right>
                         <left>30</left>
                         <label>$INFO[ListItem.Label]</label>
-                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>Skin.HasSetting(DisableBigCat)</visible>
+                        <scroll>false</scroll>
+                        <visible>Skin.HasSetting(SubmenuLabel)</visible> <!-- small cat widget off-->
+                        <visible>!Skin.HasSetting(DisableBigCat)</visible> <!-- cat text on -->
                     </control>
+<!--
 		    <control type="label">
                         <bottom>25</bottom>
                         <height>30</height>
                         <align>center</align>
                         <font>font_tiny</font>
-                        <textcolor>PosterFront</textcolor>
+                        <textcolor>PosterFront_70</textcolor>
                         <right>30</right>
                         <left>30</left>
                         <label>$INFO[ListItem.Label]</label>
+                        <scroll>false</scroll>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
                         <visible>Skin.HasSetting(DisableBigCat)</visible>
                     </control>
+-->
                     <control type="image">
                         <bordersize>10</bordersize>
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
-                        <visible>!Skin.HasSetting(SubmenuLabel)</visible>
+                        <visible>!Skin.HasSetting(SubmenuLabel)</visible> <!-- small cat widget on-->
                     </control>
-		     <control type="image">
+		    <control type="image">
+                        <width>95%</width>
+                        <height>80%</height>
+                        <align>top</align>
+
+			<align>center</align>
                         <bordersize>10</bordersize>
-                        <height>125</height>
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
-                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>Skin.HasSetting(SubmenuLabel)</visible> <!-- small cat widget off-->
+                        <visible>!Skin.HasSetting(DisableBigCat)</visible> <!-- cat text on -->
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
-                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
-			 <visible>!Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>Skin.HasSetting(SubmenuLabel)</visible> <!-- small cat widget off-->
+			<visible>Skin.HasSetting(DisableBigCat)</visible> <!-- cat text off -->
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
                         <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
                     </control>
                 </control>
-                <control type="group">
+ 
+               <control type="group">
                     <include>View_Selectbox</include>
                 </control>
             </control>
