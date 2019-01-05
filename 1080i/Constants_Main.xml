@@ -20,5 +20,7 @@
     <constant name="widget_poster_width">290</constant>
     <constant name="widget_poster_width_netflix">261</constant>
     <constant name="widget_poster_height_netflix">380</constant>
+    <constant name="widget_poster_width_netflix_mixed">242</constant>
+    <constant name="widget_poster_height_netflix_mixed">353</constant>
     <constant name="sidepad">80</constant>    
 </includes>
