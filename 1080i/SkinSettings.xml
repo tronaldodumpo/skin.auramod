@@ -849,7 +849,7 @@
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31439]</label>
                             <enable>Skin.HasSetting(DisableNetflixHome)</enable>
-                            <selected>!Skin.HasSetting(DisableNetflixSubmenuBG)</selected>
+                            <selected>Skin.HasSetting(DisableNetflixSubmenuBG)</selected>
                             <onclick>Skin.ToggleSetting(DisableNetflixSubmenuBG)</onclick>
                         </control>
 	

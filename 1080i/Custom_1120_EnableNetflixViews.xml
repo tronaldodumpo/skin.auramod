@@ -77,7 +77,7 @@
                             <enable>Skin.HasSetting(DisableNetflixHome)</enable>
                             <selected>Skin.HasSetting(DisableNetflixHomeMixed)</selected>
                             <onclick>Skin.ToggleSetting(DisableNetflixHomeMixed)</onclick>
-                            <onclick condition="!Skin.HasSetting(DisableNetflixSubmenuBG)">Skin.ToggleSetting(DisableNetflixSubmenuBG)</onclick>
+                            <onclick condition="Skin.HasSetting(DisableNetflixSubmenuBG)">Skin.ToggleSetting(DisableNetflixSubmenuBG)</onclick>
                             <onclick condition="Skin.HasSetting(DisableNetflixHomeAlt)">Skin.ToggleSetting(DisableNetflixHomeAlt)</onclick>
                             <onclick condition="!Skin.HasSetting(DisableNetflixHomeDefault)">Skin.ToggleSetting(DisableNetflixHomeDefault)</onclick>
                             <onclick>ReloadSkin()</onclick>
