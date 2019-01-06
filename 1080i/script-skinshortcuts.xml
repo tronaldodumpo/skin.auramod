@@ -494,8 +494,7 @@
 	            <onfocus condition="String.IsEqual(Window.Property(WidgetAspect_Item),$LOCALIZE[31414])">SetProperty(customValue,$LOCALIZE[31418])</onfocus>
 	            <onfocus condition="String.IsEqual(Window.Property(WidgetAspect_Item),$LOCALIZE[31418])">SetProperty(customValue,$LOCALIZE[31412])</onfocus>
 	            <onfocus condition="String.IsEqual(Window.Property(WidgetAspect_Item),$LOCALIZE[31412])">SetProperty(customValue,$LOCALIZE[31430])</onfocus>
-	            <onfocus condition="String.IsEqual(Window.Property(WidgetAspect_Item),$LOCALIZE[31430])">SetProperty(customValue,$LOCALIZE[31443])</onfocus>
-	            <onfocus condition="String.IsEqual(Window.Property(WidgetAspect_Item),$LOCALIZE[31443])">SetProperty(customValue,$LOCALIZE[31263])</onfocus>
+	            <onfocus condition="String.IsEqual(Window.Property(WidgetAspect_Item),$LOCALIZE[31430])">SetProperty(customValue,$LOCALIZE[31263])</onfocus>
                     <onclick>SendClick(404)</onclick>
                     <onclick>AlarmClock(Setit,SetFocus(9300),00:00,silent)</onclick>
                     <onclick>AlarmClock(Setitback,SetFocus(9403),00:00,silent)</onclick>
