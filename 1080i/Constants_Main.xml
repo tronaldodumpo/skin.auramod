@@ -16,7 +16,7 @@
     <constant name="list_width">1200</constant>
     <constant name="info_left">700</constant>
     <constant name="view_left">680</constant>
-    <constant name="widget_poster_height">420</constant>
+    <constant name="widget_poster_height">400</constant>
     <constant name="widget_poster_width">290</constant>
     <constant name="widget_poster_width_netflix">261</constant>
     <constant name="widget_poster_height_netflix">380</constant>
