@@ -111,7 +111,6 @@
                         <include condition="Skin.HasSetting(DisableNetflixHomeMixed) + Skin.HasSetting(DisableNetflixHome) + !Skin.HasSetting(DisableNetflixHomeAlt)">Object_Home_Netflix_Mixed</include>
                     </control>
 
-
                         <include>Widgets_Grouplist</include>
                         <control type="button" id="9966">
                             <onleft>300</onleft>
@@ -402,7 +401,7 @@
             <posy>650</posy>
 	    <left>-10</left>
             <onup>300</onup>
-	<onfocus>Control.SetFocus(330,3)</onfocus>
+            <onleft>300</onleft>
             <ondown>431</ondown>
             <pagecontrol>9060</pagecontrol>
             <orientation>vertical</orientation>
@@ -410,7 +409,7 @@
             <itemgap>0</itemgap>
             <usecontrolcoords>true</usecontrolcoords>
             <scrolltime tween="sine" easing="out">500</scrolltime>
-	    <include content="Widget" condition="!Skin.HasSetting(HideSubmenuWidget)">
+	    <include content="WidgetSubmenu" condition="!Skin.HasSetting(HideSubmenuWidget)">
                 <param name="id" value="3001" />
                 <param name="submenu" value="true" />
                 <param name="aspect" value="$LOCALIZE[31263]" />
@@ -429,7 +428,69 @@
     </include>
 
     <include name="Widget_Busy_Top_Mouse"><top>455</top></include>
+    <include name="WidgetSubmenu">
+        <param name="submenu" default="false" />
+        <param name="genres" default="false" />
+        <param name="studios" default="false" />
+        <param name="text" default="false" />
 
+
+        <definition>
+            <control type="group" id="2$PARAM[id]">
+                <visible>$PARAM[visible]</visible>
+                <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+                <height>40</height>
+                <include content="Widget_Label">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="label" value="$PARAM[label]" />
+                    <param name="content" value="$PARAM[content]" />
+                    <param name="widgetContent" value="$PARAM[widgetContent]" />
+                </include>
+                <control type="group">
+                    <include condition="Skin.HasSetting(MouseMode)">Widget_Busy_Top_Mouse</include>
+                    <top>155</top>
+                    <left>-395</left>
+                    <include content="Defs_BusySpinner">
+                        <param name="label" value="$LOCALIZE[31138]..." />
+                    </include>
+                    <visible>Container($PARAM[id]).IsUpdating + !Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
+                </control>
+            </control>
+            <control type="list" id="$PARAM[id]">
+		<movement>2</movement>
+                <include condition="$PARAM[submenu] + !Skin.HasSetting(SubmenuLabel)">Widget_Items_Submenu_Height</include>
+                <include condition="$PARAM[submenu] + Skin.HasSetting(SubmenuLabel)">Widget_Items_Submenu_Big_Height</include>
+                <include condition="!$PARAM[submenu]">Widget_Items_menu_Big_Height</include>
+                <visible>$PARAM[visible] + [Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | Container(300).OnNext | Container(300).OnPrevious | String.IsEmpty(Window(Home).Property(WidgetLoading))]</visible>
+                <include content="Widget_Items" condition="!$PARAM[submenu]">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="target" value="$PARAM[target]" />
+                    <param name="content" value="$PARAM[content]" />
+                    <param name="widgetContent" value="$PARAM[widgetContent]" />
+                    <param name="aspect" value="$PARAM[aspect]" />
+                    <param name="widgetAspect" value="$PARAM[widgetAspect]" />
+                    <param name="submenu" value="$PARAM[submenu]" />
+                    <param name="sortby" value="$PARAM[sortby]" />
+                    <param name="sortorder" value="$PARAM[sortorder]" />
+                    <param name="genres" value="$PARAM[genres]" />
+                    <param name="studios" value="$PARAM[studios]" />
+                    <param name="text" value="$PARAM[text]" />
+                </include>
+                <include content="Widget_Submenu" condition="$PARAM[submenu]">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="target" value="$PARAM[target]" />
+                    <param name="content" value="$PARAM[content]" />
+                    <param name="widgetContent" value="$PARAM[widgetContent]" />
+                    <param name="aspect" value="$PARAM[aspect]" />
+                    <param name="widgetAspect" value="$PARAM[widgetAspect]" />
+                    <param name="submenu" value="$PARAM[submenu]" />
+                    <param name="sortby" value="$PARAM[sortby]" />
+                    <param name="sortorder" value="$PARAM[sortorder]" />
+                </include>
+            </control>
+        </definition>
+    </include>
+ 
     <include name="Widget">
         <param name="submenu" default="false" />
         <param name="genres" default="false" />
@@ -640,11 +701,11 @@
                 <param name="submenu" value="$PARAM[submenu]" />
             </include>
 
-            <itemlayout width="130" height="130" condition="!Skin.HasSetting(SubmenuLabel)">
+            <itemlayout width="182" height="130" condition="!Skin.HasSetting(SubmenuLabel)">
                 <include>Widget_Submenu_ItemLayout</include>
             </itemlayout>
             
-            <focusedlayout width="130" height="130" condition="!Skin.HasSetting(SubmenuLabel)">
+            <focusedlayout width="182" height="130" condition="!Skin.HasSetting(SubmenuLabel)">
                 <include content="Widget_Submenu_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                 </include>
@@ -664,6 +725,72 @@
         </definition>
     </include>
 
+    <include name="Widget_TVHub">
+        <param name="submenu" default="false" />
+        <param name="aspect" default="" />
+        <param name="sortby" default="" />
+        <param name="sortorder" default="" />
+        <param name="top" default="0" />
+        <param name="height" default="410" />
+        <param name="aspect" default="" />
+        <definition>
+
+            <include content="Widget_Common">
+                <param name="top" value="$PARAM[top]" />
+                <param name="height" value="$PARAM[height]" />
+                <param name="id" value="$PARAM[id]" />
+                <param name="aspect" value="$PARAM[aspect]" />
+                <param name="widgetAspect" value="$PARAM[widgetAspect]" />
+                <param name="submenu" value="$PARAM[submenu]" />
+            </include>
+
+            <itemlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],LandscapeWidePoster)">
+                <include content="Widget_Items_ItemLayout">
+                    <param name="poster" value="true" />
+                    <param name="genres" value="$PARAM[genres]" />
+                    <param name="studios" value="$PARAM[studios]" />
+                    <param name="text" value="$PARAM[text]" />
+                </include>
+            </itemlayout>
+            <itemlayout width="520.2" height="314.6" condition="String.IsEqual($PARAM[aspect],LandscapeTrakt) + !Control.HasFocus($PARAM[id])">
+                <include content="Widget_Items_ItemLayout">
+                    <param name="landscapetrakt" value="true" />
+                    <param name="genres" value="$PARAM[genres]" />
+                    <param name="studios" value="$PARAM[studios]" />
+                    <param name="text" value="$PARAM[text]" />
+                </include>
+            </itemlayout>
+
+            <focusedlayout width="520.2" height="314.6" condition="String.IsEqual($PARAM[aspect],LandscapeTrakt) + Control.HasFocus($PARAM[id])">
+                <include content="Widget_Items_FocusedLayout">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="landscapetrakt" value="true" />
+                    <param name="genres" value="$PARAM[genres]" />
+                    <param name="studios" value="$PARAM[studios]" />
+                    <param name="text" value="$PARAM[text]" />
+                </include>
+            </focusedlayout>
+
+           <focusedlayout width="600" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],LandscapeWidePoster) + Control.HasFocus($PARAM[id])">
+                <include content="Widget_Items_FocusedLayout">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="landscapewide" value="true" />
+                    <param name="genres" value="$PARAM[genres]" />
+                    <param name="studios" value="$PARAM[studios]" />
+                    <param name="text" value="$PARAM[text]" />
+                </include>
+            </focusedlayout>
+           <focusedlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],LandscapeWidePoster) + !Control.HasFocus($PARAM[id])">
+                <include content="Widget_Items_FocusedLayout">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="poster" value="true" />
+                    <param name="genres" value="$PARAM[genres]" />
+                    <param name="studios" value="$PARAM[studios]" />
+                    <param name="text" value="$PARAM[text]" />
+                </include>
+            </focusedlayout>
+        </definition>
+    </include>
 
     <include name="Widget_Items">
         <param name="submenu" default="false" />
@@ -691,7 +818,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </itemlayout>
-            <itemlayout width="600" height="widget_poster_height_netflix" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31411]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+            <itemlayout width="600" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31411]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_ItemLayout">
                     <param name="landscapewide" value="true" />
                     <param name="genres" value="$PARAM[genres]" />
@@ -699,7 +826,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </itemlayout>
-	    <itemlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31414]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+	    <itemlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31414]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_ItemLayout">
                     <param name="poster" value="true" />
                     <param name="genres" value="$PARAM[genres]" />
@@ -707,7 +834,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </itemlayout>
-	   <itemlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31418]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+	   <itemlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31418]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_ItemLayout">
                     <param name="poster" value="true" />
                     <param name="genres" value="$PARAM[genres]" />
@@ -715,7 +842,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </itemlayout>
-           <itemlayout width="380" height="widget_poster_height_netflix" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31412]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+           <itemlayout width="380" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31412]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_ItemLayout">
                     <param name="widgetlive" value="true" />
                     <param name="genres" value="$PARAM[genres]" />
@@ -726,14 +853,14 @@
 
 	<!-- END New Mod Widgets --->
 
-            <itemlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix" condition="String.IsEmpty($PARAM[aspect]) | $PARAM[studios] | $PARAM[genres] | $PARAM[text]">
+            <itemlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix_mixed" condition="String.IsEmpty($PARAM[aspect]) | $PARAM[studios] | $PARAM[genres] | $PARAM[text]">
                 <include content="Widget_Items_ItemLayout">
                     <param name="genres" value="$PARAM[genres]" />
                     <param name="studios" value="$PARAM[studios]" />
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </itemlayout>
-            <itemlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[20021]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+            <itemlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[20021]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_ItemLayout">
                     <param name="poster" value="true" />
                     <param name="genres" value="$PARAM[genres]" />
@@ -741,7 +868,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </itemlayout>
-            <itemlayout width="606.67" height="widget_poster_height_netflix" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31038]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+            <itemlayout width="606.67" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31038]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_ItemLayout">
                     <param name="landscape" value="true" />
                     <param name="genres" value="$PARAM[genres]" />
@@ -749,7 +876,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </itemlayout>
-            <itemlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31263]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+            <itemlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31263]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_ItemLayout">
                     <param name="square" value="true" />
                     <param name="genres" value="$PARAM[genres]" />
@@ -770,7 +897,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </focusedlayout>
-	   <focusedlayout width="600" height="widget_poster_height_netflix" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31411]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+	   <focusedlayout width="600" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31411]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="landscapewide" value="true" />
@@ -779,7 +906,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </focusedlayout>
-	   <focusedlayout width="600" height="widget_poster_height_netflix" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31414]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + Control.HasFocus($PARAM[id])">
+	   <focusedlayout width="600" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31414]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + Control.HasFocus($PARAM[id])">
                 <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="landscapewide" value="true" />
@@ -788,7 +915,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </focusedlayout>
-	   <focusedlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31414]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !Control.HasFocus($PARAM[id])">
+	   <focusedlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31414]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !Control.HasFocus($PARAM[id])">
                 <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="poster" value="true" />
@@ -797,7 +924,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </focusedlayout>
-	   <focusedlayout width="800" height="widget_poster_height_netflix" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31418]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + Control.HasFocus($PARAM[id])">
+	   <focusedlayout width="800" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31418]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + Control.HasFocus($PARAM[id])">
                 <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="posterdetails" value="true" />
@@ -806,7 +933,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </focusedlayout>
-	           <focusedlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31418]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !Control.HasFocus($PARAM[id])">
+	           <focusedlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31418]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !Control.HasFocus($PARAM[id])">
                 <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="poster" value="true" />
@@ -815,7 +942,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </focusedlayout> 
-	  <focusedlayout width="380" height="widget_poster_height_netflix" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31412]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+	  <focusedlayout width="380" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31412]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="widgetlive" value="true" />
@@ -828,7 +955,7 @@
 	<!-- END  Focused New Mods Widgets -->
 
 
-            <focusedlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix" condition="String.IsEmpty($PARAM[aspect]) | $PARAM[studios] | $PARAM[genres] | $PARAM[text]">
+            <focusedlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix_mixed" condition="String.IsEmpty($PARAM[aspect]) | $PARAM[studios] | $PARAM[genres] | $PARAM[text]">
                 <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="genres" value="$PARAM[genres]" />
@@ -836,7 +963,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </focusedlayout>
-            <focusedlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[20021]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+            <focusedlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[20021]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="poster" value="true" />
@@ -845,7 +972,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </focusedlayout>
-            <focusedlayout width="606.67" height="widget_poster_height_netflix" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31038]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+            <focusedlayout width="606.67" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31038]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="landscape" value="true" />
@@ -854,7 +981,7 @@
                     <param name="text" value="$PARAM[text]" />
                 </include>
             </focusedlayout>
-            <focusedlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31263]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+            <focusedlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31263]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="square" value="true" />
@@ -911,7 +1038,7 @@
                     <include>Defs_PosterBack</include>
                     <control type="label">
                         <bottom>25</bottom>
-                        <height>30</height>
+                        <height>20</height>
                         <align>center</align>
                         <font>font_tiny</font>
                         <textcolor>PosterFront_70</textcolor>
@@ -919,9 +1046,10 @@
                         <left>30</left>
                         <label>$INFO[ListItem.Label]</label>
                         <scroll>false</scroll>
-                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>Skin.HasSetting(SubmenuLabel)</visible> <!-- small cat widget off-->
+                        <visible>!Skin.HasSetting(DisableBigCat)</visible> <!-- cat text on -->
                     </control>
+<!--
 		    <control type="label">
                         <bottom>25</bottom>
                         <height>30</height>
@@ -935,26 +1063,29 @@
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
                         <visible>Skin.HasSetting(DisableBigCat)</visible>
                     </control>
+-->
                     <control type="image">
                         <bordersize>10</bordersize>
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
-                        <visible>!Skin.HasSetting(SubmenuLabel)</visible>
+                        <visible>!Skin.HasSetting(SubmenuLabel)</visible> <!-- small cat widget on-->
                     </control>
 		    <control type="image">
+			<width>95%</width>
+			<height>80%</height>
+			<align>top</align>
                         <bordersize>10</bordersize>
-                        <height>125</height>
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
-                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>Skin.HasSetting(SubmenuLabel)</visible> <!-- small cat widget off-->
+                        <visible>!Skin.HasSetting(DisableBigCat)</visible> <!-- cat text on -->
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
-                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
-			<visible>!Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>Skin.HasSetting(SubmenuLabel)</visible> <!-- small cat widget off-->
+			<visible>Skin.HasSetting(DisableBigCat)</visible> <!-- cat text off -->
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
@@ -989,55 +1120,64 @@
                     <include>Defs_PosterBack</include>
                     <control type="label">
                         <bottom>25</bottom>
-                        <height>30</height>
+                        <height>20</height>
                         <align>center</align>
                         <font>font_tiny</font>
-                        <textcolor>PosterFront</textcolor>
+                        <textcolor>PosterFront_70</textcolor>
                         <right>30</right>
                         <left>30</left>
                         <label>$INFO[ListItem.Label]</label>
-                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>Skin.HasSetting(DisableBigCat)</visible>
+                        <scroll>false</scroll>
+                        <visible>Skin.HasSetting(SubmenuLabel)</visible> <!-- small cat widget off-->
+                        <visible>!Skin.HasSetting(DisableBigCat)</visible> <!-- cat text on -->
                     </control>
+<!--
 		    <control type="label">
                         <bottom>25</bottom>
                         <height>30</height>
                         <align>center</align>
                         <font>font_tiny</font>
-                        <textcolor>PosterFront</textcolor>
+                        <textcolor>PosterFront_70</textcolor>
                         <right>30</right>
                         <left>30</left>
                         <label>$INFO[ListItem.Label]</label>
+                        <scroll>false</scroll>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
                         <visible>Skin.HasSetting(DisableBigCat)</visible>
                     </control>
+-->
                     <control type="image">
                         <bordersize>10</bordersize>
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
-                        <visible>!Skin.HasSetting(SubmenuLabel)</visible>
+                        <visible>!Skin.HasSetting(SubmenuLabel)</visible> <!-- small cat widget on-->
                     </control>
-		     <control type="image">
+		    <control type="image">
+                        <width>95%</width>
+                        <height>80%</height>
+                        <align>top</align>
+
+			<align>center</align>
                         <bordersize>10</bordersize>
-                        <height>125</height>
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
-                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>Skin.HasSetting(SubmenuLabel)</visible> <!-- small cat widget off-->
+                        <visible>!Skin.HasSetting(DisableBigCat)</visible> <!-- cat text on -->
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
-                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
-			 <visible>!Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>Skin.HasSetting(SubmenuLabel)</visible> <!-- small cat widget off-->
+			<visible>Skin.HasSetting(DisableBigCat)</visible> <!-- cat text off -->
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
                         <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
                     </control>
                 </control>
-                <control type="group">
+ 
+               <control type="group">
                     <include>View_Selectbox</include>
                 </control>
             </control>

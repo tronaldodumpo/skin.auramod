@@ -722,6 +722,14 @@
                             <selected>Skin.HasSetting(DisableWidgetTitle)</selected>
                             <onclick>Skin.ToggleSetting(DisableWidgetTitle)</onclick>
                         </control>
+                         <control type="radiobutton" id="9627" description="Lock Hub Widgets">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9011)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31444]</label>
+                            <selected>Skin.HasSetting(LockHubWidgets)</selected>
+                            <onclick>Skin.ToggleSetting(LockHubWidgets)</onclick>
+                        </control>
+
                         <!-- =============-->
                         <!-- General Mods---->
                         <!-- =============-->

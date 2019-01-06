@@ -341,23 +341,23 @@
 
                 <control type="image">
                     <visible>!Player.HasVideo + !Control.HasFocus(3001) + Skin.HasSetting(DisableNetflixHomeAlt)</visible>
-		    <left>-400</left>
+		    <left>-200</left>
                     <width>100%</width>
                     <height>100%</height>
                     <animation effect="fade" start="100" end="0" delay="200" time="2000" pulse="false" condition="Player.HasVideo">Conditional</animation>
                     <texture background="true" diffuse="overlay/gradient_overlay_info.png">$VAR[Image_Fanart]</texture>
-                    <aspectratio scalediffuse="true" aligny="top">scale</aspectratio>
+                    <aspectratio scalediffuse="true" aligny="top">keep</aspectratio>
        		 </control>
                 <control type="image">
                     <visible>!Player.HasVideo + !Control.HasFocus(3001) + Skin.HasSetting(DisableNetflixHomeMixed)</visible>
                     <fadetime>2500</fadetime>
-		    <left>-400</left>
+		    <left>-200</left>
                     <width>100%</width>
                     <height>100%</height>
            	    <animation effect="fade" start="0" end="100" delay="1000" time="1200">Visible</animation>
                     <animation effect="fade" start="100" end="0" delay="200" time="2000" pulse="false" condition="Player.HasVideo">Conditional</animation>
                     <texture background="true">$VAR[Image_Fanart]</texture>
-                    <aspectratio scalediffuse="true" aligny="top">scale</aspectratio>
+                    <aspectratio scalediffuse="true" aligny="top">keep</aspectratio>
        		 </control>
                 <control type="image">
                     <visible>!Player.HasVideo + !Control.HasFocus(3001) + Skin.HasSetting(DisableNetflixHomeMixed)</visible>
@@ -488,6 +488,123 @@
   </control>
   </include>
 
+   <include name="Object_Home_Netflix_Hub">
+     <control type="group">
+		<control type="group">
+		<left>-40</left>
+		<include>Object_Home_Netflix</include>
+		</control>
+            <control type="grouplist" id="77777">
+		<posx>20</posx>
+                <bottom>0</bottom>
+                <top>610</top>
+                <itemgap>1</itemgap>
+                <width>100%</width>
+                <pagecontrol>9060</pagecontrol>
+                <include condition="Window.IsActive(3017)">netflix_items_tvshows</include>
+            </control>
+     </control>
+   </include>
+
+   <include name="netflix_customhub_item">
+        <control type="label" id="$PARAM[id]3">
+            <width>100%</width>
+            <height>40</height>
+            <align>left</align>
+            <font>Reg28</font>
+            <textoffsetx>65</textoffsetx>
+            <textcolor>white</textcolor>
+            <label>$INFO[Skin.String($PARAM[skinsetting].label)]</label>
+            <shadowcolor>$INFO[Skin.String(ViewDetailsTextShadowColor)]</shadowcolor>
+            <texturenofocus></texturenofocus>
+            <visible>Skin.String($PARAM[skinsetting].label) + Skin.HasSetting(LockHubWidgets)</visible>
+        </control>
+        <control type="button" id="$PARAM[id]4">
+            <width min="200" max="900">auto</width>
+            <height>40</height>
+            <align>left</align>
+            <font>Reg32</font>
+            <textoffsetx>10</textoffsetx>
+            <label>[B]Click to Change:[/B] $INFO[Skin.String($PARAM[skinsetting].label)]</label>
+            <textcolor>white</textcolor>
+	    <texturefocus colordiffuse="white">netflix/border_netflix.png</texturefocus>
+            <onclick>RunScript(script.skinshortcuts,type=widgets&amp;showNone=true&amp;skinWidgetName=$PARAM[skinsetting].label&amp;skinWidgetTarget=$PARAM[skinsetting].target&amp;skinWidgetPath=$PARAM[skinsetting].path)</onclick>
+            <texturenofocus></texturenofocus>
+            <visible>Skin.String($PARAM[skinsetting].label) + !Skin.HasSetting(LockHubWidgets)</visible>
+        </control>
+        <control type="button" id="$PARAM[id]5">
+            <width min="200" max="900">auto</width>
+            <height>40</height>
+            <align>left</align>
+            <font>Reg32</font>
+            <textoffsetx>5</textoffsetx>
+            <label>- No Widget Set - Click to select Widget</label>
+	    <texturefocus colordiffuse="dimgrey">netflix/border_netflix.png</texturefocus>
+            <textcolor>white</textcolor>
+            <shadowcolor>white</shadowcolor>
+            <onclick>RunScript(script.skinshortcuts,type=widgets&amp;showNone=true&amp;skinWidgetName=$PARAM[skinsetting].label&amp;skinWidgetTarget=$PARAM[skinsetting].target&amp;skinWidgetPath=$PARAM[skinsetting].path)</onclick>
+            <texturenofocus></texturenofocus>
+            <visible>!Skin.String($PARAM[skinsetting].label) + !Skin.HasSetting(LockHubWidgets)</visible>
+        </control>
+        <control type="multiimage" id="$PARAM[id]6">
+	    <top>50</top>
+            <left>65</left>
+            <width>100%</width>
+            <height>80</height>
+            <aspectratio align="left">keep</aspectratio>
+            <imagepath>busy_spinner/</imagepath>
+            <timeperimage>100</timeperimage>
+            <colordiffuse>dimgrey</colordiffuse>
+            <fadetime>0</fadetime>
+            <visible>Skin.String($PARAM[skinsetting].label) + Container($PARAM[id]).IsUpdating</visible>
+        </control>
+          <control type="fixedlist" id="$PARAM[id]">
+            <movement>2</movement>
+            <width>100%</width>
+            <oninfo>RunScript(script.skin.helper.service,action=showinfo)</oninfo>
+            <orientation>horizontal</orientation>
+
+            <include content="Widget_TVHub">
+		<param name="id" value="$PARAM[id]" />
+		<param name="height" value="420" />
+		<param name="target" value="$PARAM[skinsetting].target" />
+		<param name="aspect" value="$PARAM[aspect]" />
+            </include>
+
+            <content target="$INFO[Skin.String($PARAM[skinsetting].target)]">$INFO[Skin.String($PARAM[skinsetting].path)]</content>
+            <visible>Skin.String($PARAM[skinsetting].path)</visible>
+        </control>
+    </include>
+
+
+    <include name="netflix_items_tvshows">
+        <include condition="true" content="netflix_customhub_item" name="netflix_customhub_item">
+                        <param name="id" value="510" />
+            		<param name="aspect" value="LandscapeWidePoster" />
+                        <param name="skinsetting" value="netflixhub-tvshows-510" />
+                </include>
+        <include condition="true" content="netflix_customhub_item" name="netflix_customhub_item">
+                        <param name="id" value="520" />
+            <param name="aspect" value="LandscapeWidePoster" />
+                        <param name="skinsetting" value="netflixhub-tvshows-520" />
+                </include>
+        <include condition="true" content="netflix_customhub_item" name="netflix_customhub_item">
+                        <param name="id" value="530" />
+            <param name="aspect" value="LandscapeWidePoster" />
+                        <param name="skinsetting" value="netflixhub-tvshows-530" />
+                </include>
+        <include condition="true" content="netflix_customhub_item" name="netflix_customhub_item">
+                        <param name="id" value="540" />
+            <param name="aspect" value="LandscapeWidePoster" />
+                        <param name="skinsetting" value="netflixhub-tvshows-540" />
+                </include>
+        <include condition="true" content="netflix_customhub_item" name="netflix_customhub_item">
+                        <param name="id" value="550" />
+            <param name="aspect" value="LandscapeWidePoster" />
+                        <param name="skinsetting" value="netflixhub-tvshows-550" />
+                </include>
+    </include>
+
 
    <include name="Object_Home_Netflix">
      <control type="group">
@@ -509,7 +626,7 @@
        		    <animation effect="slide" end="20,0" condition="Skin.HasSetting(DisableNetflixHomeSidemenuHide)">Conditional</animation>
                     <visible>!Player.HasVideo + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | !String.IsEmpty(ListItem.ChannelName)]</visible>
 	            <animation effect="slide" end="50,-10" condition="Skin.HasSetting(DisableNetflixHomeSidemenu)">Conditional</animation>
-                    <fadetime>2000</fadetime>
+                    <fadetime>2500</fadetime>
                     <width>1400</width>
                     <height>787</height>
 		    <left>500</left>

@@ -51,7 +51,7 @@
             <onfocus condition="!String.IsEmpty(Skin.String(MenuPos))">SetFocus(302)</onfocus>
             <onfocus condition="!String.IsEmpty(Skin.String(MenuPos))">SetFocus(300,$INFO[Skin.String(MenuPos)])</onfocus>
             <onfocus condition="String.IsEmpty(Skin.String(MenuPos)) + String.IsEmpty(Window(Home).Property(WidgetFocus))">SetFocus(300)</onfocus>
-            <onfocus condition="String.IsEmpty(Skin.String(MenuPos)) + !String.IsEmpty(Window(Home).Property(WidgetFocus))">SetFocus(3000,3)</onfocus>
+            <onfocus condition="String.IsEmpty(Skin.String(MenuPos)) + !String.IsEmpty(Window(Home).Property(WidgetFocus))">SetFocus(3000)</onfocus>
         </control>
 
         <control type="scrollbar" id="9060">

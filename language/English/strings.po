@@ -1761,7 +1761,7 @@ msgstr ""
 
 #: /1080i/SkinSettings.xml
 msgctxt "#31371"
-msgid "Disable Categories widget text"
+msgid "Enable large categories widget"
 msgstr ""
 
 #: /1080i/SkinSettings.xml
@@ -2006,7 +2006,7 @@ msgstr
 
 #: /1080i/SkinSettings.xml
 msgctxt "#31420"
-msgid "Enable Large Category Widget"
+msgid "Enable Categories Widget text"
 msgstr
 
 msgctxt "#31421"
@@ -2114,3 +2114,12 @@ msgctxt "#31442"
 msgid "Choose Netflix Home Style"
 msgstr
 
+#: /1080i/Includes_View.xml
+msgctxt "#31443"
+msgid "NetflixShowcase"
+msgstr ""
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31444"
+msgid "Lock Hub Widgets"
+msgstr

@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <includes>
-  <!-- Start LandscapeTrakt Widget -->
-  <include name="Widget_Items_LandscapeTrakt">
+  <!-- Start Netflix Showcase Widget -->
+  <include name="Widget_Items_NetflixShowcase">
     <control type="group">
       <control type="image">
-        <texture fallback="diffuse/widgetlandscape.png" background="true">$VAR[Image_Fanart]</texture>
-        <aspectratio scalediffuse="false">stretch</aspectratio>
+        <texture background="true">$VAR[Image_Fanart]</texture>
+        <aspectratio scalediffuse="false">scale</aspectratio>
       </control>
       <control type="image">
-          <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
+        <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
         <height>330</height>
         <bottom>0</bottom>
         <texture colordiffuse="60000000" flipy="true">diffuse/halfbox.png</texture>
       </control>
+    </control>
+   </include>
+
+
+  <include name="Widget_Items_LandscapeTrakt">
+    <control type="group">
+      <control type="image">
+        <texture diffuse="diffuse/widgetlandscape.png" background="true">$VAR[Image_Fanart]</texture>
+        <aspectratio scalediffuse="false">stretch</aspectratio>
+      </control>
 
      <control type="group">
-       <visible>Skin.HasSetting(DisableNetflixHome) + String.IsEqual(ListItem.DBType,episode)</visible>
+       <visible>String.IsEqual(ListItem.DBType,episode)</visible>
       <control type="image">
         <left>0</left>
 	<bottom>40</bottom>
@@ -36,7 +46,6 @@
 
 <!-- Add Clearlogo to landscape Image -->
 	<control type="group">
-          <visible>Skin.HasSetting(DisableNetflixHome)</visible>
         <control type="image">
           <bottom>-10</bottom>
           <right>10</right>
@@ -61,50 +70,6 @@
 
         <!-- END add Clearlogo -->
 
-      <control type="group">
-          <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
-        <height>70</height>
-        <bottom>0</bottom>
-	<control type="group">
-          <!-- START TvShowTitle Button -->
-          <control type="group">
-	    <bottom>60</bottom>
-            <width min="10" max="120">auto</width>
-            <height>30</height>
-            <left>20</left>
-            <visible>!String.IsEmpty(ListItem.TvShowTitle)</visible>
-            <control type="image">
-              <texture colordiffuse="red">diffuse/halfbox.png</texture>
-            </control>
-            <control type="label">
-              <label>$INFO[ListItem.TvShowTitle]</label>
-              <align>center</align>
-              <font>font_widget_time</font>
-              <textcolor>white</textcolor>
-              <shadowcolor>black</shadowcolor>
-            </control>
-          </control>
-          <!-- END Studio Button -->
-          <!-- START Airdate Button -->
-          <control type="group">
-	    <bottom>60</bottom>
-            <width min="10" max="105">auto</width>
-            <height>30</height>
-            <left>145</left>
-            <visible>!String.IsEmpty(ListItem.TvShowTitle)</visible>
-            <visible>!String.IsEmpty(ListItem.Premiered)</visible>
-            <control type="image">
-              <texture colordiffuse="red">diffuse/halfbox.png</texture>
-            </control>
-            <control type="label">
-              <label>$INFO[ListItem.Premiered(dd MMM yyyy)]</label>
-              <font>font_widget_time</font>
-              <align>center</align>
-              <textcolor>white</textcolor>
-              <shadowcolor>black</shadowcolor>
-            </control>
-          </control>
-          <!-- END Air Date Button -->
 <!--	
 	<control type="label">
           <visible>!String.IsEmpty(ListItem.TvShowTitle) + String.IsEmpty(ListItem.Studio)</visible>
@@ -116,29 +81,6 @@
           <left>20</left>
           </control>
 -->
-          <control type="label">
-          <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
-            <visible>!String.IsEqual(ListItem.Title,ListItem.Label)</visible>
-            <visible>!String.IsEmpty(ListItem.Episode)</visible>
-	    <bottom>0</bottom>
-            <textcolor>white</textcolor>
-            <label>$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</label>
-            <shadowcolor>black</shadowcolor>
-            <font>widget_trakt_title</font>
-            <left>20</left>
-          </control>
-          <control type="label">
-          <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
-            <visible>String.IsEqual(ListItem.Title,ListItem.Label)</visible>
-	    <bottom>0</bottom>
-            <textcolor>white</textcolor>
-            <label>$INFO[ListItem.Season,Season , ]$INFO[ListItem.Episode,Episode , ]</label>
-            <shadowcolor>black</shadowcolor>
-            <font>widget_trakt_title</font>
-            <left>20</left>
-          </control>
-        </control>
-      </control>
     </control>
   </include>
   <!-- END LandscapeTrakt Widget -->
