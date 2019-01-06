@@ -67,6 +67,7 @@
                             <onclick condition="Skin.HasSetting(IconOnlyMode)">Skin.ToggleSetting(IconOnlyMode)</onclick>
                             <onclick condition="Skin.HasSetting(DisableNetflixHomeMixed)">Skin.ToggleSetting(DisableNetflixHomeMixed)</onclick>
                             <onclick condition="!Skin.HasSetting(DisableNetflixHomeDefault)">Skin.ToggleSetting(DisableNetflixHomeDefault)</onclick>
+                            <onclick condition="!Skin.HasSetting(DisableNetflixSubmenuBG)">Skin.ToggleSetting(DisableNetflixSubmenuBG)</onclick>
                             <onclick>ReloadSkin()</onclick>
 	                    <onfocus>SetProperty(Image_Preview,special://skin/extras/backgrounds/viewmodes/netflixalt.jpg)</onfocus>
                         </control>
