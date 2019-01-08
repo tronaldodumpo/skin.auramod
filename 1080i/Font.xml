@@ -4,13 +4,26 @@
     <fontset id="Default" unicode="true">
 
         <!-- Standard Fonts -->
+        <font>
+            <name>netflix_heading_small</name>
+            <filename>lyrics/BOXING.ttf</filename>
+            <aspect>1.3</aspect>
+            <style>lowercase</style>
+            <linespacing>0.9</linespacing>
+            <size>44</size>
+        </font>
 	<font>
             <name>netflix_heading</name>
             <filename>lyrics/BOXING.ttf</filename>
             <aspect>1.3</aspect>
             <style>lowercase</style>
             <linespacing>0.9</linespacing>
-            <size>54</size>
+            <size>64</size>
+        </font>
+        <font>
+            <name>Netflix_Info_main</name>
+            <filename>Regular-new.ttf</filename>
+            <size>22</size>
         </font>
 	<font>
             <name>widget_trakt_title</name>

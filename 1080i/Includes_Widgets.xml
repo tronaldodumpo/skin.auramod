@@ -554,11 +554,11 @@
                     <label>$INFO[Container($PARAM[id]).ListItem.Label,| , |]</label>
                     <include>Statusbar_Menubar_Items</include>
                     <visible>Control.HasFocus($PARAM[id])</visible>
-		    <visible>!Skin.HasSetting(DisableWidgetTitle)</visible>
+		    <visible>Skin.HasSetting(DisableWidgetTitle)</visible>
                 </control>
 <!-- Add Ratings -->
 		<control type="grouplist">
-		    <visible>Control.HasFocus($PARAM[id]) + !Control.HasFocus(302) + !Skin.HasSetting(DisableWidgetIMDB)</visible>
+		    <visible>Control.HasFocus($PARAM[id]) + !Control.HasFocus(302) + Skin.HasSetting(DisableWidgetIMDB)</visible>
                     <bottom>5</bottom>
                     <height>30</height>
                <include content="Object_Ratings_Content">
@@ -571,14 +571,14 @@
                     <param name="imdb" value="true" />
                     <param name="tmdb" value="true" />
                     <param name="metacritic" value="true" />
-                    <param name="oscars" value="$PARAM[oscars]" />
+                    <param name="oscars" value="true" />
                     <param name="top250" value="$PARAM[top250]" />
                     <param name="plot" value="true" />
                 </include>
 		</control>
 		<control type="label">
                     <left>5</left>
-                    <visible>Control.HasFocus($PARAM[id]) + !Skin.HasSetting(DisableWidgetPlot) + Skin.HasSetting(DisableWidgetIMDB)</visible>
+                    <visible>Control.HasFocus($PARAM[id]) + Skin.HasSetting(DisableWidgetPlot) + !Skin.HasSetting(DisableWidgetIMDB)</visible>
                     <textcolor>main_fg_70</textcolor>
                     <height>20</height>
                     <top>10</top>
@@ -613,7 +613,6 @@
         </include>
         <orientation>horizontal</orientation>
     </include>
-
     <include name="Widget_Submenu">
         <param name="submenu" default="false" />
         <param name="aspect" default="" />
@@ -656,6 +655,54 @@
         </definition>
     </include>
 
+    <include name="Widget_TVHub">
+        <param name="submenu" default="false" />
+        <param name="aspect" default="" />
+        <param name="sortby" default="" />
+        <param name="sortorder" default="" />
+        <param name="top" default="0" />
+        <param name="height" default="410" />
+        <param name="aspect" default="" />
+        <definition>
+
+            <include content="Widget_Common">
+                <param name="top" value="$PARAM[top]" />
+                <param name="height" value="$PARAM[height]" />
+                <param name="id" value="$PARAM[id]" />
+                <param name="aspect" value="$PARAM[aspect]" />
+                <param name="widgetAspect" value="$PARAM[widgetAspect]" />
+                <param name="submenu" value="$PARAM[submenu]" />
+            </include>
+
+            <itemlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],LandscapeWidePoster)">
+                <include content="Widget_Items_ItemLayout">
+                    <param name="poster" value="true" />
+                    <param name="genres" value="$PARAM[genres]" />
+                    <param name="studios" value="$PARAM[studios]" />
+                    <param name="text" value="$PARAM[text]" />
+                </include>
+            </itemlayout>
+                 <focusedlayout width="600" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],LandscapeWidePoster) + Control.HasFocus($PARAM[id])">
+                <include content="Widget_Items_FocusedLayout">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="landscapewide" value="true" />
+                    <param name="genres" value="$PARAM[genres]" />
+                    <param name="studios" value="$PARAM[studios]" />
+                    <param name="text" value="$PARAM[text]" />
+                </include>
+            </focusedlayout>
+           <focusedlayout width="widget_poster_width_netflix" height="widget_poster_height_netflix_mixed" condition="String.IsEqual($PARAM[aspect],LandscapeWidePoster) + !Control.HasFocus($PARAM[id])">
+                <include content="Widget_Items_FocusedLayout">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="poster" value="true" />
+                    <param name="genres" value="$PARAM[genres]" />
+                    <param name="studios" value="$PARAM[studios]" />
+                    <param name="text" value="$PARAM[text]" />
+                </include>
+            </focusedlayout>
+        </definition>
+    </include>
+
     <include name="Widget_Items">
         <param name="submenu" default="false" />
         <param name="aspect" default="" />
@@ -674,7 +721,7 @@
             </include>
 	
 	<!-- START New Mod Widgets -->
-	    <itemlayout width="500" height="350" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31430]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+	    <itemlayout width="500" height="320" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31430]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_ItemLayout">
                     <param name="landscapetrakt" value="true" />
                     <param name="genres" value="$PARAM[genres]" />
@@ -752,7 +799,7 @@
 
 	<!-- START Focused New Mods Widgets -->
 
-	    <focusedlayout width="500" height="350" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31430]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
+	    <focusedlayout width="500" height="320" condition="String.IsEqual($PARAM[aspect],$LOCALIZE[31430]) + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">
                 <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="landscapetrakt" value="true" />
@@ -887,6 +934,7 @@
         <param name="square" default="false" />
         <param name="poster" default="false" />
         <param name="landscape" default="false" />
+        <param name="landscapewide" default="false" />
 	<param name="landscapewideposter" default="false" />
 	<param name="posterdetails" default="false" />
 	<param name="widgetlive" default="false" />
@@ -910,24 +958,11 @@
                         <label>$INFO[ListItem.Label]</label>
                         <scroll>false</scroll>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>Skin.HasSetting(DisableBigCat)</visible>
-                    </control>
-		    <control type="label">
-                        <bottom>25</bottom>
-                        <height>30</height>
-                        <align>center</align>
-                        <font>font_tiny</font>
-                        <textcolor>PosterFront_70</textcolor>
-                        <right>30</right>
-                        <left>30</left>
-                        <label>$INFO[ListItem.Label]</label>
-                        <scroll>false</scroll>
-                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>!Skin.HasSetting(DisableBigCat)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
-                        <aspectratio scalediffuse="false">stretch</aspectratio>
+                        <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
                         <visible>!Skin.HasSetting(SubmenuLabel)</visible>
                     </control>
@@ -937,14 +972,14 @@
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>!Skin.HasSetting(DisableBigCat)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
-                        <aspectratio scalediffuse="false">stretch</aspectratio>
+                        <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
-			<visible>!Skin.HasSetting(DisableBigCat)</visible>
+			<visible>Skin.HasSetting(DisableBigCat)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
@@ -962,7 +997,7 @@
         <param name="square" default="false" />
         <param name="poster" default="false" />
         <param name="landscape" default="false" />
-	<param name="landscapewide" default="false" />
+        <param name="landscapewide" default="false" />
 	<param name="landscapewideposter" default="false" />
         <param name="posterdetails" default="false" />
         <param name="widgetlive" default="false" />
@@ -987,8 +1022,9 @@
                         <left>30</left>
                         <label>$INFO[ListItem.Label]</label>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>!Skin.HasSetting(DisableBigCat)</visible>
                     </control>
+<!--
 		    <control type="label">
                         <bottom>25</bottom>
                         <height>30</height>
@@ -1001,9 +1037,10 @@
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
                         <visible>Skin.HasSetting(DisableBigCat)</visible>
                     </control>
+-->
                     <control type="image">
                         <bordersize>10</bordersize>
-                        <aspectratio scalediffuse="false">stretch</aspectratio>
+                        <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
                         <visible>!Skin.HasSetting(SubmenuLabel)</visible>
                     </control>
@@ -1013,14 +1050,14 @@
                         <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
-                        <visible>Skin.HasSetting(DisableBigCat)</visible>
+                        <visible>!Skin.HasSetting(DisableBigCat)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
-                        <aspectratio scalediffuse="false">stretch</aspectratio>
+                        <aspectratio scalediffuse="false">keep</aspectratio>
                         <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
                         <visible>Skin.HasSetting(SubmenuLabel)</visible>
-			 <visible>!Skin.HasSetting(DisableBigCat)</visible>
+			 <visible>Skin.HasSetting(DisableBigCat)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
@@ -1040,7 +1077,7 @@
                     <param name="square" value="$PARAM[square]" />
                     <param name="poster" value="$PARAM[poster]" />
                     <param name="landscape" value="$PARAM[landscape]" />
-                    <param name="landscapewide" value="$PARAM[landscapewide]" />
+                    <param name="landscapewide" value="$PARAM[landscapwide]" />
 		    <param name="landscapewideposter" value="$PARAM[landscapewideposter]" />
 		    <param name="posterdetails" value="$PARAM[posterdetails]" />
 		    <param name="widgetlive" value="$PARAM[widgetlive]" />
@@ -1049,6 +1086,7 @@
             </control>
         </definition>
     </include>
+
 
     <include name="Widget_Items_Textbox">
         <param name="color" default="PosterFront_70" />
@@ -1304,7 +1342,7 @@
                         <param name="poster" value="$PARAM[poster]" />
                     </include>
                     <include condition="$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">Widget_Items_Landscape</include>
-		    <include condition="$PARAM[landscapewide] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">Widget_Items_LandscapeWide</include>
+		    <include condition="$PARAM[landscapewide] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">Widget_Items_LandscapeBanner</include>
 		    <include condition="$PARAM[landscapewideposter] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">Widget_Items_LandscapeWidePoster</include>
                     <include condition="$PARAM[posterdetails] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">Widget_Items_PosterDetails</include>
                     <include condition="$PARAM[widgetlive] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">Widget_Items_WidgetLive</include>
@@ -1338,15 +1376,15 @@
                 <top>0</top>
                 <bottom>-0</bottom>
                 <visible>Control.HasFocus($PARAM[id])</visible>
-                <include condition="!$PARAM[landscape] | $PARAM[landscapewide]">Animation_FocusBounce</include>
-                <include condition="$PARAM[landscape] | $PARAM[landscapewide]">Animation_FocusBounce_Small</include>
+                <include condition="!$PARAM[landscape]">Animation_FocusBounce</include>
+                <include condition="$PARAM[landscape]">Animation_FocusBounce_Small</include>
                 <include>Defs_PosterBack</include>
                 <control type="group">
                     <top>10</top>
                     <right>10</right>
                     <bottom>10</bottom>
                     <left>10</left>
-                    <include condition="!$PARAM[poster] + !$PARAM[landscape] + !$PARAM[widgetlive] + !$PARAM[landscapewideposter] + !$PARAM[posterdetails] + !$PARAM[landscapetrakt] +  !$PARAM[landscapewide] + !$PARAM[text]" content="Widget_Items_Textbox">
+                    <include condition="!$PARAM[poster] + !$PARAM[landscape] + !$PARAM[widgetlive] + !$PARAM[landscapewideposter] + !$PARAM[posterdetails] + !$PARAM[landscapetrakt] + !$PARAM[landscapewide] + !$PARAM[text]" content="Widget_Items_Textbox">
                         <param name="color" value="PosterFront" />
                     </include>
                     <include condition="$PARAM[genres]" content="Widget_Items_Genres">
@@ -1368,7 +1406,7 @@
                         <param name="poster" value="$PARAM[poster]" />
                     </include>
                     <include condition="$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">Widget_Items_Landscape</include>
-		    <include condition="$PARAM[landscapewide] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">Widget_Items_LandscapeWide</include>
+		    <include condition="$PARAM[landscapewide] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">Widget_Items_LandscapeBanner</include>
 		    <include condition="$PARAM[landscapewideposter] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">Widget_Items_LandscapeWidePoster</include>
 		    <include condition="$PARAM[posterdetails] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">Widget_Items_PosterDetails</include>
 		    <include condition="$PARAM[widgetlive] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">Widget_Items_WidgetLive</include>

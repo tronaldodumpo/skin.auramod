@@ -323,6 +323,8 @@
 
     <!-- DEFAULT WIDGETS -->
     <!-- Movies -->
+    <propertydefault labelID="20342" property="backgroundName">special://skin/extras/backgrounds/movies-mainmenu-bg.jpg</propertydefault>
+    <propertydefault labelID="20342" property="background">special://skin/extras/backgrounds/movies-mainmenu-bg.jpg</propertydefault>
     <widgetdefaultnode labelID="20342" label="20386" path="videodb://recentlyaddedmovies/" target="videos">RecentMovies</widgetdefaultnode>
     <propertydefault labelID="20342" property="widgetName.Widget1">$LOCALIZE[31200]</propertydefault>
     <propertydefault labelID="20342" property="widgetPath.Widget1">special://skin/extras/playlists/RandomMovies.xsp</propertydefault>
@@ -330,8 +332,19 @@
     <propertydefault labelID="20342" property="widgetName.Widget2">$LOCALIZE[135]</propertydefault>
     <propertydefault labelID="20342" property="widgetPath.Widget2">library://video/movies/genres.xml</propertydefault>
     <propertydefault labelID="20342" property="widgetTarget.Widget2">videos</propertydefault>
+    <propertydefault labelID="20342" property="widgetName.Widget3">ExtendedInfo Top Rated</propertydefault>
+    <propertydefault labelID="20342" property="widgetAspect.Widget3">$LOCALIZE[31414]</propertydefault>
+    <propertydefault labelID="20342" property="widgetPath.Widget3">plugin://script.extendedinfo?info=topratedmovies</propertydefault>
+    <propertydefault labelID="20342" property="widgetTarget.Widget3">videos</propertydefault>
+    <propertydefault labelID="20342" property="widgetName.Widget4">ExtendedInfo In Cinema</propertydefault>
+    <propertydefault labelID="20342" property="widgetAspect.Widget4">$LOCALIZE[31414]</propertydefault>
+    <propertydefault labelID="20342" property="widgetPath.Widget4">plugin://script.extendedinfo?info=incinemamovies</propertydefault>
+    <propertydefault labelID="20342" property="widgetTarget.Widget4">videos</propertydefault>
+
 
     <!-- TvShows -->
+    <propertydefault labelID="tvshows" property="backgroundName">special://skin/extras/backgrounds/tv-shows--mainmenu-bg.jpg</propertydefault>
+    <propertydefault labelID="tvshows" property="background">special://skin/extras/backgrounds/tv-shows-mainmenu-bg.jpg</propertydefault>
     <widgetdefaultnode labelID="tvshows" label="20387" path="videodb://recentlyaddedepisodes/" target="videos">RecentEpisodes</widgetdefaultnode>
     <propertydefault labelID="tvshows" property="widgetAspect">$LOCALIZE[31038]</propertydefault>
     <propertydefault labelID="tvshows" property="widgetName.Widget1">$LOCALIZE[626]</propertydefault>
@@ -340,6 +353,14 @@
     <propertydefault labelID="tvshows" property="widgetName.Widget2">$LOCALIZE[135]</propertydefault>
     <propertydefault labelID="tvshows" property="widgetPath.Widget2">library://video/tvshows/genres.xml</propertydefault>
     <propertydefault labelID="tvshows" property="widgetTarget.Widget2">videos</propertydefault>
+    <propertydefault labelID="tvshows" property="widgetName.Widget3">ExtendedInfo Top Rated</propertydefault>
+    <propertydefault labelID="tvshows" property="widgetAspect.Widget3">$LOCALIZE[31411]</propertydefault>
+    <propertydefault labelID="tvshows" property="widgetPath.Widget3">plugin://script.extendedinfo?info=topratedtvshows</propertydefault>
+    <propertydefault labelID="tvshows" property="widgetTarget.Widget3">videos</propertydefault>
+    <propertydefault labelID="tvshows" property="widgetName.Widget4">ExtendedInfo Most Popular</propertydefault>
+    <propertydefault labelID="tvshows" property="widgetAspect.Widget4">$LOCALIZE[31411]</propertydefault>
+    <propertydefault labelID="tvshows" property="widgetPath.Widget4">plugin://script.extendedinfo?info=populartvshows</propertydefault>
+    <propertydefault labelID="tvshows" property="widgetTarget.Widget4">videos</propertydefault>
 
     <!-- Music -->
     <widgetdefaultnode labelID="2" label="359" path="musicdb://recentlyaddedalbums/" target="music">RecentAlbums</widgetdefaultnode>

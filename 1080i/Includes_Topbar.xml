@@ -21,6 +21,7 @@
             <alttexturefocus colordiffuse="$VAR[ColorHighlight]" border="8">common/underline2.png</alttexturefocus>
             <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
             <visible>!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
+	    <visible>[Skin.HasSetting(DisableNetflixHome) + [Control.HasFocus(300) | Control.HasFocus(302)]] | !Skin.HasSetting(DisableNetflixHome)</visible>
         </control>
         <control type="togglebutton">
             <width>auto</width>
@@ -39,6 +40,7 @@
             <alttexturefocus colordiffuse="$VAR[ColorHighlight]" border="8">common/underline2.png</alttexturefocus>
             <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
             <visible>String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
+	    <visible>[Skin.HasSetting(DisableNetflixHome) + [Control.HasFocus(300) | Control.HasFocus(302)]] | !Skin.HasSetting(DisableNetflixHome)</visible>
         </control>
     </include>
 
@@ -60,6 +62,7 @@
             <alttexturefocus colordiffuse="$VAR[ColorHighlight]" border="8">common/underline2.png</alttexturefocus>
             <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
             <visible>!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
+	    <visible>[Skin.HasSetting(DisableNetflixHome) + [Control.HasFocus(300) | Control.HasFocus(302)]] | !Skin.HasSetting(DisableNetflixHome)</visible>
         </control>
         <control type="togglebutton">
             <width>auto</width>
@@ -78,6 +81,7 @@
             <alttexturefocus colordiffuse="$VAR[ColorHighlight2]" border="8" diffuse="common/gradient-diffuse-horizontal.png">common/underline2.png</alttexturefocus>
             <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
             <visible>String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
+	    <visible>[Skin.HasSetting(DisableNetflixHome) + [Control.HasFocus(300) | Control.HasFocus(302)]] | !Skin.HasSetting(DisableNetflixHome)</visible>
         </control>
     </include>
 
@@ -94,8 +98,8 @@
     </include>
 
     <include name="Topbar">
-<!--
 	<control type="group">
+	<visible>!Player.HasVideo + Control.HasFocus(300) + [!Skin.HasSetting(DisableNetflixView) + [Control.IsVisible(55) | Control.IsVisible(56)]]</visible>
        	    <top>0</top>
             <left>0</left>
             <right>0</right>
@@ -112,7 +116,25 @@
             <texture>common/gradient-solid.png</texture>
         </control>
 	</control>
--->
+   <control type="group">
+        <visible>Skin.HasSetting(DisableNetflixHome) + [[Control.HasFocus(300) |  Control.HasFocus(302)] + [Control.IsVisible(55) | Control.IsVisible(56)]]</visible>
+            <top>0</top>
+            <left>0</left>
+            <right>0</right>
+            <height>100</height>
+        <control type="image">
+            <bottom>-24</bottom>
+            <height>24</height>
+            <width>100%</width>
+            <texture flipy="false">common/shadow-line-24px.png</texture>
+        </control>
+        <control type="image">
+            <bottom>0</bottom>
+            <top>0</top>
+            <texture>common/gradient-solid.png</texture>
+        </control>
+        </control>
+
         <control type="group">
             <visible>!$EXP[Exp_Info_Visible]</visible>
             <visible allowhiddenfocus="true">!Control.HasFocus(9602)</visible>
@@ -125,6 +147,7 @@
                     <effect type="slide" end="0,-20" time="180" tween="sine" delay="80" />
                 </animation>
                 <control type="group">
+		    <visible>!Player.HasVideo</visible>
                     <height>view_pad</height>
                     <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
                     <include>Animation_FadeInOut</include>
@@ -151,7 +174,7 @@
                             <visible>Skin.HasSetting(MouseMode) + ![Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(Home)]</visible>
                         </control>
                         <control type="label">
-			    <visible>![!Skin.HasSetting(DisableNetflixView) + [Control.IsVisible(55) | Control.IsVisible(56)]]  + !Window.IsVisible(MyPVRChannels.xml) + !Window.IsVisible(MyPVRGuide.xml)</visible>
+			    <visible>![!Skin.HasSetting(DisableNetflixView) + [Control.IsVisible(502) | Control.IsVisible(55) | Control.IsVisible(56)]]  + !Window.IsVisible(MyPVRChannels.xml) + !Window.IsVisible(MyPVRGuide.xml)</visible>
                             <top>0</top>
                             <width max="1140">auto</width>
                             <font>font_topbar</font>
@@ -758,7 +781,6 @@
     <include name="Topbar_Info">
         <control type="group">
             <control type="group">
-                <top>30</top>
                 <control type="group">
                     <height>view_pad</height>
                     <include>Animation_FadeInOut</include>
@@ -836,7 +858,6 @@
     </include>
 
     <include name="Topbar_Menu">
-	<top>-40</top>
         <control type="list" id="300">
             <include>Topbar_Menu_Layout</include>
             <include condition="Window.IsVisible(Home) + !Window.IsVisible(script-globalsearch-main.xml)">Items_MainMenu</include>

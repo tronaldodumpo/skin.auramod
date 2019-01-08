@@ -1761,7 +1761,7 @@ msgstr ""
 
 #: /1080i/SkinSettings.xml
 msgctxt "#31371"
-msgid "Categories widget text"
+msgid "Enable large categories widget"
 msgstr ""
 
 #: /1080i/SkinSettings.xml
@@ -2006,7 +2006,7 @@ msgstr
 
 #: /1080i/SkinSettings.xml
 msgctxt "#31420"
-msgid "Enable Large Category Widget"
+msgid "Enable Categories Widget text"
 msgstr
 
 msgctxt "#31421"
@@ -2019,7 +2019,7 @@ msgid "Enable Categories Label"
 msgstr
 
 msgctxt "#31423"
-msgid "Mods"
+msgid "Widget Mods"
 msgstr ""
 
 #: /1080i/SkinSettings.xml
@@ -2056,3 +2056,70 @@ msgctxt "#31430"
 msgid "LandscapeTrakt"
 msgstr ""
 
+#: /1080i/SkinSettings.xml
+msgctxt "#31431"
+msgid "Enable Netflix Home"
+msgstr
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31432"
+msgid "Enable Netflix Video Info"
+msgstr
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31433"
+msgid "Enable Netflix Home Sidemenu"
+msgstr
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31434"
+msgid "Enable Icon Only SideMenu"
+msgstr
+
+msgctxt "#31435"
+msgid "Netflix Mode"
+msgstr ""
+
+msgctxt "#31436"
+msgid "General Mods"
+msgstr ""
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31437"
+msgid "Enable Sidemenu Icons auto-hide"
+msgstr
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31438"
+msgid "Enable Alternative Home Layout"
+msgstr
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31439"
+msgid "Enable Sumenu Background Image"
+msgstr
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31440"
+msgid "Enable Mixed Netflix Home Layout"
+msgstr
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31441"
+msgid "Enable Default  Netflix Home Layout"
+msgstr
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31442"
+msgid "Choose Netflix Home Style"
+msgstr
+
+#: /1080i/Includes_View.xml
+msgctxt "#31443"
+msgid "NetflixShowcase"
+msgstr ""
+
+#: /1080i/SkinSettings.xml
+msgctxt "#31444"
+msgid "Lock Hub Widgets"
+msgstr

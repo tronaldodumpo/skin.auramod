@@ -154,8 +154,7 @@
 		<include condition="Skin.HasSetting(DisableNetflixView)">View_Pad</include>
                 <include condition="!Skin.HasSetting(DisableNetflixView)">View_Pad_Netflix</include>
                 <control type="fixedlist" id="55">
-
-                    <bottom>-10</bottom>
+                    <bottom>-55</bottom>
                     <right>-70</right>
                     <left>-70</left>
                     <height>500</height>
@@ -168,6 +167,7 @@
                     <pagecontrol>60</pagecontrol>
                     <onleft>55</onleft>
                     <onright>55</onright>
+		    <include condition="!Skin.HasSetting(DisableNetflixView)">trailer_down</include>
                    <include content="View_Forced">
                         <param name="string" value="$LOCALIZE[31161]" />
                     </include>
@@ -178,7 +178,14 @@
                         <param name="posters" default="true" />
                     </include>
                 </control>
-                <include content="Object_Info">
+                <include content="Object_Info" condition="Skin.HasSetting(DisableNetflixView)">
+                    <param name="id" value="55" />
+                    <param name="width" value="1654" />
+                    <param name="discart" value="true" />
+                    <param name="hdsd_flag" value="true" />
+                    <param name="plot_height" value="170" />
+                </include>
+                <include content="Object_Info_Netflix" condition="!Skin.HasSetting(DisableNetflixView)">
                     <param name="id" value="55" />
                     <param name="width" value="1654" />
                     <param name="discart" value="true" />
@@ -197,7 +204,7 @@
                 <include condition="Skin.HasSetting(DisableNetflixView)">View_Pad</include>
                 <include condition="!Skin.HasSetting(DisableNetflixView)">View_Pad_Netflix</include>
                 <control type="fixedlist" id="56">
-                    <bottom>-10</bottom>
+                    <bottom>-55</bottom>
                     <right>-70</right>
                     <left>-70</left>
                     <height>470</height>
@@ -208,6 +215,7 @@
                     <pagecontrol>60</pagecontrol>
                     <onleft>56</onleft>
                     <onright>56</onright>
+                    <include condition="!Skin.HasSetting(DisableNetflixView)">trailer_down</include>
                     <include content="View_Forced">
                         <param name="string" value="$LOCALIZE[31361]" />
                     </include>
@@ -219,7 +227,14 @@
                         <param name="landscape" default="true" />
                     </include>
                 </control>
-                <include content="Object_Info">
+                <include content="Object_Info" condition="Skin.HasSetting(DisableNetflixView)">
+                    <param name="id" value="56" />
+                    <param name="width" value="1654" />
+                    <param name="discart" value="true" />
+                    <param name="hdsd_flag" value="true" />
+                    <param name="plot_height" value="170" />
+                </include>
+                <include content="Object_Info_Netflix" condition="!Skin.HasSetting(DisableNetflixView)">
                     <param name="id" value="56" />
                     <param name="width" value="1654" />
                     <param name="discart" value="true" />
@@ -457,13 +472,14 @@
         <control type="group">
             <visible>Control.IsVisible(502)</visible>
             <control type="group">
-                <include>View_Pad</include>
+                <include condition="Skin.HasSetting(DisableNetflixView)">View_Pad</include>
+		    <include condition="!Skin.HasSetting(DisableNetflixView)">Object_Episodes_Info</include>
                 <control type="fixedlist" id="502">
                     <left>-70</left>
                     <right>-10</right>
                     <bottom>40</bottom>
                     <top>-10</top>
-                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(artists)</visible>
+                    <visible>Container.Content(seasons) | Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(artists)</visible>
                     <pagecontrol>60</pagecontrol>
                     <focusposition>1</focusposition>
                     <movement>1</movement>
@@ -472,10 +488,15 @@
                     <include content="View_Forced">
                         <param name="string" value="$LOCALIZE[31385]" />
                     </include>
-                    <include content="View_Posters_Layout">
+                    <include content="View_Posters_Layout" condition="Skin.HasSetting(DisableNetflixView)">
                         <param name="id" value="502" />
                         <param name="orientation" value="vertical" />
                         <param name="episode_list" default="true" />
+                    </include>
+                    <include content="View_Posters_Layout" condition="!Skin.HasSetting(DisableNetflixView)">
+                        <param name="id" value="502" />
+                        <param name="orientation" value="vertical" />
+                        <param name="episode_list_netflix" default="true" />
                     </include>
                 </control>
             </control>
@@ -495,6 +516,7 @@
         <param name="landscape" default="false" />
         <param name="landscape_small" default="false" />
         <param name="episode_list" default="false" />
+        <param name="episode_list_netflix" default="false" />
         <param name="banner" default="false" />
         <param name="submenu" default="false" />
         <param name="text" default="true" />
@@ -679,6 +701,149 @@
                         <right>10</right>
                         <top>265</top>
                         <visible>!Skin.HasSetting(DisableViewText)</visible>
+                    </control>
+                </control>
+            </focusedlayout>
+            <itemlayout width="1820" height="310" condition="$PARAM[episode_list_netflix]">
+                <control type="group">
+                    <left>550</left>
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <control type="group">
+                        <height>300</height>
+                        <width>518</width>
+                        <include>View_Landscape_Artwork</include>
+                    </control>
+                    <control type="group">
+                        <height>300</height>
+                        <left>538</left>
+                        <visible>!ListItem.IsParentFolder</visible>
+                        <control type="label">
+                            <left>0</left>
+                            <label>$INFO[ListItem.Label]</label>
+                            <height>80</height>
+                            <aligny>top</aligny>
+                            <textcolor>main_fg_100</textcolor>
+			    <shadowcolor>black</shadowcolor>
+                            <font>font_medium_bold</font>
+                        </control>
+                        <control type="group">
+                            <top>60</top>
+                            <control type="image">
+                                <left>0</left>
+                                <top>10</top>
+                                <width>37</width>
+                                <height>24</height>
+                                <texture colordiffuse="main_fg_100">$VAR[Image_HDSD]</texture>
+                                <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                            </control>
+                            <control type="label">
+                                <left>37</left>
+                                <label>|</label>
+                                <width>40</width>
+                                <align>center</align>
+                                <height>40</height>
+                                <aligny>top</aligny>
+                                <textcolor>$VAR[ColorHighlight]</textcolor>
+                                <shadowcolor>black</shadowcolor>
+                                <font>font_small</font>
+                                <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                            </control>
+                            <control type="label">
+				<visible>!Container.Content(seasons)</visible>
+                                <animation effect="slide" condition="![Container.Content(movies) | Container.Content(episodes)]" end="-73">Conditional</animation>
+                                <left>73</left>
+                                <width>auto</width>
+                                <label>$VAR[Label_ShowCase_InfoLine]$INFO[ListItem.Rating,  |  [COLOR=main_fg_100],[/COLOR]]</label>
+                                <height>40</height>
+                                <aligny>top</aligny>
+                                <textcolor>$VAR[ColorHighlight]</textcolor>
+                                <font>font_small</font>
+                            </control>
+                        </control>
+                        <control type="textbox">
+                            <top>120</top>
+                            <label fallback="19055">$VAR[Label_Plot]</label>
+                            <bottom>10</bottom>
+                            <aligny>top</aligny>
+                            <textcolor>main_fg_70</textcolor>
+                            <shadowcolor>black</shadowcolor>
+                            <font>font_plotbox</font>
+                            <autoscroll>false</autoscroll>
+                        </control>
+                    </control>
+                </control>
+            </itemlayout>
+            <focusedlayout width="1820" height="310" condition="$PARAM[episode_list_netflix]">
+                <control type="group">
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <left>550</left>
+                    <control type="group">
+                        <include>Animation_FocusBounce_Small</include>
+                        <height>300</height>
+                        <width>518</width>
+                        <include>View_Landscape_Artwork</include>
+                        <!-- Highlight -->
+                        <control type="group">
+                            <visible>Control.HasFocus($PARAM[id])</visible>
+                            <include>View_Selectbox</include>
+                        </control>
+                    </control>
+                    <control type="group">
+                        <height>300</height>
+                        <left>538</left>
+                        <visible>!ListItem.IsParentFolder</visible>
+                        <control type="label">
+                            <left>0</left>
+                            <label>$INFO[ListItem.Label]</label>
+                            <height>80</height>
+                            <aligny>top</aligny>
+                            <shadowcolor>black</shadowcolor>
+                            <textcolor>main_fg_100</textcolor>
+                            <font>font_medium_bold</font>
+                        </control>
+                        <control type="group">
+                            <top>60</top>
+                            <control type="image">
+                                <left>0</left>
+                                <top>10</top>
+                                <width>37</width>
+                                <height>24</height>
+                                <texture colordiffuse="main_fg_100">$VAR[Image_HDSD]</texture>
+                                <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                            </control>
+                            <control type="label">
+                                <left>37</left>
+                                <label>|</label>
+                                <width>40</width>
+                                <align>center</align>
+                                <height>40</height>
+                                <aligny>top</aligny>
+                                <textcolor>$VAR[ColorHighlight]</textcolor>
+                                <font>font_small</font>
+                                <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                            </control>
+                            <control type="label">
+                                <animation effect="slide" condition="![Container.Content(movies) | Container.Content(episodes)]" end="-73">Conditional</animation>
+                                <left>73</left>
+                                <width>100%</width>
+                                <label>$VAR[Label_ShowCase_InfoLine]$INFO[ListItem.Rating,  |  [COLOR=main_fg_100],[/COLOR]]</label>
+                                <height>40</height>
+                                <aligny>top</aligny>
+                                <textcolor>$VAR[ColorHighlight]</textcolor>
+                                <font>font_small</font>
+                            </control>
+                        </control>
+                        <control type="textbox">
+                            <top>120</top>
+                            <label fallback="19055">$VAR[Label_Plot]</label>
+                            <bottom>10</bottom>
+                            <aligny>top</aligny>
+                            <shadowcolor>black</shadowcolor>
+                            <textcolor>main_fg_70</textcolor>
+                            <font>font_plotbox</font>
+                        </control>
                     </control>
                 </control>
             </focusedlayout>
@@ -1294,6 +1459,7 @@
     </include>
     <include name="View_Posters_Text">
         <control type="label">
+	    <visible>Skin.HasSetting(DisableNetflixView)</visible>
             <label>$INFO[ListItem.Label]</label>
             <align>center</align>
             <aligny>top</aligny>
@@ -1304,6 +1470,7 @@
             <top>385</top>
         </control>
         <control type="label">
+	    <visible>Skin.HasSetting(DisableNetflixView)</visible>
             <label>$INFO[ListItem.Year]</label>
             <align>center</align>
             <aligny>top</aligny>
@@ -1313,6 +1480,29 @@
             <right>10</right>
             <top>415</top>
         </control>
+        <control type="label">
+            <visible>!Skin.HasSetting(DisableNetflixView) + [Container.Content(seasons) | Container.Content(episodes)]</visible>
+            <label>$INFO[ListItem.Label]</label>
+            <align>center</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_100</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>385</top>
+        </control>
+        <control type="label">
+            <visible>!Skin.HasSetting(DisableNetflixView) + [Container.Content(seasons) | Container.Content(episodes)]</visible>
+            <label>$INFO[ListItem.Year]</label>
+            <align>center</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_30</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>415</top>
+        </control>
+
     </include>
     <include name="View_Posters_Itemlayout_Artwork">
         <control type="group" description="ParentFolder and DefaultIcon">

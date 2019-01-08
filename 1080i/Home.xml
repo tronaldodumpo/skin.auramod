@@ -12,7 +12,6 @@
 
     <onload>ClearProperty(WidgetLoading,Home)</onload>
     <onload>AlarmClock(SetLoad,SetProperty(WidgetLoading,1,Home),00:00,silent)</onload>
-
     <onunload>ClearProperty(SkinHelper.WidgetContainer)</onunload>
 
     <controls>
@@ -35,10 +34,12 @@
             <content>$INFO[Container(300).ListItem.Property(backgroundPlaylist)]</content>
         </control>
 
-        <include>Global_Background</include>
+        <include condition="!Skin.HasSetting(DisableNetflixHome)">Global_Background</include>
         <include>Widgets</include>
-        <include>Topbar</include>
+        <include condition="!Skin.HasSetting(DisableNetflixHome)">Topbar</include> 
+        <include condition="Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeSidemenu)">Topbar</include> 
         <include>Object_PlotOverlay</include>
+        <include condition="Skin.HasSetting(DisableNetflixHome) + !Skin.HasSetting(DisableNetflixHomeSidemenu)">Home</include>
         <control type="button" id="4000">
             <visible allowhiddenfocus="true">false</visible>
             <width>1</width>

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+    <constant name="home_icon">67</constant>
+    <constant name="home_left">70</constant>
+    <constant name="topbar_height">156</constant>
+    <constant name="view_width">1215</constant>
+    <constant name="showcase_top">471.5</constant>
+
     <constant name="view_pad_netflix">60</constant>
     <constant name="view_pad">60</constant>
     <constant name="-view_pad">-60</constant>
@@ -10,7 +16,11 @@
     <constant name="list_width">1200</constant>
     <constant name="info_left">700</constant>
     <constant name="view_left">680</constant>
+    <constant name="widget_poster_height">400</constant>
     <constant name="widget_poster_width">290</constant>
-    <constant name="widget_poster_height">420</constant>
+    <constant name="widget_poster_width_netflix">261</constant>
+    <constant name="widget_poster_height_netflix">380</constant>
+    <constant name="widget_poster_width_netflix_mixed">242</constant>
+    <constant name="widget_poster_height_netflix_mixed">353</constant>
     <constant name="sidepad">80</constant>    
 </includes>

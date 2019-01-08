@@ -1,61 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <includes>
-  <!-- Start LandscapeTrakt Widget -->
-  <include name="Widget_Items_LandscapeTrakt">
+  <!-- Start Netflix Showcase Widget -->
+  <include name="Widget_Items_NetflixShowcase">
     <control type="group">
       <control type="image">
-        <texture fallback="diffuse/widgetlandscape.png" background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Fanart]</texture>
-        <aspectratio scalediffuse="false">stretch</aspectratio>
+        <texture background="true">$VAR[Image_Fanart]</texture>
+        <aspectratio scalediffuse="false">scale</aspectratio>
       </control>
       <control type="image">
+        <visible>!Skin.HasSetting(DisableNetflixHome)</visible>
         <height>330</height>
         <bottom>0</bottom>
         <texture colordiffuse="60000000" flipy="true">diffuse/halfbox.png</texture>
       </control>
+    </control>
+   </include>
 
-      <control type="group">
-        <height>70</height>
-        <bottom>0</bottom>
+
+  <include name="Widget_Items_LandscapeTrakt">
+    <control type="group">
+      <control type="image">
+        <texture diffuse="diffuse/widgetlandscape.png" background="true">$VAR[Image_Fanart]</texture>
+        <aspectratio scalediffuse="false">stretch</aspectratio>
+      </control>
+
+     <control type="group">
+       <visible>String.IsEqual(ListItem.DBType,episode)</visible>
+      <control type="image">
+        <left>0</left>
+	<bottom>40</bottom>
+        <height>45</height>
+        <width>90</width>
+        <texture colordiffuse="99FF0000" flipy="true">diffuse/halfbox.png</texture>
+      </control>
+     <control type="textbox">
+	<bottom>20</bottom>
+        <left>4</left>
+        <height>55</height>
+        <width>75</width>
+        <label>[I]$INFO[ListItem.Season, S,: ]$INFO[ListItem.Episode,E, ][/I]</label>
+        <textcolor>white</textcolor>
+        <font>widget_overlaybutton</font>
+       </control>
+     </control>
+
+<!-- Add Clearlogo to landscape Image -->
 	<control type="group">
-          <!-- START TvShowTitle Button -->
-          <control type="group">
-	    <bottom>60</bottom>
-            <width min="10" max="120">auto</width>
-            <height>30</height>
-            <left>20</left>
-            <visible>!String.IsEmpty(ListItem.TvShowTitle)</visible>
-            <control type="image">
-              <texture colordiffuse="red">diffuse/halfbox.png</texture>
-            </control>
-            <control type="label">
-              <label>$INFO[ListItem.TvShowTitle]</label>
-              <align>center</align>
-              <font>font_widget_time</font>
-              <textcolor>white</textcolor>
-              <shadowcolor>black</shadowcolor>
-            </control>
-          </control>
-          <!-- END Studio Button -->
-          <!-- START Airdate Button -->
-          <control type="group">
-	    <bottom>60</bottom>
-            <width min="10" max="105">auto</width>
-            <height>30</height>
-            <left>145</left>
-            <visible>!String.IsEmpty(ListItem.TvShowTitle)</visible>
-            <visible>!String.IsEmpty(ListItem.Premiered)</visible>
-            <control type="image">
-              <texture colordiffuse="red">diffuse/halfbox.png</texture>
-            </control>
-            <control type="label">
-              <label>$INFO[ListItem.Premiered(dd MMM yyyy)]</label>
-              <font>font_widget_time</font>
-              <align>center</align>
-              <textcolor>white</textcolor>
-              <shadowcolor>black</shadowcolor>
-            </control>
-          </control>
-          <!-- END Air Date Button -->
+        <control type="image">
+          <bottom>-10</bottom>
+          <right>10</right>
+          <width>50%</width>
+          <height>50%</height>
+          <aspectratio>keep</aspectratio>
+<!--         <texture background="true">http://localhost:52307/getartwork&amp;title=$ESCINFO[ListItem.TvShowTitle]&amp;type=clearlogo&amp;mediatype=tvshow</texture> -->
+          <texture background="true">$VAR[Widget_ClearLogo]</texture>
+          <visible>!Skin.HasSetting(DisableBanners) + !String.IsEmpty(ListItem.TvShowTitle)</visible>
+        </control>
+        <control type="image">
+          <bottom>-10</bottom>
+          <right>10</right>
+          <width>50%</width>
+          <height>50%</height>
+          <aspectratio>keep</aspectratio>
+<!--          <texture background="true">http://localhost:52307/getpvrthumb&amp;title=$ESCINFO[ListItem.Label]&amp;type=clearlogo&amp;mediatype=movies</texture> -->
+          <texture background="true">$VAR[Widget_ClearLogo]</texture>
+          <visible>String.IsEmpty(ListItem.TvShowTitle)</visible>
+        </control>
+      </control>
+
+        <!-- END add Clearlogo -->
+
 <!--	
 	<control type="label">
           <visible>!String.IsEmpty(ListItem.TvShowTitle) + String.IsEmpty(ListItem.Studio)</visible>
@@ -67,37 +81,15 @@
           <left>20</left>
           </control>
 -->
-
-          <control type="label">
-            <visible>!String.IsEqual(ListItem.Title,ListItem.Label)</visible>
-            <visible>!String.IsEmpty(ListItem.Episode)</visible>
-	    <bottom>0</bottom>
-            <textcolor>white</textcolor>
-            <label>$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</label>
-            <shadowcolor>black</shadowcolor>
-            <font>widget_trakt_title</font>
-            <left>20</left>
-          </control>
-          <control type="label">
-            <visible>String.IsEqual(ListItem.Title,ListItem.Label)</visible>
-	    <bottom>0</bottom>
-            <textcolor>white</textcolor>
-            <label>$INFO[ListItem.Season,Season , ]$INFO[ListItem.Episode,Episode , ]</label>
-            <shadowcolor>black</shadowcolor>
-            <font>widget_trakt_title</font>
-            <left>20</left>
-          </control>
-        </control>
-      </control>
     </control>
   </include>
   <!-- END LandscapeTrakt Widget -->
 
   <!-- Start LandscapeBanner Widget -->
-  <include name="Widget_Items_LandscapeWide">
+  <include name="Widget_Items_LandscapeBanner">
     <control type="group">
       <control type="image">
-        <texture fallback="diffuse/widgetlandscape.png" background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Fanart]</texture>
+        <texture background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Fanart]</texture>
         <aspectratio scalediffuse="false">scale</aspectratio>
       </control>
       <control type="image">
@@ -109,36 +101,47 @@
         <texture background="true" diffuse="diffuse/widgetlandscape.png">$INFO[ListItem.Art(clearlogo)]</texture>
         <visible>!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]</visible>
       </control>
+
+     <control type="group">
+       <visible>Skin.HasSetting(DisableNetflixHome) + String.IsEqual(ListItem.DBType,episode)</visible>
+      <control type="image">
+       <visible>Skin.HasSetting(DisableNetflixHome)</visible>
+        <left>0</left>
+        <bottom>40</bottom>
+        <height>45</height>
+        <width>90</width>
+        <texture colordiffuse="99FF0000" flipy="true">diffuse/halfbox.png</texture>
+      </control>
+     <control type="textbox">
+        <bottom>20</bottom>
+        <left>4</left>
+        <height>55</height>
+        <width>75</width>
+        <visible>String.IsEqual(ListItem.DBType,episode)</visible>
+        <label>[I]$INFO[ListItem.Season, S,: ]$INFO[ListItem.Episode,E, ][/I]</label>
+        <textcolor>white</textcolor>
+        <font>widget_overlaybutton</font>
+       </control>
+     </control>
+
       <control type="group">
-        <visible>![!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]]</visible>
-        <!-- Add Banner to landscape Image -->
-        <control type="image" id="46789">
-         <bottom>0</bottom>
-         <height>70</height>
-          <align>center</align>
-          <aligny>center</aligny>
-          <aspectratio align="center" aligny="center">stretch</aspectratio>
-          <texture>$VAR[WidgetBannerVar]</texture>
-          <visible>!Skin.HasSetting(DisableBanners)</visible>
-        </control>
-        <!-- END add Banner -->
-        <!-- Add Clearlogo to landscape Image -->
-        <control type="image" id="467810">
+<!-- Add Clearlogo to landscape Image -->
+        <control type="image">
           <bottom>35</bottom>
-	  <right>10</right>
-	  <width>40%</width>
-	  <height>40%</height>
-          <aspectratio>keep</aspectratio>
-          <animation effect="slide" start="0" end="0,50" time="0" condition="String.IsEmpty(ListItem.Episode)">Conditional</animation>
-<!--          <texture background="true">http://localhost:52307/getartwork&amp;title=$ESCINFO[ListItem.TvShowTitle]&amp;type=clearlogo&amp;mediatype=tvshow</texture> -->
-	  <texture background="true">$VAR[Widget_ClearLogo]</texture>
-          <visible>Skin.HasSetting(DisableBanners) + !String.IsEmpty(ListItem.TvShowTitle)</visible>
-        </control>
-        <control type="image" id="467811">
-          <bottom>0</bottom>
           <right>10</right>
-          <width>50%</width>
-          <height>50%</height>
+          <width>40%</width>
+          <height>40%</height>
+          <aspectratio>keep</aspectratio>
+          <animation effect="slide" start="0" end="0,40" time="0" condition="String.IsEmpty(ListItem.Episode) | Skin.HasSetting(WidgetLabels)">Conditional</animation>
+<!--         <texture background="true">http://localhost:52307/getartwork&amp;title=$ESCINFO[ListItem.TvShowTitle]&amp;type=clearlogo&amp;mediatype=tvshow</texture> -->
+          <texture background="true">$VAR[Widget_ClearLogo]</texture>
+          <visible>!Skin.HasSetting(DisableBanners) + !String.IsEmpty(ListItem.TvShowTitle)</visible>
+        </control>
+        <control type="image">
+          <bottom>5</bottom>
+          <right>10</right>
+          <width>45%</width>
+          <height>45%</height>
           <aspectratio>keep</aspectratio>
 <!--          <texture background="true">http://localhost:52307/getpvrthumb&amp;title=$ESCINFO[ListItem.Label]&amp;type=clearlogo&amp;mediatype=movies</texture> -->
           <texture background="true">$VAR[Widget_ClearLogo]</texture>
@@ -146,11 +149,26 @@
         </control>
 
         <!-- END add Clearlogo -->
+
+      </control>
+      <control type="group">
+        <visible>![!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]]</visible>
+        <!-- Add Banner to landscape Image -->
+        <control type="image">
+         <bottom>0</bottom>
+         <height>70</height>
+          <align>center</align>
+          <aligny>center</aligny>
+          <aspectratio align="center" aligny="center">stretch</aspectratio>
+          <texture background="true">$VAR[WidgetBannerVar]</texture>
+          <visible>Skin.HasSetting(DisableBanners)</visible>
+        </control>
+        <!-- END add Banner -->
         <!-- Start Add label box if Episode -->
 	<control type="group">
 	<bottom>0</bottom>
 	<height>60</height>
-	<visible>!Skin.HasSetting(WidgetLabels) + Skin.HasSetting(DisableBanners) + !String.IsEmpty(ListItem.Episode)</visible>
+	<visible>!Skin.HasSetting(WidgetLabels) + !Skin.HasSetting(DisableBanners) + !String.IsEmpty(ListItem.Episode)</visible>
 	<control type="image">
           <texture colordiffuse="99000000" border="10" flipy="true">diffuse/halfbox.png</texture>
         </control>
@@ -193,12 +211,13 @@
     </control>
   </include>
   <!-- END LandscapeBanner Widget -->
+
   <!-- Start WidgetLive Widget -->
   <include name="Widget_Items_WidgetLive">
     <control type="group">
       <control type="image">
 	  <width>360</width>
-	  <height>280</height>
+	  <height>250</height>
           <texture colordiffuse="4DFFFFFF" border="10" flipy="true">diffuse/halfbox.png</texture>
         </control>
 
@@ -220,13 +239,12 @@
         <height>100</height>
         <bottom>0</bottom>
         <visible>![!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]]</visible>
-        <visible>!Skin.HasSetting(WidgetLabels)</visible>
         <control type="image">
           <texture colordiffuse="99000000" border="10" flipy="true">diffuse/halfbox.png</texture>
         </control>
         <!-- Add Progress Bar -->
         <control type="progress">
-          <top>0</top>
+          <top>10</top>
           <height>12</height>
           <width>360</width>
           <info>ListItem.Progress</info>
@@ -271,7 +289,7 @@
   <!-- END WidgetLive Widget -->
   <!-- START Landscape Wide Widget -->
   <include name="Widget_Items_LandscapeWidePoster">
-    <param name="landscapewide" default="false" />
+    <param name="landscapewideposter" default="false" />
     <definition>
       <control type="image">
         <texture background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Poster]</texture>

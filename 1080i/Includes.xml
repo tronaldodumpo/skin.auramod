@@ -3,6 +3,7 @@
 <includes>
 
     <include file="Defaults.xml" />
+    <include file="DialogVideoInfo-Includes.xml" />
     <include file="Includes_ImagesMods.xml" />
     <include file="Includes_PVRInfoMods.xml" />
     <include file="Includes_WidgetMods.xml" />
@@ -17,10 +18,15 @@
     <include file="Includes_Object.xml" />
     <include file="Includes_OSD.xml" />
     <include file="Includes_Statusbar.xml" />
-    <include file="Includes_Topbar.xml" />
+    <include condition="!Skin.HasSetting(DisableNetflixHome)" file="Includes_Topbar.xml" />
+    <include condition="Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeSidemenu)" file="Includes_Topbar.xml" />
+    <include condition="Skin.HasSetting(DisableNetflixHome) + !Skin.HasSetting(DisableNetflixHomeSidemenu)" file="Includes_Topbar-Netflix.xml" />
+    <include condition="Skin.HasSetting(DisableNetflixHome) + !Skin.HasSetting(DisableNetflixHomeSidemenu)" file="Includes_Home.xml" />
     <include file="Includes_VideoLyrics.xml" />
     <include file="Includes_Weather.xml" />
-    <include file="Includes_Widgets.xml" />
+    <include condition="!Skin.HasSetting(DisableNetflixHome)" file="Includes_Widgets.xml" />
+    <include condition="Skin.HasSetting(DisableNetflixHome) + !Skin.HasSetting(DisableNetflixHomeSidemenu)" file="Includes_Widgets_Netflix.xml" />
+    <include condition="Skin.HasSetting(DisableNetflixHome) + Skin.HasSetting(DisableNetflixHomeSidemenu)" file="Includes_Widgets_Netflix_nosidemenu.xml" />
 
     <include file="Includes_View.xml" />
     <include file="Includes_View_List.xml" />
